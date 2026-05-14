@@ -1,6 +1,7 @@
 import React from 'react'
 import { Hero } from './components/HeroSection'
 import { WhyChooseUs } from './components/WhyChooseUs'
+import CallToAction from './components/CallToAction'
 import { ArrowRight, Code2, Globe2,  Shield } from 'lucide-react'
 import Link from 'next/link';
 
@@ -70,6 +71,8 @@ const Home = () => {
             </section>
 
             <WhyChooseUs />
+
+            <CallToAction />
 
         </div>
     )

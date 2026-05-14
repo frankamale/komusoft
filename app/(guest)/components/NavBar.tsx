@@ -53,9 +53,9 @@ export function Navbar() {
                         <Link href="/portfolio" className="block py-2 text-gray-700 hover:text-[#05ADEE]">Portfolio</Link>
                         <Link href="/contact" className="block py-2 text-gray-700 hover:text-[#05ADEE]">Contact</Link>
                         <div className="flex flex-col gap-2 pt-2">
-                            <Button className="w-full px-6 py-2.5 text-[#05ADEE] border-2 border-[#05ADEE] rounded-lg">
+                            <button className="w-full px-6 text-[#05ADEE] border-2 border-[#05ADEE] rounded-lg">
                                 Request Demo
-                            </Button>
+                            </button>
                             <Button className="w-full px-6 py-2.5 bg-linear-to-r from-[#05ADEE] to-[#0A0947] text-white rounded-lg">
                                 Contact Us
                             </Button>
