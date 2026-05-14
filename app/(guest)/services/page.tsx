@@ -1,19 +1,19 @@
-import { Smartphone, Globe, Code, Lightbulb, Headphones, Shield, Cloud, Network, ArrowRight } from 'lucide-react';
+import { Smartphone, Globe, Code, Lightbulb, Headphones, Shield, Cloud, Network, ArrowRight, Receipt } from 'lucide-react';
 import Link from 'next/link';
 
 const Services = () => {
 
   const services = [
     {
-      icon: Smartphone,
+      icon: Receipt,
       title: "Efris Integration",
-      description: "Professional integration of EFRIS solutions with POS, ERP, accounting, and invoicing systems to ensure compliant electronic fiscal receipting and smooth tax reporting workflows.", features: ["iOS & Android", "React Native", "Offline Support", "Push Notifications"]
+      description: "Professional integration of EFRIS solutions with POS, ERP, accounting, and invoicing systems to ensure compliant electronic fiscal receipting and smooth tax reporting workflows.", features: ["Retail Shops", "Restaurants and bars", "Supermarkets", "Pharmacies"]
     },
     {
       icon: Smartphone,
       title: "Mobile Applications",
       description: "Native and cross-platform mobile apps for iOS and Android with seamless user experiences and offline capabilities.",
-      features: ["iOS & Android", "React Native", "Offline Support", "Push Notifications"]
+      features: ["iOS & Android", "Flutter", "Offline Support", "Push Notifications"]
     },
     {
       icon: Globe,
