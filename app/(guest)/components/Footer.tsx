@@ -1,8 +1,10 @@
-import { Link, Mail, Phone, Sparkles, X } from 'lucide-react';
+import { Mail, Phone,  X } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
-   const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-[#0A0947] text-white">
@@ -10,9 +12,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-11 h-11 bg-[#05ADEE] rounded-xl flex items-center justify-center">
-                <Sparkles className="w-6 h-6 text-white" />
-              </div>
+              <Image src="/logo.png" alt="Komusoft Solutions" width={40} height={40} className="group-hover:animate-spin" />
               <div>
                 <span className="font-bold text-xl text-white">Komusoft</span>
                 <span className="block text-xs text-gray-400 -mt-1">Solutions Ltd</span>
@@ -74,7 +74,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-400 hover:text-[#05ADEE] transition-colors">
+                <Link href="/contact" className="text-gray-400 hover:text-[#05ADEE] transition-colors">
                   Contact
                 </Link>
               </li>
