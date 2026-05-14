@@ -8,6 +8,14 @@ export function Hero() {
                 <div className="absolute top-20 left-20 w-72 h-72 bg-[#05ADEE] rounded-full filter blur-3xl"></div>
                 <div className="absolute bottom-20 right-20 w-96 h-96 bg-[#05ADEE] rounded-full filter blur-3xl"></div>
             </div>
+                      {/* Grid Pattern */}
+          <div
+            className="absolute inset-0 opacity-10"
+            style={{
+              backgroundImage: `linear-gradient(#05ADEE 1px, transparent 1px), linear-gradient(90deg, #05ADEE 1px, transparent 1px)`,
+              backgroundSize: '50px 50px'
+            }}
+          ></div>
 
             <div className="absolute inset-0" style={{
                 backgroundImage: `radial-gradient(circle at 1px 1px, rgba(5, 173, 238, 0.1) 1px, transparent 0)`,
