@@ -28,8 +28,7 @@ const Products = () => {
         "Receipt printing & invoicing",
         "Stock alerts & reporting",
       ],
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+      image: "/public/about_image.png",
       tags: ["POS", "Inventory", "Offline"],
     },
     {
@@ -46,8 +45,7 @@ const Products = () => {
         "Mobile responsive design",
         "Automated workflows",
       ],
-      image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+      image: "/public/about_image.png",
       tags: ["Cloud", "Analytics", "SaaS"],
     },
     {
@@ -64,8 +62,8 @@ const Products = () => {
         "Multi-device access",
         "Scalable architecture",
       ],
-      image:
-        "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+      image: "/public/about_image.png",
+
       tags: ["Hybrid", "Enterprise", "Integration"],
     },
   ];
@@ -121,9 +119,8 @@ const Products = () => {
             {products.map((product, index) => (
               <div
                 key={index}
-                className={`grid lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
+                className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                  }`}
               >
                 <div
                   className={
@@ -189,6 +186,8 @@ const Products = () => {
                       src={product.image}
                       alt={product.name}
                       className="rounded-3xl shadow-2xl"
+                      width={500}
+                      height={600}
                     />
                     <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-black/10"></div>
                   </div>

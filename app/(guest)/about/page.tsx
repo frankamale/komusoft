@@ -1,233 +1,266 @@
-"use client"
+"use client";
 
-import { Target, Users, Award, Lightbulb, CheckCircle2 } from 'lucide-react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import CallToAction from '../components/CallToAction';
-
+import {
+  Target,
+  Users,
+  Award,
+  Lightbulb,
+  CheckCircle2,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import CallToAction from "../components/CallToAction";
+import Image from "next/image";
 
 const About = () => {
-
   const values = [
     {
       icon: Target,
       title: "Mission-Driven",
-      description: "Empowering businesses through technology innovation and digital transformation"
+      description:
+        "Empowering businesses through technology innovation and digital transformation.",
     },
     {
       icon: Users,
       title: "Customer-Centric",
-      description: "Your success is our success. We build lasting partnerships, not just projects"
+      description:
+        "Your success is our success. We build lasting partnerships, not just projects.",
     },
     {
       icon: Award,
       title: "Quality First",
-      description: "Enterprise-grade solutions with rigorous testing and quality assurance"
+      description:
+        "Enterprise-grade solutions with rigorous testing and quality assurance.",
     },
     {
       icon: Lightbulb,
       title: "Innovation",
-      description: "Staying ahead with cutting-edge technologies and best practices"
-    }
+      description:
+        "Staying ahead with cutting-edge technologies and best practices.",
+    },
   ];
 
   const milestones = [
-    { year: "2012", title: "Founded", description: "Komusoft Solutions established in Kampala" },
-    { year: "2015", title: "First Major Project", description: "Delivered UN digital platforms" },
-    { year: "2018", title: "Healthcare Solutions", description: "Launched LIMS for Ministry of Health" },
-    { year: "2020", title: "Cloud Expansion", description: "Introduced cloud-based business solutions" },
-    { year: "2024", title: "50+ Projects", description: "Serving clients across multiple sectors" }
+    {
+      year: "2012",
+      title: "Founded",
+      description: "Komusoft Solutions established in Kampala.",
+    },
+    {
+      year: "2015",
+      title: "First Major Project",
+      description: "Delivered digital platforms for UN agencies.",
+    },
+    {
+      year: "2018",
+      title: "Healthcare Solutions",
+      description: "Launched LIMS solutions for the Ministry of Health.",
+    },
+    {
+      year: "2020",
+      title: "Cloud Expansion",
+      description: "Introduced cloud-based business solutions.",
+    },
+    {
+      year: "2024",
+      title: "50+ Projects",
+      description: "Serving clients across multiple sectors.",
+    },
   ];
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 bg-white">
       {/* Hero */}
-      <section className="relative py-32 overflow-hidden bg-linear-to-b from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-linear-to-br from-sky-50 via-white to-cyan-50 py-28">
+        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_top_right,#05ADEE20,transparent_40%)]" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="max-w-4xl mx-auto text-center"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <motion.p
-              className="text-sm uppercase tracking-wider text-[#05ADEE] font-semibold mb-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
+            <p className="text-sm uppercase tracking-[0.25em] text-[#05ADEE] font-semibold mb-5">
               About Komusoft
-            </motion.p>
-            <motion.h1
-              className="text-5xl md:text-6xl font-bold text-gray-900 mb-6"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-            >
+            </p>
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
               Pioneering Digital Transformation in East Africa
-            </motion.h1>
-            <motion.p
-              className="text-xl text-gray-600 leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-            >
-              Since 2012, we&apos;ve been delivering world-class software solutions that empower
-              organizations to operate smarter, scale faster, and achieve more.
-            </motion.p>
+            </h1>
+
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+              Since 2012, we’ve been delivering world-class software solutions
+              that empower organizations to operate smarter, scale faster, and
+              achieve more.
+            </p>
           </motion.div>
         </div>
       </section>
 
       {/* Our Story */}
-      <motion.div
-        className="py-20 bg-gradient-to-br from-blue-50 to-indigo-50"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-white">
+        <motion.div
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              <p className="text-sm uppercase tracking-[0.25em] text-[#05ADEE] font-semibold mb-4">
                 Our Story
+              </p>
+
+              <h2 className="text-4xl font-bold text-gray-900 mb-8">
+                Building Technology That Drives Growth
               </h2>
-              <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
+
+              <div className="space-y-5 text-lg text-gray-600 leading-relaxed">
                 <p>
-                  Established in 2012 as private limited company company managed by highly experienced information technology professionals and offers consulting services in the areas of Software Development, IT Infrastructure Management, Security Infrastructure design, Quality Assurance and implementation.
+                  Established in 2012, Komusoft Solutions is a private limited
+                  company managed by highly experienced information technology
+                  professionals offering consulting services in software
+                  development, IT infrastructure management, security
+                  infrastructure design, quality assurance, and implementation.
                 </p>
+
                 <p>
-                  Comprised of both office-based staff and team of expert consultants who are dedicated to providing software solutions that are tailor made to match customer aspirations.
+                  Our team is made up of office-based staff and expert
+                  consultants dedicated to delivering tailor-made software
+                  solutions that align with customer goals and operational
+                  needs.
                 </p>
+
                 <p>
-                  Komusoft philosophy rotates around on a win-win mindset, mutual trust, commitment and the sharing of risks and rewards to benefit customers directly. Our professionals have several hundred person-years of experience consulting with organizations and implementing multi sectoral applications
+                  Komusoft operates with a win-win philosophy built on trust,
+                  commitment, and long-term partnerships. Our professionals
+                  bring extensive experience implementing multi-sector digital
+                  solutions across healthcare, government, enterprise, and
+                  development organizations.
                 </p>
               </div>
 
-              <div className="mt-8 grid grid-cols-3 gap-6">
-                <div className="text-center p-6 bg-gray-50 rounded-2xl">
-                  <div className="text-4xl font-bold text-[#05ADEE] mb-2">10+</div>
-                  <div className="text-sm text-gray-600">Years</div>
-                </div>
-                <div className="text-center p-6 bg-gray-50 rounded-2xl">
-                  <div className="text-4xl font-bold text-[#05ADEE] mb-2">50+</div>
-                  <div className="text-sm text-gray-600">Projects</div>
-                </div>
-                <div className="text-center p-6 bg-gray-50 rounded-2xl">
-                  <div className="text-4xl font-bold text-[#05ADEE] mb-2">100%</div>
-                  <div className="text-sm text-gray-600">Satisfaction</div>
+              <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-5">
+                {[
+                  { value: "10+", label: "Years Experience" },
+                  { value: "50+", label: "Projects Delivered" },
+                  { value: "100%", label: "Client Focus" },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="bg-gray-50 border border-gray-100 rounded-3xl p-6 text-center hover:shadow-lg transition-all duration-300"
+                  >
+                    <div className="text-4xl font-bold text-[#05ADEE] mb-2">
+                      {item.value}
+                    </div>
+
+                    <div className="text-sm text-gray-600">{item.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="rounded-[2rem] overflow-hidden shadow-2xl border border-gray-100">
+                <Image
+                  src="/about.jpg"
+                  alt="Komusoft team"
+                  className="w-full h-150 object-cover"
+                  width={500}
+                  height={600}
+                />
+              </div>
+
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-3xl shadow-xl border border-gray-100 p-6 w-56">
+                <p className="text-3xl font-bold text-[#05ADEE] mb-1">
+                  12+ Years
+                </p>
+                <p className="text-gray-600 text-sm">
+                  Delivering innovative digital solutions.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </section>
 
       {/* Values */}
-      <motion.div
-        className="py-20 bg-gradient-to-br from-purple-50 to-pink-50"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-linear-to-br from-slate-50 to-cyan-50">
+        <motion.div
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
           <div className="text-center mb-16">
-            <p className="text-sm uppercase tracking-wider text-[#05ADEE] font-semibold mb-3">
+            <p className="text-sm uppercase tracking-[0.25em] text-[#05ADEE] font-semibold mb-3">
               Our Values
             </p>
+
             <h2 className="text-4xl font-bold text-gray-900">
               What Drives Us
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="p-8 bg-white rounded-3xl border border-gray-200 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+                whileHover={{ y: -8 }}
+                className="bg-white rounded-3xl border border-gray-100 p-8 shadow-sm hover:shadow-2xl transition-all duration-300"
               >
-                <div className="w-14 h-14 bg-[#05ADEE]/10 rounded-2xl flex items-center justify-center mb-6">
-                  <value.icon className="w-7 h-7 text-[#05ADEE]" />
+                <div className="w-16 h-16 rounded-2xl bg-[#05ADEE]/10 flex items-center justify-center mb-6">
+                  <value.icon className="w-8 h-8 text-[#05ADEE]" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   {value.title}
                 </h3>
-                <p className="text-gray-600">
+
+                <p className="text-gray-600 leading-relaxed">
                   {value.description}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
-        </div>
-      </motion.div>
+      </section>
 
-      {/* Timeline */}
-      <motion.div
-        className="py-20 bg-gradient-to-br from-green-50 to-teal-50"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="text-sm uppercase tracking-wider text-[#05ADEE] font-semibold mb-3">
-              Our Journey
-            </p>
-            <h2 className="text-4xl font-bold text-gray-900">
-              Company Milestones
-            </h2>
-          </div>
-
-          <div className="relative">
-            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#05ADEE]/20 -translate-x-1/2"></div>
-
-            {milestones.map((milestone, index) => (
-              <div key={index} className="relative mb-16 md:grid md:grid-cols-2 md:gap-8 items-center">
-                <div className={index % 2 === 0 ? 'md:text-right' : 'md:col-start-2'}>
-                  <div className="inline-block p-8 bg-white rounded-3xl border border-gray-200 hover:shadow-xl transition-all">
-                    <div className="text-sm text-[#05ADEE] font-semibold mb-2">{milestone.year}</div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{milestone.title}</h3>
-                    <p className="text-gray-600">{milestone.description}</p>
-                  </div>
-                </div>
-
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-[#05ADEE] rounded-full border-4 border-white shadow-lg hidden md:block"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.div>
 
       {/* Expertise */}
-      <section className="py-20 bg-gradient-to-br from-cyan-50 to-blue-50">
+      <section className="py-24 bg-linear-to-br from-cyan-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <p className="text-sm uppercase tracking-wider text-[#05ADEE] font-semibold mb-3">
+              <p className="text-sm uppercase tracking-[0.25em] text-[#05ADEE] font-semibold mb-3">
                 Expertise
               </p>
+
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
                 Deep Technical Knowledge
               </h2>
-              <p className="text-lg text-gray-600 mb-8">
-                Our team brings together diverse expertise across modern technologies
-                and industry best practices.
+
+              <p className="text-lg text-gray-600 mb-10 leading-relaxed">
+                Our team combines technical expertise, strategic thinking, and
+                industry experience to build scalable and secure digital
+                solutions.
               </p>
 
-              <div className="space-y-4">
+              <div className="space-y-5">
                 {[
                   "Full-stack web & mobile development",
                   "Cloud infrastructure & DevOps",
                   "Enterprise system integration",
                   "Cybersecurity & compliance",
                   "Quality assurance & testing",
-                  "24/7 technical support"
+                  "24/7 technical support",
                 ].map((item, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <CheckCircle2 className="w-6 h-6 text-[#05ADEE] flex-shrink-0" />
-                    <span className="text-gray-700">{item}</span>
+                  <div key={index} className="flex items-start gap-4">
+                    <CheckCircle2 className="w-6 h-6 text-[#05ADEE] mt-0.5 shrink-0" />
+
+                    <span className="text-gray-700 text-lg">{item}</span>
                   </div>
                 ))}
               </div>
@@ -238,14 +271,17 @@ const About = () => {
                 { label: "Technologies", value: "20+" },
                 { label: "Team Members", value: "15+" },
                 { label: "Industries", value: "8+" },
-                { label: "Countries", value: "3+" }
+                { label: "Countries", value: "3+" },
               ].map((stat, index) => (
                 <div
                   key={index}
-                  className="p-8 bg-white rounded-3xl border border-gray-200 hover:shadow-xl transition-all"
+                  className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="text-5xl font-bold text-[#05ADEE] mb-2">{stat.value}</div>
-                  <div className="text-gray-600">{stat.label}</div>
+                  <div className="text-5xl font-bold text-[#05ADEE] mb-3">
+                    {stat.value}
+                  </div>
+
+                  <div className="text-gray-600 text-lg">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -256,8 +292,6 @@ const About = () => {
       <CallToAction />
     </div>
   );
-}
+};
 
-
-
-export default About
+export default About;
