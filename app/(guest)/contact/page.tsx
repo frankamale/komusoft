@@ -1,23 +1,92 @@
+"use client";
+
 import { Mail, Phone, MapPin, Send, Clock } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* Hero */}
-      <section className="relative py-32 overflow-hidden bg-linear-to-b from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-sm uppercase tracking-wider text-[#05ADEE] font-semibold mb-4">
-              Get In Touch
-            </p>
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Let&apos;s Build Something Great Together
-            </h1>
-            <p className="text-xl text-gray-600 leading-relaxed">
+      <section
+        className="relative overflow-hidden py-32"
+        style={{ background: "linear-gradient(135deg, #0A0947 0%, #0d0f5e 40%, #0a2a6e 70%, #0c4a8a 100%)" }}
+      >
+        {/* Decorative blobs */}
+        <div
+          className="absolute top-0 right-0 w-150 h-150 rounded-full opacity-20 pointer-events-none"
+          style={{ background: "radial-gradient(circle, #05ADEE 0%, transparent 70%)", transform: "translate(30%, -30%)" }}
+        />
+        <div
+          className="absolute bottom-0 left-0 w-100 h-100 rounded-full opacity-10 pointer-events-none"
+          style={{ background: "radial-gradient(circle, #05ADEE 0%, transparent 70%)", transform: "translate(-40%, 40%)" }}
+        />
+
+        {/* Grid overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="max-w-4xl mx-auto text-center"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {/* Pill badge */}
+            <motion.div
+              className="inline-flex items-center gap-2 mb-8"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
+              <span
+                className="px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest"
+                style={{
+                  background: "rgba(5,173,238,0.15)",
+                  border: "1px solid rgba(5,173,238,0.4)",
+                  color: "#05ADEE",
+                }}
+              >
+                Get In Touch
+              </span>
+            </motion.div>
+
+            <motion.h1
+              className="text-5xl md:text-6xl font-bold leading-[1.05] mb-8"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <span className="text-white">Let&apos;s Build Something </span>
+              <span
+                style={{
+                  background: "linear-gradient(90deg, #05ADEE, #38d2f5)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Great Together
+              </span>
+            </motion.h1>
+
+            <motion.p
+              className="text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto mb-12"
+              style={{ color: "rgba(255,255,255,0.65)" }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45, duration: 0.8 }}
+            >
               Ready to transform your business with innovative technology?
               Our team is here to help bring your vision to life
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
