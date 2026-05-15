@@ -1,0 +1,160 @@
+"use client";
+
+import { ShoppingCart, Cloud, Layers, Check, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 40 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] as const, delay },
+  viewport: { once: true },
+});
+
+const ProductShowcaseSection = () => {
+  const products = [
+    {
+      icon: ShoppingCart,
+      name: "Business Manager",
+      tagline: "Offline-Ready POS & Inventory System",
+      badge: "On-Premise",
+      description:
+        "Powerful point-of-sale and inventory management system with LAN support for uninterrupted operations, even without internet connectivity. Purpose-built for African retail environments where connectivity can't be guaranteed.",
+      features: [
+        "Offline POS capabilities",
+        "Real-time inventory tracking",
+        "LAN-based synchronization",
+        "Multi-location support",
+        "Receipt printing & invoicing",
+        "Stock alerts & reporting",
+        "EFRIS-compliant receipting",
+        "Role-based access control",
+      ],
+      tags: ["POS", "Inventory", "Offline"],
+      accent: "#05ADEE",
+    },
+    {
+      icon: Cloud,
+      name: "Business Assistant",
+      tagline: "Cloud Business Operations Platform",
+      badge: "SaaS",
+      description:
+        "Web-based platform for comprehensive business operations management, accessible anywhere, anytime. Advanced analytics, team collaboration, and automated workflows — all in one dashboard designed for modern teams.",
+      features: [
+        "Cloud-based infrastructure",
+        "Advanced analytics & reporting",
+        "Team collaboration tools",
+        "API integrations",
+        "Mobile responsive design",
+        "Automated workflows",
+        "Custom dashboards",
+        "Audit trail & compliance",
+      ],
+      tags: ["Cloud", "Analytics", "SaaS"],
+      accent: "#38d2f5",
+    },
+    {
+      icon: Layers,
+      name: "Hybrid Solution",
+      tagline: "Integrated Business Ecosystem",
+      badge: "Enterprise",
+      description:
+        "The best of both worlds — seamlessly combines offline POS capabilities with cloud business management for ultimate flexibility. Ideal for enterprises needing resilience across unreliable networks while maintaining cloud-level visibility.",
+      features: [
+        "Offline + Cloud synchronization",
+        "Unified command dashboard",
+        "Automated nightly backups",
+        "Advanced reporting suite",
+        "Multi-device access",
+        "Scalable architecture",
+        "Enterprise SSO",
+        "Dedicated SLA support",
+      ],
+      tags: ["Hybrid", "Enterprise", "Integration"],
+      accent: "#05ADEE",
+    },
+  ];
+
+  return (
+    <section className="md:py-28 sm:py-20 py-12 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div className="text-center md:mb-20 mb-8" {...fadeUp()}>
+          <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "#05ADEE" }}>Product Suite</p>
+          <h2 className="md:text-4xl sm:text-3xl text-2xl font-bold" style={{ color: "#0A0947" }}>Choose Your Solution</h2>
+        </motion.div>
+
+        <div className="flex flex-col gap-20">
+          {products.map((product, index) => (
+            <motion.div key={index} {...fadeUp(0.1)}
+              className={`grid lg:grid-cols-2 gap-16 items-center`}>
+
+              <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+                  style={{ background: "rgba(5,173,238,0.1)" }}>
+                  <product.icon className="w-4 h-4" style={{ color: "#05ADEE" }} />
+                  <span className="text-sm font-bold" style={{ color: "#05ADEE" }}>{product.name}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full ml-1"
+                    style={{ background: "rgba(10,9,71,0.08)", color: "#0A0947" }}>{product.badge}</span>
+                </div>
+
+                <h2 className="md:text-4xl sm:text-3xl text-2xl font-bold mb-5" style={{ color: "#0A0947" }}>{product.tagline}</h2>
+                <p className="md:text-lg text-sm text-gray-500 mb-8 leading-relaxed">{product.description}</p>
+
+                <div className="grid grid-cols-2 gap-3 mb-8">
+                  {product.features.map((f, fi) => (
+                    <div key={fi} className="flex items-center gap-2">
+                      <Check className="w-4 h-4 shrink-0" style={{ color: "#05ADEE" }} />
+                      <span className="text-sm text-gray-600">{f}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {product.tags.map((tag, ti) => (
+                    <span key={ti} className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider"
+                      style={{ background: "rgba(10,9,71,0.05)", color: "#0A0947" }}>{tag}</span>
+                  ))}
+                </div>
+
+                <Link href="/contact"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-xl"
+                  style={{ background: "linear-gradient(135deg, #05ADEE, #0496d5)", boxShadow: "0 6px 24px rgba(5,173,238,0.28)" }}>
+                  Request Demo
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+
+              <div className={`relative ${index % 2 === 1 ? "lg:order-1" : ""}`}>
+                {/* Decorative frame */}
+                <div className="absolute -inset-4 rounded-[2.5rem] pointer-events-none"
+                  style={{ background: "linear-gradient(135deg, rgba(5,173,238,0.08), rgba(10,9,71,0.05))" }} />
+                <div className="relative rounded-[2rem] overflow-hidden shadow-2xl"
+                  style={{ border: "1px solid rgba(5,173,238,0.15)" }}>
+                  <div className="w-full h-80 flex items-center justify-center"
+                    style={{ background: `linear-gradient(135deg, #0A0947, #0d1575)` }}>
+                    <div className="text-center">
+                      <div className="w-24 h-24 rounded-3xl flex items-center justify-center mx-auto mb-4"
+                        style={{ background: "rgba(5,173,238,0.2)" }}>
+                        <product.icon className="w-12 h-12" style={{ color: "#05ADEE" }} />
+                      </div>
+                      <p className="text-white font-bold text-xl">{product.name}</p>
+                      <p className="text-sm mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>{product.badge}</p>
+                    </div>
+                  </div>
+                </div>
+                {/* Floating tag */}
+                <div className="absolute -bottom-5 -right-5 rounded-2xl px-5 py-4 shadow-xl"
+                  style={{ background: "white", border: "1px solid rgba(5,173,238,0.15)" }}>
+                  <p className="text-xs text-gray-400 mb-0.5">Includes</p>
+                  <p className="text-sm font-bold" style={{ color: "#0A0947" }}>{product.features.length} features</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ProductShowcaseSection;
