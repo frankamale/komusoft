@@ -1,5 +1,6 @@
 import { ArrowRight, Shield, TrendingUp } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export function Hero() {
     return (
@@ -26,7 +27,7 @@ export function Hero() {
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div className="space-y-8">
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight text-center">
-                            Transforming Businesses Through
+                            Transforming Businesses Through {" "}
                             <span className="bg-linear-to-r from-[#05ADEE] to-[#38bdf8] bg-clip-text text-transparent">
                                 Intelligent Software Solutions
                             </span>
@@ -38,29 +39,29 @@ export function Hero() {
                         </p>
 
                         <div className="flex flex-wrap gap-4">
-                            <button className="group md:px-8 px-4 md:py-4 py-2 bg-linear-to-r from-[#05ADEE] to-[#0ea5e9] text-white rounded-lg hover:shadow-2xl hover:shadow-[#05ADEE]/50 transition-all flex items-center gap-2">
+                            <Link href={"/contact"} className="group md:px-8 px-4 md:py-4 py-2 bg-linear-to-r from-[#05ADEE] to-[#0ea5e9] text-white rounded-lg hover:shadow-2xl hover:shadow-[#05ADEE]/50 transition-all flex items-center gap-2">
                                 Get Started
                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                            </button>
-                            <button className="md:px-8 px-4 md:py-4 py-2 bg-white/10 backdrop-blur-sm text-white border border-white/20 rounded-lg hover:bg-white/20 transition-all">
+                            </Link>
+                            <Link href={"/portfolio"} className="md:px-8 px-4 md:py-4 py-2 bg-white/10 backdrop-blur-sm text-white border border-white/20 rounded-lg hover:bg-white/20 transition-all">
                                 View Our Work
-                            </button>
+                            </Link>
                         </div>
 
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8">
                             <div className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:bg-white/10 transition-all">
-                                <div className="text-3xl font-bold text-[#05ADEE]">10+</div>
+                                <div className="text-3xl font-bold text-[#05ADEE]">15+</div>
                                 <div className="text-sm text-gray-300">Years Experience</div>
                             </div>
                             <div className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:bg-white/10 transition-all">
-                                <div className="text-3xl font-bold text-[#05ADEE]">50+</div>
+                                <div className="text-3xl font-bold text-[#05ADEE]">99+</div>
                                 <div className="text-sm text-gray-300">Projects Delivered</div>
                             </div>
                             <div className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:bg-white/10 transition-all">
                                 <div className="flex items-center gap-1">
                                     <Shield className="w-6 h-6 text-[#05ADEE]" />
                                 </div>
-                                <div className="text-sm text-gray-300 mt-1">Enterprise Grade</div>
+                                <div className="text-sm text-gray-300 mt-1">Enterprise Grade Solutions</div>
                             </div>
                             <div className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:bg-white/10 transition-all">
                                 <div className="flex items-center gap-1">
@@ -88,7 +89,6 @@ export function Hero() {
                 </div>
             </div>
 
-            {/* <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-white to-transparent"></div> */}
         </section>
     );
 }
