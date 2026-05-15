@@ -4,7 +4,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ShoppingCart, Check, ArrowRight, Download, FileText, Wifi, WifiOff, Database, Printer, Users, Shield, HardDrive, Monitor } from 'lucide-react';
 
-export function BusinessManager() {
+import React from 'react'
+
+const BusinessManager = () => {
   const features = [
     {
       icon: WifiOff,
@@ -102,7 +104,7 @@ export function BusinessManager() {
 
             <div className="relative">
               <Image
-              src="/assets/business-manager-dashboard.png"
+                src="/assets/business-manager-dashboard.png"
                 alt="Business Manager Dashboard"
                 className="rounded-3xl shadow-2xl"
                 width={540}
@@ -454,6 +456,4 @@ export function BusinessManager() {
   );
 }
 
-export default function BusinessManagerPage() {
-  return <BusinessManager />;
-}
+export default BusinessManager

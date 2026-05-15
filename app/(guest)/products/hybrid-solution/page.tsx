@@ -4,7 +4,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Cloud, Check, ArrowRight, Download, FileText, Wifi, WifiOff, Shield, HardDrive, Monitor, Globe, Zap, BarChart } from 'lucide-react';
 
-export function HybridManager() {
+import React from 'react'
+
+const HybridManager = () => {
   const features = [
     {
       icon: WifiOff,
@@ -455,6 +457,4 @@ export function HybridManager() {
   );
 }
 
-export default function HybridManagerPage() {
-  return <HybridManager />;
-}
+export default HybridManager

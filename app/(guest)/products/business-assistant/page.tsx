@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Cloud, Check, ArrowRight, Download, FileText, BarChart, Users, Zap, Shield, Database, Monitor, Globe } from 'lucide-react';
 
-export function BusinessAssistant() {
+const BusinessAssistant = () => {
   const features = [
     {
       icon: Cloud,
@@ -454,6 +454,4 @@ export function BusinessAssistant() {
   );
 }
 
-export default function BusinessAssistantPage() {
-  return <BusinessAssistant />;
-}
+export default BusinessAssistant

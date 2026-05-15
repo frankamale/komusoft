@@ -296,7 +296,7 @@ export function BusinessManagerInstallation() {
             </div>
 
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-              <h3 className="font-bold text-blue-900 mb-2">Application Won't Start</h3>
+              <h3 className="font-bold text-blue-900 mb-2">Application Won&apos;t Start</h3>
               <p className="text-blue-800 text-sm mb-3">
                 Check Windows Event Viewer for detailed error messages.
               </p>
