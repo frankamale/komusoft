@@ -8,6 +8,16 @@ export function Documentation() {
 
   const categories = [
     {
+      title: "Product Documentation",
+      icon: Book,
+      docs: [
+        { title: "Business Manager Guide", path: "/products/docs/business-manager" },
+        { title: "Business Assistant Guide", path: "/products/docs/business-assistant" },
+        { title: "Hybrid Solution Guide", path: "/products/docs/hybrid-solution" },
+        { title: "API Documentation", path: "api" }
+      ]
+    },
+    {
       title: "Getting Started",
       icon: Book,
       docs: [
@@ -35,16 +45,6 @@ export function Documentation() {
         { title: "Printer Issues", path: "printer" },
         { title: "Database Backup", path: "backup" },
         { title: "Common Errors", path: "common-errors" }
-      ]
-    },
-    {
-      title: "API Documentation",
-      icon: Terminal,
-      docs: [
-        { title: "REST API", path: "api/rest" },
-        { title: "Authentication", path: "api/auth" },
-        { title: "Webhooks", path: "api/webhooks" },
-        { title: "Rate Limits", path: "api/limits" }
       ]
     }
   ];

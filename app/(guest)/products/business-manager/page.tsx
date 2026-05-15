@@ -210,6 +210,167 @@ export function BusinessManager() {
         </div>
       </section>
 
+      {/* Pricing */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Pricing Plans
+            </h2>
+            <p className="text-xl text-gray-600">
+              Flexible licensing options for businesses of all sizes
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="bg-white rounded-3xl border-2 border-gray-200 p-8 hover:border-[#05ADEE] hover:shadow-xl transition-all">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Single Location</h3>
+                <p className="text-gray-600 mb-4">Perfect for small retail shops</p>
+                <div className="text-4xl font-bold text-[#05ADEE] mb-2">UGX 1,500,000</div>
+                <div className="text-gray-600 text-sm">One-time license</div>
+                <div className="text-gray-600 text-sm mt-2">+ UGX 300,000/year maintenance</div>
+              </div>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">1 POS terminal</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Basic inventory management</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Receipt printing</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Email support</span>
+                </li>
+              </ul>
+              <Link
+                href="/contact"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-gray-100 text-gray-900 rounded-xl hover:bg-gray-200 transition-all font-semibold"
+              >
+                Get Started
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+
+            <div className="bg-white rounded-3xl border-2 border-[#05ADEE] shadow-xl p-8 relative">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#05ADEE] text-white px-4 py-2 rounded-full text-sm font-semibold">
+                Most Popular
+              </div>
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Multi-Location</h3>
+                <p className="text-gray-600 mb-4">For growing retail chains</p>
+                <div className="text-4xl font-bold text-[#05ADEE] mb-2">UGX 2,500,000</div>
+                <div className="text-gray-600 text-sm">One-time license</div>
+                <div className="text-gray-600 text-sm mt-2">+ UGX 500,000/year maintenance</div>
+              </div>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Up to 5 POS terminals</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Advanced inventory management</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Multi-location support</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">LAN synchronization</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Priority support</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Custom reporting</span>
+                </li>
+              </ul>
+              <Link
+                href="/contact"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#05ADEE] text-white rounded-xl hover:bg-[#0496d5] transition-all font-semibold"
+              >
+                Get Started
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+
+            <div className="bg-white rounded-3xl border-2 border-gray-200 p-8 hover:border-[#05ADEE] hover:shadow-xl transition-all">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
+                <p className="text-gray-600 mb-4">For large retail operations</p>
+                <div className="text-4xl font-bold text-[#05ADEE] mb-2">Custom Pricing</div>
+                <div className="text-gray-600 text-sm">Contact for quote</div>
+              </div>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Unlimited POS terminals</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Advanced analytics</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Custom integrations</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Dedicated support</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">On-site training</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">SLA guarantee</span>
+                </li>
+              </ul>
+              <Link
+                href="/contact"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-gray-100 text-gray-900 rounded-xl hover:bg-gray-200 transition-all font-semibold"
+              >
+                Contact Sales
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-gray-600 mb-4">All plans include:</p>
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600">
+              <span className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-green-500" />
+                EFRIS compliance
+              </span>
+              <span className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-green-500" />
+                Free updates
+              </span>
+              <span className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-green-500" />
+                Installation support
+              </span>
+              <span className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-green-500" />
+                Training materials
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* System Requirements */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

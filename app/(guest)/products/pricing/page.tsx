@@ -1,169 +1,110 @@
 "use client";
 
-import { useState } from 'react';
+import { Check, X, Star, Zap, Shield, Users, Database, Wifi, Cloud, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { Check, ArrowRight, Star } from 'lucide-react';
 
 export function Pricing() {
-  const [withEFRIS, setWithEFRIS] = useState(true);
-
-  const packages = [
+  const products = [
     {
-      name: "Solo Flight",
-      features: "CRM + Invoicing",
-      users: "1 User",
-      tills: "1 Till",
-      currency: "1 Currency",
-      priceWithEFRIS: "80,000",
-      priceWithoutEFRIS: "50,000",
-      featureList: [
-        "Customer Relationship Management",
-        "Basic Invoicing",
-        "Single user access",
-        "1 Till/Register",
-        "Single currency"
-      ]
+      name: "Business Manager",
+      tagline: "On-Premise POS & Inventory",
+      description: "Offline-ready system perfect for retail environments",
+      icon: Database,
+      pricing: {
+        oneTime: 2500000, // UGX 2.5M
+        annual: 500000, // UGX 500K/year maintenance
+        currency: "UGX"
+      },
+      features: [
+        "Offline POS capabilities",
+        "Real-time inventory tracking",
+        "LAN synchronization",
+        "EFRIS-compliant receipting",
+        "Role-based access control",
+        "Receipt printing & invoicing",
+        "Stock alerts & reporting",
+        "Multi-location support"
+      ],
+      limitations: [],
+      popular: false
     },
     {
-      name: "Deluxe",
-      features: "CRM + Invoicing + Inventory",
-      users: "3 Users",
-      tills: "1 Till",
-      currency: "1 Currency",
-      priceWithEFRIS: "150,000",
-      priceWithoutEFRIS: "120,000",
-      featureList: [
-        "All Solo Flight features",
-        "Inventory Management",
-        "Up to 3 users",
-        "Stock tracking",
-        "Reports & analytics"
-      ]
+      name: "Business Assistant",
+      tagline: "Cloud Business Platform",
+      description: "SaaS solution for modern business operations",
+      icon: Cloud,
+      pricing: {
+        monthly: 150000, // UGX 150K/month
+        annual: 1500000, // UGX 1.5M/year (2 months free)
+        currency: "UGX"
+      },
+      features: [
+        "Cloud-based infrastructure",
+        "Advanced analytics & reporting",
+        "Team collaboration tools",
+        "API integrations",
+        "Mobile responsive design",
+        "Automated workflows",
+        "Custom dashboards",
+        "Audit trail & compliance"
+      ],
+      limitations: [],
+      popular: true
     },
     {
-      name: "Classic",
-      features: "CRM + Invoicing + Inventory + Accounting",
-      users: "6 Users",
-      tills: "2 Tills",
-      currency: "Multi Currency",
-      priceWithEFRIS: "250,000",
-      priceWithoutEFRIS: "180,000",
-      recommended: true,
-      featureList: [
-        "All Deluxe features",
-        "Full Accounting Module",
-        "Up to 6 users",
-        "2 Tills/Registers",
-        "Multi-currency support",
-        "Advanced reporting"
-      ]
-    },
-    {
-      name: "Corporate",
-      features: "CRM + Invoicing + Inventory + Accounting + Corporate",
-      users: "8 Users",
-      tills: "3 Tills",
-      currency: "Multi Currency",
-      priceWithEFRIS: "350,000",
-      priceWithoutEFRIS: "300,000",
-      featureList: [
-        "All Classic features",
-        "Corporate Module",
-        "Up to 8 users",
-        "3 Tills/Registers",
-        "Requisition & Purchase Orders",
-        "Budgeting & Payroll"
-      ]
-    },
-    {
-      name: "Investor",
-      features: "CRM + Invoicing + Inventory + Accounting + Production",
-      users: "10 Users",
-      tills: "4 Tills",
-      currency: "Multi Currency",
-      priceWithEFRIS: "450,000",
-      priceWithoutEFRIS: "400,000",
-      featureList: [
-        "All Classic features",
-        "Production Module",
-        "Up to 10 users",
-        "4 Tills/Registers",
-        "Farming & Production Management"
-      ]
-    },
-    {
-      name: "Hospitality",
-      features: "CRM + Invoicing + Inventory + Accounting + Hospitality",
-      users: "10 Users",
-      tills: "4 Tills",
-      currency: "Multi Currency",
-      priceWithEFRIS: "450,000",
-      priceWithoutEFRIS: "400,000",
-      featureList: [
-        "All Classic features",
-        "Hospitality Module",
-        "Up to 10 users",
-        "4 Tills/Registers",
-        "Event management",
-        "Room sales & housekeeping"
-      ]
-    },
-    {
-      name: "Platinum",
-      features: "CRM + Invoicing + Inventory + Accounting + Corporate + Other",
-      users: "15-25 Users",
-      tills: "6 Tills",
-      currency: "Multi Currency",
-      priceWithEFRIS: "750,000",
-      priceWithoutEFRIS: "700,000",
-      featureList: [
-        "All modules included",
-        "15-25 users",
-        "6 Tills/Registers",
-        "Priority support",
-        "Custom integrations",
-        "Dedicated account manager"
-      ]
+      name: "Hybrid Solution",
+      tagline: "Enterprise Integration",
+      description: "Best of both worlds with offline + cloud capabilities",
+      icon: Zap,
+      pricing: {
+        monthly: 500000, // UGX 500K/month
+        annual: 5000000, // UGX 5M/year
+        setup: 1000000, // UGX 1M one-time setup
+        currency: "UGX"
+      },
+      features: [
+        "Offline + Cloud synchronization",
+        "Unified command dashboard",
+        "Automated nightly backups",
+        "Advanced reporting suite",
+        "Multi-device access",
+        "Scalable architecture",
+        "Enterprise SSO",
+        "Dedicated SLA support"
+      ],
+      limitations: [],
+      popular: false
     }
   ];
 
-  const allFeatures = [
-    { category: "Core Features", features: ["POS System", "Inventory Management", "CRM", "Invoicing"] },
-    { category: "Accounting", features: ["Journals", "AP/AR", "Financial Statements", "Multi-currency"] },
-    { category: "Corporate", features: ["Requisition", "Purchase Orders", "Budgeting", "Payroll", "HR Management"] },
-    { category: "Production", features: ["Farming Management", "Production Tracking"] },
-    { category: "Hospitality", features: ["Event Management", "Room Sales", "Housekeeping", "Night Audit"] },
-    { category: "Security", features: ["Role-based Access", "Audit Trails", "2FA", "SSL Encryption"] }
-  ];
+  const formatCurrency = (amount: number, currency: string) => {
+    return new Intl.NumberFormat('en-UG', {
+      style: 'currency',
+      currency: currency === 'UGX' ? 'UGX' : 'USD',
+      minimumFractionDigits: 0,
+    }).format(amount);
+  };
 
   return (
     <div className="min-h-screen pt-20">
       {/* Hero */}
-      <section className="relative py-32 overflow-hidden bg-linear-to-b from-gray-50 to-white">
+      <section className="relative py-20 bg-linear-to-br from-blue-50 via-white to-cyan-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Simple, Transparent Pricing
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Choose Your Solution
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Choose the perfect package for your business needs
+            <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+              Transparent pricing designed for African businesses. No hidden fees, flexible payment options, and dedicated support included.
             </p>
 
-            {/* EFRIS Toggle */}
-            <div className="inline-flex items-center gap-4 p-2 bg-gray-100 rounded-xl">
-              <button
-                onClick={() => setWithEFRIS(false)}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all ${!withEFRIS ? 'bg-white text-[#05ADEE] shadow-md' : 'text-gray-600 hover:text-gray-900'
-                  }`}
-              >
-                Without EFRIS
+            {/* Currency Toggle */}
+            <div className="inline-flex items-center bg-white rounded-xl border border-gray-200 p-1 mb-8">
+              <button className="px-6 py-2 bg-[#05ADEE] text-white rounded-lg font-semibold">
+                UGX (Uganda Shillings)
               </button>
-              <button
-                onClick={() => setWithEFRIS(true)}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all ${withEFRIS ? 'bg-white text-[#05ADEE] shadow-md' : 'text-gray-600 hover:text-gray-900'
-                  }`}
-              >
-                With EFRIS
+              <button className="px-6 py-2 text-gray-600 hover:text-gray-900 transition-colors">
+                USD (US Dollars)
               </button>
             </div>
           </div>
@@ -173,68 +114,93 @@ export function Pricing() {
       {/* Pricing Cards */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {packages.map((pkg, index) => (
+          <div className="grid lg:grid-cols-3 gap-8">
+            {products.map((product, index) => (
               <div
                 key={index}
-                className={`relative bg-white rounded-3xl border-2 p-8 transition-all duration-300 ${pkg.recommended
-                    ? 'border-[#05ADEE] shadow-2xl scale-105'
-                    : 'border-gray-200 hover:border-[#05ADEE] hover:shadow-xl'
-                  }`}
+                className={`relative bg-white rounded-3xl border-2 transition-all duration-300 hover:shadow-2xl ${
+                  product.popular ? 'border-[#05ADEE] shadow-xl' : 'border-gray-200'
+                }`}
               >
-                {pkg.recommended && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-[#05ADEE] text-white text-sm font-semibold rounded-full flex items-center gap-1">
-                    <Star className="w-4 h-4 fill-current" />
-                    Recommended
+                {product.popular && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                    <div className="bg-[#05ADEE] text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-1">
+                      <Star className="w-4 h-4" />
+                      Most Popular
+                    </div>
                   </div>
                 )}
 
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
-                <p className="text-sm text-gray-600 mb-6">{pkg.features}</p>
-
-                <div className="mb-6">
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-sm text-gray-600">UGX</span>
-                    <span className="text-4xl font-bold text-gray-900">
-                      {withEFRIS ? pkg.priceWithEFRIS : pkg.priceWithoutEFRIS}
-                    </span>
-                    <span className="text-sm text-gray-600">/month</span>
-                  </div>
-                </div>
-
-                <div className="space-y-2 mb-6 text-sm">
-                  <div className="flex items-center gap-2 text-gray-700">
-                    <div className="w-1.5 h-1.5 bg-[#05ADEE] rounded-full"></div>
-                    {pkg.users}
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-700">
-                    <div className="w-1.5 h-1.5 bg-[#05ADEE] rounded-full"></div>
-                    {pkg.tills}
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-700">
-                    <div className="w-1.5 h-1.5 bg-[#05ADEE] rounded-full"></div>
-                    {pkg.currency}
-                  </div>
-                </div>
-
-                <div className="space-y-3 mb-8">
-                  {pkg.featureList.map((feature, fIndex) => (
-                    <div key={fIndex} className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-[#05ADEE] shrink-0 mt-0.5" />
-                      <span className="text-sm text-gray-700">{feature}</span>
+                <div className="p-8">
+                  {/* Header */}
+                  <div className="text-center mb-8">
+                    <div className="w-16 h-16 bg-[#05ADEE]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      <product.icon className="w-8 h-8 text-[#05ADEE]" />
                     </div>
-                  ))}
-                </div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{product.name}</h3>
+                    <p className="text-[#05ADEE] font-semibold mb-2">{product.tagline}</p>
+                    <p className="text-gray-600 text-sm">{product.description}</p>
+                  </div>
 
-                <Link
-                  href="/contact"
-                  className={`block w-full px-6 py-3 rounded-xl text-center font-semibold transition-all ${pkg.recommended
-                      ? 'bg-[#05ADEE] text-white hover:bg-[#0496d5] hover:shadow-lg'
-                      : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+                  {/* Pricing */}
+                  <div className="text-center mb-8">
+                    {product.pricing.oneTime && (
+                      <div className="mb-4">
+                        <div className="text-3xl font-bold text-gray-900">
+                          {formatCurrency(product.pricing.oneTime, product.pricing.currency)}
+                        </div>
+                        <div className="text-gray-600">One-time license</div>
+                      </div>
+                    )}
+
+                    {product.pricing.monthly && (
+                      <div className="mb-4">
+                        <div className="text-3xl font-bold text-gray-900">
+                          {formatCurrency(product.pricing.monthly, product.pricing.currency)}
+                        </div>
+                        <div className="text-gray-600">per month</div>
+                      </div>
+                    )}
+
+                    {product.pricing.annual && (
+                      <div className="text-sm text-gray-600">
+                        {product.pricing.monthly
+                          ? `${formatCurrency(product.pricing.annual, product.pricing.currency)} annually (${formatCurrency(product.pricing.monthly * 10, product.pricing.currency)} savings)`
+                          : `${formatCurrency(product.pricing.annual, product.pricing.currency)} per year`
+                        }
+                      </div>
+                    )}
+
+                    {product.pricing.setup && (
+                      <div className="mt-4 text-sm text-gray-600">
+                        + {formatCurrency(product.pricing.setup, product.pricing.currency)} setup fee
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Features */}
+                  <div className="space-y-3 mb-8">
+                    {product.features.map((feature, fIndex) => (
+                      <div key={fIndex} className="flex items-start gap-3">
+                        <Check className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
+                        <span className="text-gray-700 text-sm">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* CTA */}
+                  <Link
+                    href="/contact"
+                    className={`w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold transition-all ${
+                      product.popular
+                        ? 'bg-[#05ADEE] text-white hover:bg-[#0496d5] hover:shadow-xl'
+                        : 'bg-white border-2 border-gray-200 text-gray-900 hover:border-[#05ADEE] hover:shadow-lg'
                     }`}
-                >
-                  Get Started
-                </Link>
+                  >
+                    Get Started
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -245,55 +211,138 @@ export function Pricing() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Feature Comparison
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Compare All Features
             </h2>
             <p className="text-xl text-gray-600">
-              See what&apos;s included in each package
+              Detailed comparison to help you choose the right solution
             </p>
           </div>
 
-          <div className="space-y-8">
-            {allFeatures.map((section, index) => (
-              <div key={index} className="bg-white rounded-3xl border border-gray-200 p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">{section.category}</h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {section.features.map((feature, fIndex) => (
-                    <div key={fIndex} className="flex items-center gap-2">
-                      <Check className="w-5 h-5 text-[#05ADEE]" />
-                      <span className="text-gray-700">{feature}</span>
-                    </div>
+          <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-gray-200">
+                    <th className="text-left p-6 font-bold text-gray-900">Features</th>
+                    <th className="text-center p-6 font-bold text-gray-900">Business Manager</th>
+                    <th className="text-center p-6 font-bold text-gray-900">Business Assistant</th>
+                    <th className="text-center p-6 font-bold text-gray-900">Hybrid Solution</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    "Offline POS capabilities",
+                    "Cloud-based operations",
+                    "Real-time inventory tracking",
+                    "LAN synchronization",
+                    "Advanced analytics & reporting",
+                    "Team collaboration tools",
+                    "API integrations",
+                    "EFRIS compliance",
+                    "Role-based access control",
+                    "Automated workflows",
+                    "Multi-location support",
+                    "Enterprise SSO",
+                    "Dedicated SLA support",
+                    "Mobile responsive design"
+                  ].map((feature, index) => (
+                    <tr key={index} className="border-b border-gray-100">
+                      <td className="p-6 font-medium text-gray-900">{feature}</td>
+                      <td className="p-6 text-center">
+                        {["Offline POS capabilities", "Real-time inventory tracking", "LAN synchronization", "EFRIS compliance", "Role-based access control", "Multi-location support"].includes(feature) ? (
+                          <Check className="w-5 h-5 text-green-500 mx-auto" />
+                        ) : (
+                          <X className="w-5 h-5 text-gray-300 mx-auto" />
+                        )}
+                      </td>
+                      <td className="p-6 text-center">
+                        {["Cloud-based operations", "Advanced analytics & reporting", "Team collaboration tools", "API integrations", "Automated workflows", "Mobile responsive design"].includes(feature) ? (
+                          <Check className="w-5 h-5 text-green-500 mx-auto" />
+                        ) : (
+                          <X className="w-5 h-5 text-gray-300 mx-auto" />
+                        )}
+                      </td>
+                      <td className="p-6 text-center">
+                        <Check className="w-5 h-5 text-green-500 mx-auto" />
+                      </td>
+                    </tr>
                   ))}
-                </div>
-              </div>
-            ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-white">
+      {/* Enterprise CTA */}
+      <section className="py-20 bg-[#0A0947]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-[#0A0947] p-12 md:p-16">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#05ADEE] to-blue-600 p-12 md:p-16">
             <div className="absolute inset-0 opacity-20">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-[#05ADEE] rounded-full blur-3xl"></div>
+              <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
             </div>
 
             <div className="relative z-10 max-w-3xl mx-auto text-center">
+              <Shield className="w-16 h-16 text-white mx-auto mb-6" />
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Need a Custom Package?
+                Enterprise Solutions Available
               </h2>
-              <p className="text-xl text-gray-300 mb-8">
-                Contact our sales team for enterprise pricing and custom configurations
+              <p className="text-xl text-blue-100 mb-8">
+                Custom deployments, white-label solutions, and dedicated enterprise support for large organizations
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#05ADEE] text-white rounded-xl hover:bg-[#0496d5] hover:shadow-2xl hover:shadow-[#05ADEE]/50 transition-all"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#0A0947] rounded-xl hover:bg-blue-50 hover:shadow-2xl font-semibold transition-all"
               >
-                Contact Sales
+                Contact Enterprise Sales
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-gray-600">
+              Everything you need to know about our pricing and products
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            {[
+              {
+                q: "Can I switch between plans?",
+                a: "Yes, you can upgrade or downgrade your plan at any time. Changes take effect at the next billing cycle."
+              },
+              {
+                q: "Do you offer discounts for annual payments?",
+                a: "Yes, annual subscriptions receive a 17% discount compared to monthly billing."
+              },
+              {
+                q: "Is there a free trial available?",
+                a: "We offer 14-day free trials for Business Assistant and Hybrid Solution. Business Manager requires a demo setup."
+              },
+              {
+                q: "What payment methods do you accept?",
+                a: "We accept bank transfers, mobile money (MTN/Airtel Money), card payments, and PayPal for international clients."
+              },
+              {
+                q: "Do you provide training and support?",
+                a: "Yes, all plans include comprehensive documentation, video tutorials, and email support. Premium support is available for enterprise clients."
+              }
+            ].map((faq, index) => (
+              <div key={index} className="bg-gray-50 rounded-2xl border border-gray-200 p-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-3">{faq.q}</h3>
+                <p className="text-gray-600">{faq.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

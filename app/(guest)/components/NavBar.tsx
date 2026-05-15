@@ -70,6 +70,9 @@ export function Navbar() {
                         <Link href="/services" className={`transition-colors ${isActive('/services') ? 'text-[#05ADEE] font-semibold' : 'text-gray-700 hover:text-[#05ADEE]'}`}>
                             Services
                         </Link>
+                        <Link href="/products/pricing" className={`transition-colors ${isActive('/products/pricing') ? 'text-[#05ADEE] font-semibold' : 'text-gray-700 hover:text-[#05ADEE]'}`}>
+                            Pricing
+                        </Link>
 
                         {/* === IMPROVED PRODUCTS DROPDOWN === */}
                         <div
@@ -148,7 +151,7 @@ export function Navbar() {
                 {/* Mobile Menu */}
                 {isOpen && (
                     <div className="md:hidden pb-6 space-y-3">
-                        {['/', '/about', '/services', '/products', '/portfolio', '/contact'].map((href) => {
+                        {['/', '/about', '/services', '/products', '/products/pricing', '/portfolio', '/contact'].map((href) => {
                             const label = href === '/' ? 'Home' : href.replace('/', '').charAt(0).toUpperCase() + href.slice(1);
                             return (
                                 <Link
