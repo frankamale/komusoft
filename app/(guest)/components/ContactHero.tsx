@@ -52,8 +52,9 @@ const ContactHero = () => {
       <div className="flex-1 flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex gap-16 justify-center">
 
-          {/* Left: copy */}
+          {/* Centered copy */}
           <motion.div
+            className="text-center"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
@@ -101,7 +102,7 @@ const ContactHero = () => {
 
             {/* Quick contact chips */}
             <motion.div
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-4 justify-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55, duration: 0.7 }}
@@ -122,7 +123,7 @@ const ContactHero = () => {
 
             {/* Promises row */}
             <motion.div
-              className="mt-10 flex flex-wrap gap-5"
+              className="mt-10 flex flex-wrap gap-5 justify-center"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.8 }}
