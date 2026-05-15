@@ -37,7 +37,7 @@ const HybridManager = () => {
       annual: "UGX 3,500,000 / year",
       setup: "+ UGX 1,000,000 setup",
       highlight: false,
-      cta: "Start Free Trial",
+      cta: "Book Demo",
       features: [
         { label: "POS Terminals", value: "Up to 10" },
         { label: "Locations", value: "Up to 3" },
@@ -57,7 +57,7 @@ const HybridManager = () => {
       annual: "UGX 5,000,000 / year",
       setup: "+ UGX 1,000,000 setup",
       highlight: true,
-      cta: "Start Free Trial",
+      cta: "Book Demo",
       features: [
         { label: "POS Terminals", value: "Up to 50" },
         { label: "Locations", value: "Up to 10" },

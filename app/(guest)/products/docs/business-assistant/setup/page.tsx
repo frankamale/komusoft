@@ -10,7 +10,7 @@ export function BusinessAssistantSetup() {
       title: "Create Account",
       icon: Mail,
       content: [
-        "Visit komusoft.com and click 'Start Free Trial'",
+        "Visit komusoft.com and click 'Book Demo'",
         "Enter your business email and create a password",
         "Verify your email address with the confirmation link",
         "Complete your business profile information"

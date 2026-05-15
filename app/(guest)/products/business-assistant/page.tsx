@@ -37,7 +37,7 @@ const BusinessAssistant = () => {
       billing: "per month",
       annual: "UGX 750,000 / year",
       highlight: false,
-      cta: "Start Free Trial",
+      cta: "Book Demo",
       features: [
         { label: "Users", value: "Up to 5" },
         { label: "Storage", value: "5 GB" },
@@ -56,7 +56,7 @@ const BusinessAssistant = () => {
       billing: "per month",
       annual: "UGX 1,500,000 / year",
       highlight: true,
-      cta: "Start Free Trial",
+      cta: "Book Demo",
       features: [
         { label: "Users", value: "Up to 25" },
         { label: "Storage", value: "50 GB" },

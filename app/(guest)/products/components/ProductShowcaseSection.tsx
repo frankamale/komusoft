@@ -1,6 +1,7 @@
 "use client";
 
-import { ShoppingCart, Cloud, Layers, Check, ArrowRight } from "lucide-react";
+import {  Check, ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -14,7 +15,7 @@ const fadeUp = (delay = 0) => ({
 const ProductShowcaseSection = () => {
   const products = [
     {
-      icon: ShoppingCart,
+      image: "/business_manager.png",
       name: "Business Manager",
       tagline: "Offline-Ready POS & Inventory System",
       badge: "On-Premise",
@@ -34,7 +35,7 @@ const ProductShowcaseSection = () => {
       accent: "#05ADEE",
     },
     {
-      icon: Cloud,
+      image: "/business_assistant.png",
       name: "Business Assistant",
       tagline: "Cloud Business Operations Platform",
       badge: "SaaS",
@@ -54,7 +55,7 @@ const ProductShowcaseSection = () => {
       accent: "#38d2f5",
     },
     {
-      icon: Layers,
+      image: "/hybridSolution.png",
       name: "Hybrid Solution",
       tagline: "Integrated Business Ecosystem",
       badge: "Enterprise",
@@ -91,7 +92,6 @@ const ProductShowcaseSection = () => {
               <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
                   style={{ background: "rgba(5,173,238,0.1)" }}>
-                  <product.icon className="w-4 h-4" style={{ color: "#05ADEE" }} />
                   <span className="text-sm font-bold" style={{ color: "#05ADEE" }}>{product.name}</span>
                   <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full ml-1"
                     style={{ background: "rgba(10,9,71,0.08)", color: "#0A0947" }}>{product.badge}</span>
@@ -129,25 +129,13 @@ const ProductShowcaseSection = () => {
                 <div className="absolute -inset-4 rounded-[2.5rem] pointer-events-none"
                   style={{ background: "linear-gradient(135deg, rgba(5,173,238,0.08), rgba(10,9,71,0.05))" }} />
                 <div className="relative rounded-[2rem] overflow-hidden shadow-2xl"
-                  style={{ border: "1px solid rgba(5,173,238,0.15)" }}>
+                 >
                   <div className="w-full h-80 flex items-center justify-center"
                     style={{ background: `linear-gradient(135deg, #0A0947, #0d1575)` }}>
-                    <div className="text-center">
-                      <div className="w-24 h-24 rounded-3xl flex items-center justify-center mx-auto mb-4"
-                        style={{ background: "rgba(5,173,238,0.2)" }}>
-                        <product.icon className="w-12 h-12" style={{ color: "#05ADEE" }} />
-                      </div>
-                      <p className="text-white font-bold text-xl">{product.name}</p>
-                      <p className="text-sm mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>{product.badge}</p>
-                    </div>
+                    <Image src={product.image} alt={product.name} className="object-contain" height={400} width={480} />
                   </div>
                 </div>
-                {/* Floating tag */}
-                <div className="absolute -bottom-5 -right-5 rounded-2xl px-5 py-4 shadow-xl"
-                  style={{ background: "white", border: "1px solid rgba(5,173,238,0.15)" }}>
-                  <p className="text-xs text-gray-400 mb-0.5">Includes</p>
-                  <p className="text-sm font-bold" style={{ color: "#0A0947" }}>{product.features.length} features</p>
-                </div>
+              
               </div>
             </motion.div>
           ))}

@@ -30,7 +30,7 @@ export function CTA() {
             </p>
             <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-semibold text-white transition-all hover:-translate-y-1 hover:shadow-2xl"
               style={{ background: "linear-gradient(135deg,#05ADEE,#0496d5)", boxShadow: "0 8px 28px rgba(5,173,238,0.3)" }}>
-              Start Free Trial <ArrowRight className="w-5 h-5" />
+              Book Demo <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
         </motion.div>

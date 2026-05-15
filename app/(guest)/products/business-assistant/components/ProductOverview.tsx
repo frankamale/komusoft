@@ -86,7 +86,7 @@ export function ProductOverview() {
               boxShadow: "0 6px 24px rgba(5,173,238,0.2)",
             }}
           >
-            Start Free Trial <ArrowRight className="w-4 h-4" />
+            Book Demo <ArrowRight className="w-4 h-4" />
           </Link>
 
           <button
