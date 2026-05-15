@@ -17,7 +17,7 @@ const Contact = () => {
 
       <ContactHero />
 
-      <section className="py-24 bg-white">
+      <section className="md:py-24 py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
 
@@ -142,7 +142,7 @@ const Contact = () => {
       </section>
 
       {/* ─── WHAT HAPPENS NEXT ─────────────────────────────────────── */}
-      <section className="py-24 relative overflow-hidden"
+      <section className="md:py-24 py-12 relative overflow-hidden"
         style={{ background: "linear-gradient(135deg, #0A0947 0%, #0d1168 60%, #0a3070 100%)" }}>
         <div className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(5,173,238,0.07) 0%, transparent 70%)" }} />
@@ -176,7 +176,7 @@ const Contact = () => {
       </section>
 
       {/* ─── FAQ ────────────────────────────────────────────────────── */}
-      <section className="py-24 bg-white">
+      <section className="md:py-24 py-12 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-14" {...fadeUp()}>
             <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "#05ADEE" }}>FAQ</p>

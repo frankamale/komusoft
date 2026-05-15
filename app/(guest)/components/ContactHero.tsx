@@ -49,7 +49,7 @@ const ContactHero = () => {
       <div className="pt-20" />
 
       {/* Hero content */}
-      <div className="flex-1 flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="flex-1 flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:py-16 py-12">
         <div className="flex gap-16 justify-center">
 
           {/* Centered copy */}
