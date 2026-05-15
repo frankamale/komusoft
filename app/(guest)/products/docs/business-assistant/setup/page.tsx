@@ -1,85 +1,85 @@
 "use client";
 
-import { ArrowLeft, Check, Download, Settings, Database, Users, Wifi, Shield, AlertTriangle, Book, Code, HelpCircle, FileText } from 'lucide-react';
+import { ArrowLeft, Check, AlertTriangle, Cloud, Mail, Lock, CreditCard, Users, Settings, Shield, Zap } from 'lucide-react';
 import Link from 'next/link';
 
-export function BusinessManagerInstallation() {
-  const steps = [
+export function BusinessAssistantSetup() {
+  const setupSteps = [
     {
       step: 1,
-      title: "System Requirements Check",
-      icon: Settings,
+      title: "Create Account",
+      icon: Mail,
       content: [
-        "Windows 10/11 or Windows Server 2016+",
-        "Intel Core i3 processor or equivalent (i5 recommended)",
-        "8GB RAM minimum (16GB recommended)",
-        "100GB available disk space",
-        "Stable LAN network for multi-terminal setups"
+        "Visit komusoft.com and click 'Start Free Trial'",
+        "Enter your business email and create a password",
+        "Verify your email address with the confirmation link",
+        "Complete your business profile information"
       ]
     },
     {
       step: 2,
-      title: "Download Installation Package",
-      icon: Download,
+      title: "Choose Plan",
+      icon: CreditCard,
       content: [
-        "Contact Komusoft support for installation package",
-        "Verify download integrity using provided checksums",
-        "Extract installation files to a temporary directory"
+        "Select from Starter, Professional, or Enterprise plans",
+        "Enter billing information and payment method",
+        "Review subscription terms and pricing",
+        "Complete payment to activate your account"
       ]
     },
     {
       step: 3,
-      title: "Database Setup",
-      icon: Database,
+      title: "Initial Configuration",
+      icon: Settings,
       content: [
-        "Choose between SQL Server Express (free) or full SQL Server",
-        "Run database setup script as administrator",
-        "Configure database connection settings",
-        "Test database connectivity"
+        "Set up your company information and branding",
+        "Configure business hours and time zones",
+        "Add team members and assign roles",
+        "Customize dashboard widgets and layout"
       ]
     },
     {
       step: 4,
-      title: "Application Installation",
-      icon: Settings,
+      title: "Security Setup",
+      icon: Shield,
       content: [
-        "Right-click installer and select 'Run as Administrator'",
-        "Follow installation wizard prompts",
-        "Choose installation directory (default recommended)",
-        "Select components to install based on your needs"
+        "Enable two-factor authentication (recommended)",
+        "Set password policies for team members",
+        "Configure data encryption settings",
+        "Review and accept terms of service"
       ]
     }
   ];
 
-  const postInstallSteps = [
+  const postSetupTasks = [
     {
-      title: "Initial Configuration",
-      icon: Settings,
+      title: "Team Onboarding",
+      icon: Users,
       items: [
-        "Launch Business Manager for first time",
-        "Configure company information and settings",
-        "Set up user accounts and permissions",
-        "Configure receipt templates and EFRIS settings"
+        "Invite team members via email",
+        "Assign appropriate roles and permissions",
+        "Set up individual user profiles",
+        "Configure notification preferences"
       ]
     },
     {
-      title: "Network Setup (Multi-terminal)",
-      icon: Wifi,
+      title: "System Integration",
+      icon: Zap,
       items: [
-        "Configure server IP address and port settings",
-        "Set up client terminals to connect to server",
-        "Test network connectivity between terminals",
-        "Configure firewall settings for LAN communication"
+        "Connect payment gateways if needed",
+        "Set up API access for integrations",
+        "Import existing customer data",
+        "Configure automated workflows"
       ]
     },
     {
-      title: "Security Configuration",
-      icon: Shield,
+      title: "Data Migration",
+      icon: Cloud,
       items: [
-        "Set up administrator password",
-        "Configure user roles and access permissions",
-        "Enable data encryption options",
-        "Set up automatic backup schedules"
+        "Export data from existing systems",
+        "Use import tools for bulk data upload",
+        "Verify data integrity after migration",
+        "Set up automated data backups"
       ]
     }
   ];
@@ -90,11 +90,11 @@ export function BusinessManagerInstallation() {
       <div className="bg-gray-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center gap-2 text-sm text-gray-500">
-            <Link href="/products/docs/business-manager" className="hover:text-[#05ADEE]">Documentation</Link>
+            <Link href="/products/docs/business-assistant" className="hover:text-[#05ADEE]">Documentation</Link>
             <span>/</span>
-            <Link href="/products/docs/business-manager" className="hover:text-[#05ADEE]">Business Manager</Link>
+            <Link href="/products/docs/business-assistant" className="hover:text-[#05ADEE]">Business Assistant</Link>
             <span>/</span>
-            <span className="text-[#05ADEE]">Installation Guide</span>
+            <span className="text-[#05ADEE]">Setup Guide</span>
           </div>
         </div>
       </div>
@@ -104,42 +104,42 @@ export function BusinessManagerInstallation() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center gap-4 mb-4">
             <Link
-              href="/products/docs/business-manager"
+              href="/products/docs/business-assistant"
               className="p-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
             </Link>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Installation Guide</h1>
-              <p className="text-gray-600">Step-by-step installation for Business Manager</p>
+              <h1 className="text-3xl font-bold text-gray-900">Setup Guide</h1>
+              <p className="text-gray-600">Get started with Business Assistant in minutes</p>
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="flex flex-wrap gap-4">
             <Link
-              href="#prerequisites"
+              href="#account-setup"
               className="px-4 py-2 bg-[#05ADEE]/10 text-[#05ADEE] rounded-lg hover:bg-[#05ADEE]/20 transition-colors"
             >
-              Prerequisites
+              Account Setup
             </Link>
             <Link
-              href="#installation"
+              href="#pricing"
               className="px-4 py-2 bg-[#05ADEE]/10 text-[#05ADEE] rounded-lg hover:bg-[#05ADEE]/20 transition-colors"
             >
-              Installation Steps
+              Choose Plan
             </Link>
             <Link
-              href="#post-install"
+              href="#configuration"
               className="px-4 py-2 bg-[#05ADEE]/10 text-[#05ADEE] rounded-lg hover:bg-[#05ADEE]/20 transition-colors"
             >
-              Post-Installation
+              Configuration
             </Link>
             <Link
-              href="#troubleshooting"
+              href="#next-steps"
               className="px-4 py-2 bg-[#05ADEE]/10 text-[#05ADEE] rounded-lg hover:bg-[#05ADEE]/20 transition-colors"
             >
-              Troubleshooting
+              Next Steps
             </Link>
           </div>
         </div>
@@ -148,19 +148,19 @@ export function BusinessManagerInstallation() {
       {/* Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Prerequisites */}
-        <section id="prerequisites" className="mb-12">
+        <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Prerequisites</h2>
 
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
             <div className="flex items-start gap-3">
               <AlertTriangle className="w-5 h-5 text-blue-600 mt-0.5" />
               <div>
-                <h3 className="font-semibold text-blue-900 mb-2">Important Notes</h3>
+                <h3 className="font-semibold text-blue-900 mb-2">Before You Begin</h3>
                 <ul className="text-blue-800 text-sm space-y-1">
-                  <li>• Administrator privileges required for installation</li>
-                  <li>• Ensure all antivirus software is temporarily disabled during installation</li>
-                  <li>• Close all other applications before starting installation</li>
-                  <li>• Have your license key ready (provided by Komusoft support)</li>
+                  <li>• Valid business email address for account creation</li>
+                  <li>• Payment method ready for subscription activation</li>
+                  <li>• Modern web browser (Chrome, Firefox, Safari, Edge)</li>
+                  <li>• Stable internet connection for setup and usage</li>
                 </ul>
               </div>
             </div>
@@ -168,57 +168,57 @@ export function BusinessManagerInstallation() {
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-white border border-gray-200 rounded-xl p-6">
-              <h3 className="font-bold text-gray-900 mb-4">Hardware Requirements</h3>
+              <h3 className="font-bold text-gray-900 mb-4">System Requirements</h3>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-green-500" />
-                  <span>Intel Core i3 or equivalent (i5 recommended)</span>
+                  <span>Modern web browser with JavaScript enabled</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-green-500" />
-                  <span>8GB RAM minimum (16GB recommended)</span>
+                  <span>Minimum 5 Mbps internet connection</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-green-500" />
-                  <span>100GB available storage</span>
+                  <span>Any device: desktop, tablet, or mobile</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-green-500" />
-                  <span>Stable power supply</span>
+                  <span>No software installation required</span>
                 </li>
               </ul>
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6">
-              <h3 className="font-bold text-gray-900 mb-4">Software Requirements</h3>
+              <h3 className="font-bold text-gray-900 mb-4">What You'll Need</h3>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-green-500" />
-                  <span>Windows 10/11 or Windows Server 2016+</span>
+                  <span>Business name and registration details</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-green-500" />
-                  <span>Microsoft .NET Framework 4.8+</span>
+                  <span>Team member email addresses</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-green-500" />
-                  <span>SQL Server Express 2019+ or SQL Server</span>
+                  <span>Payment information for billing</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-green-500" />
-                  <span>Administrator privileges</span>
+                  <span>Company logo (optional)</span>
                 </li>
               </ul>
             </div>
           </div>
         </section>
 
-        {/* Installation Steps */}
-        <section id="installation" className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Installation Steps</h2>
+        {/* Setup Steps */}
+        <section id="account-setup" className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Account Setup Steps</h2>
 
           <div className="space-y-8">
-            {steps.map((step, index) => (
+            {setupSteps.map((step, index) => (
               <div key={index} className="bg-white border border-gray-200 rounded-xl p-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-[#05ADEE]/10 rounded-xl flex items-center justify-center">
@@ -246,12 +246,12 @@ export function BusinessManagerInstallation() {
           </div>
         </section>
 
-        {/* Post-Installation */}
-        <section id="post-install" className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Post-Installation Setup</h2>
+        {/* Post-Setup Configuration */}
+        <section id="configuration" className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Post-Setup Configuration</h2>
 
           <div className="grid md:grid-cols-1 gap-6">
-            {postInstallSteps.map((section, index) => (
+            {postSetupTasks.map((section, index) => (
               <div key={index} className="bg-white border border-gray-200 rounded-xl p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <section.icon className="w-6 h-6 text-[#05ADEE]" />
@@ -271,62 +271,62 @@ export function BusinessManagerInstallation() {
         </section>
 
         {/* Troubleshooting */}
-        <section id="troubleshooting" className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Common Installation Issues</h2>
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Common Setup Issues</h2>
 
           <div className="space-y-6">
             <div className="bg-red-50 border border-red-200 rounded-xl p-6">
-              <h3 className="font-bold text-red-900 mb-2">Installation Fails with Error Code</h3>
+              <h3 className="font-bold text-red-900 mb-2">Email Verification Not Received</h3>
               <p className="text-red-800 text-sm mb-3">
-                Check that you have administrator privileges and antivirus is disabled.
+                Check your spam folder and ensure the email address is correct.
               </p>
               <div className="bg-red-900 rounded p-3 text-red-100 text-sm font-mono">
-                Solution: Right-click installer → Run as administrator
+                Contact support if you still don't receive the email
               </div>
             </div>
 
             <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6">
-              <h3 className="font-bold text-yellow-900 mb-2">Database Connection Failed</h3>
+              <h3 className="font-bold text-yellow-900 mb-2">Payment Processing Failed</h3>
               <p className="text-yellow-800 text-sm mb-3">
-                Ensure SQL Server is running and firewall allows local connections.
+                Verify your payment information and try a different card or payment method.
               </p>
-              <div className="bg-yellow-900 rounded p-3 text-yellow-100 text-sm font-mono">
-                Check: Services.msc → SQL Server → Start service
+              <div className="bg-yellow-900 rounded p-3 text-yellow-100 text-sm">
+                Supported: Credit cards, Mobile money, Bank transfers
               </div>
             </div>
 
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-              <h3 className="font-bold text-blue-900 mb-2">Application Won't Start</h3>
+              <h3 className="font-bold text-blue-900 mb-2">Browser Compatibility Issues</h3>
               <p className="text-blue-800 text-sm mb-3">
-                Check Windows Event Viewer for detailed error messages.
+                Ensure you're using a modern browser with JavaScript enabled.
               </p>
               <div className="bg-blue-900 rounded p-3 text-blue-100 text-sm">
-                Location: Windows + R → eventvwr → Windows Logs → Application
+                Recommended: Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
               </div>
             </div>
           </div>
         </section>
 
         {/* Next Steps */}
-        <section className="bg-gray-50 rounded-xl p-8">
+        <section id="next-steps" className="bg-gray-50 rounded-xl p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Next Steps</h2>
           <p className="text-gray-700 mb-6">
-            Once installation is complete, proceed with initial configuration and user setup.
+            Your Business Assistant account is now ready! Here's what to do next:
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             <Link
-              href="/products/docs/business-manager/configuration"
+              href="/products/docs/business-assistant/dashboard"
               className="p-4 bg-white border border-gray-200 rounded-xl hover:border-[#05ADEE] hover:shadow-lg transition-all text-left"
             >
-              <h3 className="font-bold text-gray-900 mb-2">→ Configuration Guide</h3>
-              <p className="text-sm text-gray-600">Set up your system settings and preferences</p>
+              <h3 className="font-bold text-gray-900 mb-2">→ Explore Dashboard</h3>
+              <p className="text-sm text-gray-600">Learn to navigate and customize your workspace</p>
             </Link>
             <Link
-              href="/products/docs/business-manager/user-management"
+              href="/products/docs/business-assistant/collaboration"
               className="p-4 bg-white border border-gray-200 rounded-xl hover:border-[#05ADEE] hover:shadow-lg transition-all text-left"
             >
-              <h3 className="font-bold text-gray-900 mb-2">→ User Management</h3>
-              <p className="text-sm text-gray-600">Create user accounts and set permissions</p>
+              <h3 className="font-bold text-gray-900 mb-2">→ Add Team Members</h3>
+              <p className="text-sm text-gray-600">Invite your team and set up collaboration</p>
             </Link>
           </div>
         </section>
@@ -335,6 +335,6 @@ export function BusinessManagerInstallation() {
   );
 }
 
-export default function BusinessManagerInstallationPage() {
-  return <BusinessManagerInstallation />;
+export default function BusinessAssistantSetupPage() {
+  return <BusinessAssistantSetup />;
 }

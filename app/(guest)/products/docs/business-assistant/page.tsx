@@ -1,147 +1,147 @@
 "use client";
 
-import { ArrowLeft, Book, Settings, Users, Database, Printer, FileText, HelpCircle, Download, Code, Shield, Wifi } from 'lucide-react';
+import { ArrowLeft, Book, Settings, Users, Database, Cloud, Shield, HelpCircle, Download, Code, Zap, FileText, CreditCard, BarChart3 } from 'lucide-react';
 import Link from 'next/link';
 
-export function BusinessManagerDocs() {
+export function BusinessAssistantDocs() {
   const docSections = [
     {
       title: "Getting Started",
       icon: Book,
-      description: "Installation and initial setup guides",
+      description: "Cloud setup and account creation",
       docs: [
         {
-          title: "Installation Guide",
-          path: "/products/docs/business-manager/installation",
-          description: "Step-by-step installation for Windows/Linux servers",
-          icon: Download,
-          time: "15 min read"
-        },
-        {
-          title: "System Requirements",
-          path: "/products/docs/business-manager/requirements",
-          description: "Hardware and software prerequisites",
+          title: "Account Setup",
+          path: "/products/docs/business-assistant/setup",
+          description: "Create your account and initial configuration",
           icon: Settings,
-          time: "5 min read"
+          time: "10 min read"
         },
         {
           title: "Quick Start Guide",
-          path: "/products/docs/business-manager/quickstart",
-          description: "Get up and running in 30 minutes",
+          path: "/products/docs/business-assistant/quickstart",
+          description: "Get up and running in 15 minutes",
           icon: Book,
-          time: "10 min read"
+          time: "8 min read"
+        },
+        {
+          title: "System Requirements",
+          path: "/products/docs/business-assistant/requirements",
+          description: "Browser and device compatibility",
+          icon: Settings,
+          time: "5 min read"
         }
       ]
     },
     {
-      title: "Configuration",
-      icon: Settings,
-      description: "System setup and customization",
+      title: "Core Features",
+      icon: Database,
+      description: "Using Business Assistant features",
       docs: [
         {
-          title: "Configuration Guide",
-          path: "/products/docs/business-manager/configuration",
-          description: "Complete system configuration walkthrough",
-          icon: Settings,
-          time: "20 min read"
-        },
-        {
-          title: "User Management",
-          path: "/products/docs/business-manager/user-management",
-          description: "Creating users, roles, and permissions",
-          icon: Users,
+          title: "Dashboard Overview",
+          path: "/products/docs/business-assistant/dashboard",
+          description: "Navigate and customize your dashboard",
+          icon: BarChart3,
           time: "12 min read"
         },
         {
-          title: "Network Setup",
-          path: "/products/docs/business-manager/network",
-          description: "LAN configuration for multi-terminal setup",
-          icon: Wifi,
-          time: "8 min read"
-        }
-      ]
-    },
-    {
-      title: "Operations",
-      icon: Database,
-      description: "Daily operations and workflows",
-      docs: [
-        {
-          title: "POS Operations",
-          path: "/products/docs/business-manager/pos-operation",
-          description: "Point of sale procedures and best practices",
-          icon: Database,
-          time: "18 min read"
-        },
-        {
-          title: "Inventory Management",
-          path: "/products/docs/business-manager/inventory",
-          description: "Stock control and inventory procedures",
-          icon: Database,
+          title: "Team Collaboration",
+          path: "/products/docs/business-assistant/collaboration",
+          description: "Working with team members and permissions",
+          icon: Users,
           time: "15 min read"
         },
         {
-          title: "Reporting & Analytics",
-          path: "/products/docs/business-manager/reporting",
-          description: "Generating reports and business insights",
-          icon: FileText,
-          time: "14 min read"
+          title: "Analytics & Reporting",
+          path: "/products/docs/business-assistant/analytics",
+          description: "Generate reports and business insights",
+          icon: BarChart3,
+          time: "18 min read"
         }
       ]
     },
     {
-      title: "Compliance & Integration",
-      icon: Shield,
-      description: "Regulatory compliance and system integration",
+      title: "Integrations",
+      icon: Code,
+      description: "Connect with external services",
       docs: [
         {
-          title: "EFRIS Integration",
-          path: "/products/docs/business-manager/efris",
-          description: "URA EFRIS compliance setup and configuration",
-          icon: Shield,
+          title: "API Integration",
+          path: "/products/docs/business-assistant/api",
+          description: "REST API documentation and examples",
+          icon: Code,
           time: "25 min read"
         },
         {
-          title: "Payment Integration",
-          path: "/products/docs/business-manager/payments",
-          description: "Mobile money and payment processor setup",
-          icon: Database,
-          time: "16 min read"
+          title: "Payment Gateways",
+          path: "/products/docs/business-assistant/payments",
+          description: "Connect payment processors and mobile money",
+          icon: CreditCard,
+          time: "20 min read"
         },
         {
-          title: "API Documentation",
-          path: "/products/docs/business-manager/api",
-          description: "REST API reference and integration guide",
-          icon: Code,
-          time: "30 min read"
+          title: "Third-party Integrations",
+          path: "/products/docs/business-assistant/integrations",
+          description: "Connect with accounting, CRM, and other tools",
+          icon: Zap,
+          time: "22 min read"
         }
       ]
     },
     {
-      title: "Maintenance & Support",
-      icon: HelpCircle,
-      description: "System maintenance and troubleshooting",
+      title: "Security & Compliance",
+      icon: Shield,
+      description: "Data protection and compliance",
       docs: [
         {
-          title: "Backup & Recovery",
-          path: "/products/docs/business-manager/backup",
-          description: "Data backup procedures and disaster recovery",
-          icon: Database,
-          time: "12 min read"
+          title: "Security Best Practices",
+          path: "/products/docs/business-assistant/security",
+          description: "Keep your data safe and secure",
+          icon: Shield,
+          time: "16 min read"
         },
         {
-          title: "System Maintenance",
-          path: "/products/docs/business-manager/maintenance",
-          description: "Regular maintenance tasks and optimization",
-          icon: Settings,
+          title: "Data Privacy",
+          path: "/products/docs/business-assistant/privacy",
+          description: "GDPR compliance and data handling",
+          icon: FileText,
+          time: "14 min read"
+        },
+        {
+          title: "Audit Trails",
+          path: "/products/docs/business-assistant/audit",
+          description: "Track changes and maintain compliance",
+          icon: FileText,
+          time: "12 min read"
+        }
+      ]
+    },
+    {
+      title: "Troubleshooting",
+      icon: HelpCircle,
+      description: "Common issues and solutions",
+      docs: [
+        {
+          title: "Login Issues",
+          path: "/products/docs/business-assistant/login-troubleshooting",
+          description: "Can't access your account?",
+          icon: HelpCircle,
+          time: "8 min read"
+        },
+        {
+          title: "Performance Problems",
+          path: "/products/docs/business-assistant/performance",
+          description: "Slow loading or response times",
+          icon: HelpCircle,
           time: "10 min read"
         },
         {
-          title: "Troubleshooting Guide",
-          path: "/products/docs/business-manager/troubleshooting",
-          description: "Common issues and their solutions",
+          title: "Data Sync Issues",
+          path: "/products/docs/business-assistant/sync-issues",
+          description: "Problems with data synchronization",
           icon: HelpCircle,
-          time: "20 min read"
+          time: "12 min read"
         }
       ]
     }
@@ -149,22 +149,22 @@ export function BusinessManagerDocs() {
 
   const quickLinks = [
     {
-      title: "Download Center",
-      description: "Latest versions and updates",
-      path: "/products/business-manager#download",
+      title: "Free Trial",
+      description: "Start your 14-day free trial",
+      path: "/products/business-assistant",
       icon: Download
+    },
+    {
+      title: "API Reference",
+      description: "Complete API documentation",
+      path: "/products/docs/business-assistant/api",
+      icon: Code
     },
     {
       title: "Video Tutorials",
       description: "Step-by-step video guides",
       path: "/products/docs/videos",
       icon: Book
-    },
-    {
-      title: "Community Forum",
-      description: "Ask questions and share knowledge",
-      path: "/community",
-      icon: Users
     },
     {
       title: "Contact Support",
@@ -180,9 +180,9 @@ export function BusinessManagerDocs() {
       <div className="bg-gray-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center gap-2 text-sm text-gray-500">
-            <Link href="/products/docs" className="hover:text-[#05ADEE]">Documentation</Link>
+            <Link href="/products/docs/business-assistant" className="hover:text-[#05ADEE]">Documentation</Link>
             <span>/</span>
-            <span className="text-[#05ADEE]">Business Manager</span>
+            <span className="text-[#05ADEE]">Business Assistant</span>
           </div>
         </div>
       </div>
@@ -198,8 +198,8 @@ export function BusinessManagerDocs() {
               <ArrowLeft className="w-5 h-5" />
             </Link>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Business Manager Documentation</h1>
-              <p className="text-gray-600">Complete guide for offline-ready POS and inventory management</p>
+              <h1 className="text-3xl font-bold text-gray-900">Business Assistant Documentation</h1>
+              <p className="text-gray-600">Complete guide for cloud-based business operations platform</p>
             </div>
           </div>
 
@@ -207,20 +207,20 @@ export function BusinessManagerDocs() {
           <div className="bg-[#05ADEE]/5 border border-[#05ADEE]/20 rounded-xl p-6">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 bg-[#05ADEE]/10 rounded-xl flex items-center justify-center">
-                <Database className="w-6 h-6 text-[#05ADEE]" />
+                <Cloud className="w-6 h-6 text-[#05ADEE]" />
               </div>
               <div>
-                <h2 className="text-lg font-bold text-gray-900 mb-2">About Business Manager</h2>
+                <h2 className="text-lg font-bold text-gray-900 mb-2">About Business Assistant</h2>
                 <p className="text-gray-700 mb-3">
-                  Business Manager is a comprehensive on-premise POS and inventory management system designed for retail environments
-                  where internet connectivity cannot be guaranteed. It features offline capabilities, LAN synchronization, and full
-                  EFRIS compliance for Ugandan businesses.
+                  Business Assistant is a comprehensive cloud-based platform for modern business operations management.
+                  Accessible anywhere, anytime, with advanced analytics, team collaboration, and automated workflows
+                  designed for growing teams and enterprises.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="px-2 py-1 bg-[#05ADEE]/10 text-[#05ADEE] text-xs rounded-full">On-Premise</span>
-                  <span className="px-2 py-1 bg-[#05ADEE]/10 text-[#05ADEE] text-xs rounded-full">Offline-First</span>
-                  <span className="px-2 py-1 bg-[#05ADEE]/10 text-[#05ADEE] text-xs rounded-full">EFRIS Compliant</span>
-                  <span className="px-2 py-1 bg-[#05ADEE]/10 text-[#05ADEE] text-xs rounded-full">LAN Support</span>
+                  <span className="px-2 py-1 bg-[#05ADEE]/10 text-[#05ADEE] text-xs rounded-full">Cloud-Based</span>
+                  <span className="px-2 py-1 bg-[#05ADEE]/10 text-[#05ADEE] text-xs rounded-full">SaaS</span>
+                  <span className="px-2 py-1 bg-[#05ADEE]/10 text-[#05ADEE] text-xs rounded-full">Mobile Responsive</span>
+                  <span className="px-2 py-1 bg-[#05ADEE]/10 text-[#05ADEE] text-xs rounded-full">API-First</span>
                 </div>
               </div>
             </div>
@@ -289,7 +289,7 @@ export function BusinessManagerDocs() {
           <HelpCircle className="w-12 h-12 text-white mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-white mb-4">Need Help?</h2>
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            Can't find what you're looking for? Our support team is here to help you get the most out of Business Manager.
+            Can't find what you're looking for? Our support team is here to help you get the most out of Business Assistant.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
@@ -311,6 +311,6 @@ export function BusinessManagerDocs() {
   );
 }
 
-export default function BusinessManagerDocsPage() {
-  return <BusinessManagerDocs />;
+export default function BusinessAssistantDocsPage() {
+  return <BusinessAssistantDocs />;
 }

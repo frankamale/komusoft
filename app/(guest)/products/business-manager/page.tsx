@@ -91,7 +91,7 @@ export function BusinessManager() {
                   Download Brochure
                 </button>
                 <Link
-                  href="/products/docs"
+                  href="/products/docs/business-manager"
                   className="inline-flex items-center gap-2 px-8 py-4 bg-white border-2 border-gray-200 text-gray-900 rounded-xl hover:bg-gray-50 transition-all"
                 >
                   <FileText className="w-5 h-5" />
