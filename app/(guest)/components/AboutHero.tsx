@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const AboutHero = () => {
   return (
     <section
-      className="relative overflow-hidden py-32"
+      className="relative overflow-hidden md:py-32 py-12"
       style={{ background: "linear-gradient(135deg, #0A0947 0%, #0d0f5e 40%, #0a2a6e 70%, #0c4a8a 100%)" }}
     >
       {/* Decorative blobs */}
@@ -55,7 +55,7 @@ const AboutHero = () => {
           </motion.div>
 
           <motion.h1
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] mb-8"
+            className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.05] mb-8"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}

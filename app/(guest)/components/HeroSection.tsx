@@ -25,14 +25,14 @@ export function Hero() {
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:py-20">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div className="space-y-8">
-                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
-                            Transforming Businesses Through{' '}
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight text-center">
+                            Transforming Businesses Through
                             <span className="bg-linear-to-r from-[#05ADEE] to-[#38bdf8] bg-clip-text text-transparent">
                                 Intelligent Software Solutions
                             </span>
                         </h1>
 
-                        <p className="md:text-xl text-gray-300 leading-relaxed">
+                        <p className="md:text-xl text-gray-300 leading-relaxed text-center">
                             Komusoft delivers powerful enterprise software, mobile applications, cloud platforms, and IT solutions
                             that help organizations operate smarter, faster, and more efficiently.
                         </p>
