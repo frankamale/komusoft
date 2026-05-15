@@ -55,9 +55,8 @@ const ContactInfoSection = () => {
           Existing clients can reach our on-call engineers around the clock for critical issues.
         </p>
       </motion.div>
-
       {/* Social / map teaser */}
-      <motion.div {...fadeUp(0.45)}
+      {/* <motion.div {...fadeUp(0.45)}
         className="rounded-2xl overflow-hidden"
         style={{ border: "1px solid rgba(5,173,238,0.15)", height: "180px", background: "linear-gradient(135deg, #e8f4fd, #f0f9ff)" }}>
         <div className="h-full flex flex-col items-center justify-center gap-2">
@@ -65,7 +64,7 @@ const ContactInfoSection = () => {
           <p className="font-semibold" style={{ color: "#0A0947" }}>Kampala, Uganda</p>
           <p className="text-sm text-gray-400">East Africa&apos;s technology hub</p>
         </div>
-      </motion.div>
+      </motion.div> */} 
     </div>
   );
 };

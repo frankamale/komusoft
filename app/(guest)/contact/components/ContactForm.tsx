@@ -49,14 +49,7 @@ const ContactForm = () => {
             {["Mobile Applications", "Web Development", "Bespoke Software", "Cloud Solutions", "ICT Consultancy", "IT Support", "Security Audit", "Efris Integration", "Systems Integration"].map(s => <option key={s}>{s}</option>)}
           </select>
         </div>
-        <div>
-          <label htmlFor="budgetRange" className="block text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Budget Range</label>
 
-          <select id="budgetRange" name="budgetRange" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#05ADEE] focus:border-transparent transition-all text-gray-700">
-            <option>Select a range…</option>
-            {["Under $5,000", "$5,000 – $15,000", "$15,000 – $50,000", "$50,000+", "Not sure yet"].map(r => <option key={r}>{r}</option>)}
-          </select>
-        </div>
         <div>
           <label className="block text-xs font-bold uppercase tracking-wider mb-2 text-gray-500">Message *</label>
           <textarea rows={5} placeholder="Describe your project, goals, and any specific requirements..."

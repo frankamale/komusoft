@@ -1,4 +1,4 @@
-import { Mail, Phone,  X } from 'lucide-react';
+import { Mail, Phone, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
@@ -82,13 +82,12 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="font-bold text-lg mb-4">Our Services</h3>
+            <h3 className="font-bold text-lg mb-4">Our Products</h3>
             <ul className="space-y-3">
-              <li className="text-gray-400">Mobile Applications</li>
-              <li className="text-gray-400">Web Development</li>
-              <li className="text-gray-400">Bespoke Software</li>
-              <li className="text-gray-400">ICT Consultancy</li>
-              <li className="text-gray-400">Cloud Solutions</li>
+              <li className="text-gray-400">Business Manager</li>
+              <li className="text-gray-400">Business Assistant</li>
+              <li className="text-gray-400">Hybrid System</li>
+              <li className="text-gray-400">Bac Monitor</li>
             </ul>
           </div>
 
