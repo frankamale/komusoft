@@ -99,16 +99,14 @@ const Products = () => {
     <div className="min-h-screen bg-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
 
       <ProductsHero />
-
-      {/* ─── PRODUCTS DETAIL ──────────────────────────────────────── */}
-      <section className="py-28 bg-white">
+      <section className="md:py-28 sm:py-20 py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div className="text-center mb-20" {...fadeUp()}>
+          <motion.div className="text-center md:mb-20 mb-8" {...fadeUp()}>
             <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "#05ADEE" }}>Product Suite</p>
-            <h2 className="text-4xl font-bold" style={{ color: "#0A0947" }}>Choose Your Solution</h2>
+            <h2 className="md:text-4xl sm:text-3xl text-2xl font-bold" style={{ color: "#0A0947" }}>Choose Your Solution</h2>
           </motion.div>
 
-          <div className="space-y-32">
+          <div className="flex flex-col gap-20">
             {products.map((product, index) => (
               <motion.div key={index} {...fadeUp(0.1)}
                 className={`grid lg:grid-cols-2 gap-16 items-center`}>
@@ -122,8 +120,8 @@ const Products = () => {
                       style={{ background: "rgba(10,9,71,0.08)", color: "#0A0947" }}>{product.badge}</span>
                   </div>
 
-                  <h2 className="text-4xl font-bold mb-5" style={{ color: "#0A0947" }}>{product.tagline}</h2>
-                  <p className="text-lg text-gray-500 mb-8 leading-relaxed">{product.description}</p>
+                  <h2 className="md:text-4xl sm:text-3xl text-2xl font-bold mb-5" style={{ color: "#0A0947" }}>{product.tagline}</h2>
+                  <p className="md:text-lg text-sm text-gray-500 mb-8 leading-relaxed">{product.description}</p>
 
                   <div className="grid grid-cols-2 gap-3 mb-8">
                     {product.features.map((f, fi) => (
@@ -212,8 +210,7 @@ const Products = () => {
         </div>
       </section>
 
-      {/* ─── TESTIMONIALS ─────────────────────────────────────────── */}
-      <section className="py-24 bg-white">
+      <section className="md:py-24 sm:py-20 py-12 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-14" {...fadeUp()}>
             <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "#05ADEE" }}>Client Voices</p>
@@ -244,13 +241,12 @@ const Products = () => {
         </div>
       </section>
 
-      {/* ─── CTA ──────────────────────────────────────────────────── */}
-      <section className="py-20 bg-white">
+      <section className="md:py-20 py-12  bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp()}
             className="relative overflow-hidden rounded-[2.5rem] p-14 md:p-20"
             style={{ background: "linear-gradient(135deg, #0A0947 0%, #0d1168 55%, #0a3070 100%)" }}>
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none opacity-20"
+            <div className="absolute top-0 right-0 w-125 h-125 rounded-full pointer-events-none opacity-20"
               style={{ background: "radial-gradient(circle, #05ADEE 0%, transparent 65%)", transform: "translate(30%, -40%)" }} />
             <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
               style={{

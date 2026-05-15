@@ -107,8 +107,7 @@ const Portfolio = () => {
 
       <PortfolioHero />
 
-      {/* ─── STATS STRIP ──────────────────────────────────────────── */}
-      <section className="py-14 bg-white" style={{ borderBottom: "1px solid #f0f4f8" }}>
+      <section className="md:py-24 py-12 bg-white" style={{ borderBottom: "1px solid #f0f4f8" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
@@ -127,8 +126,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* ─── PROJECT GRID ─────────────────────────────────────────── */}
-      <section className="py-24 bg-white">
+      <section className=" md:py-24 py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-16" {...fadeUp()}>
             <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "#05ADEE" }}>Case Studies</p>
@@ -195,8 +193,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* ─── INDUSTRIES ───────────────────────────────────────────── */}
-      <section className="py-24 relative overflow-hidden"
+      <section className="md:py-24 py-12 relative overflow-hidden"
         style={{ background: "linear-gradient(135deg, #0A0947 0%, #0d1168 60%, #0a3070 100%)" }}>
         <div className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(5,173,238,0.07) 0%, transparent 70%)" }} />
@@ -225,13 +222,12 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* ─── CTA ──────────────────────────────────────────────────── */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp()}
             className="relative overflow-hidden rounded-[2.5rem] p-14 md:p-20"
             style={{ background: "linear-gradient(135deg, #0A0947 0%, #0d1168 55%, #0a3070 100%)" }}>
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none opacity-20"
+            <div className="absolute top-0 right-0 w-125 h-125 rounded-full pointer-events-none opacity-20"
               style={{ background: "radial-gradient(circle, #05ADEE 0%, transparent 65%)", transform: "translate(30%, -40%)" }} />
             <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
               style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "48px 48px" }} />

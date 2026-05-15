@@ -65,7 +65,7 @@ const ProductsHero = () => {
       <div className="pt-20" />
 
       {/* Content */}
-      <div className="flex-1 flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="flex-1 flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
           {/* Left */}

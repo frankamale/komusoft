@@ -9,9 +9,9 @@ const PortfolioHero = () => {
       style={{ background: "linear-gradient(135deg, #0A0947 0%, #0d0f5e 40%, #0a2a6e 72%, #0c4a8a 100%)" }}
     >
       {/* Blobs */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full pointer-events-none opacity-20"
+      <div className="absolute top-0 right-0 w-200 h-200 rounded-full pointer-events-none opacity-20"
         style={{ background: "radial-gradient(circle, #05ADEE 0%, transparent 65%)", transform: "translate(35%, -35%)" }} />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none opacity-10"
+      <div className="absolute bottom-0 left-0 w-125 h-125 rounded-full pointer-events-none opacity-10"
         style={{ background: "radial-gradient(circle, #05ADEE 0%, transparent 70%)", transform: "translate(-40%, 40%)" }} />
 
       {/* Grid */}
@@ -40,7 +40,7 @@ const PortfolioHero = () => {
       <div className="pt-20" />
 
       {/* Content */}
-      <div className="flex-1 flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="flex-1 flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:py-16 py-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
           {/* Left: copy */}
