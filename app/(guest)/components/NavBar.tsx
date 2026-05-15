@@ -4,6 +4,7 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -11,10 +12,10 @@ export function Navbar() {
     const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
     const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
 
+    const pathname = usePathname();
+
     useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 0);
-        };
+        const handleScroll = () => setIsScrolled(window.scrollY > 0);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
@@ -25,20 +26,23 @@ export function Navbar() {
         { name: "Hybrid Solution", slug: "hybrid-solution" },
     ];
 
-    // Improved hover with delay (makes it easier to move cursor to dropdown)
+    const isProductsActive = pathname === '/products' || pathname?.startsWith('/products/');
+
     const handleMouseEnter = () => {
-        if (hoverTimeout) {
-            clearTimeout(hoverTimeout);
-            setHoverTimeout(null);
-        }
+        if (hoverTimeout) clearTimeout(hoverTimeout);
         setProductsDropdownOpen(true);
     };
 
     const handleMouseLeave = () => {
         const timeout = setTimeout(() => {
             setProductsDropdownOpen(false);
-        }, 250); // 250ms delay gives user time to move cursor
+        }, 250);
         setHoverTimeout(timeout);
+    };
+
+    const isActive = (href: string) => {
+        if (href === '/') return pathname === '/';
+        return pathname?.startsWith(href);
     };
 
     return (
@@ -57,37 +61,54 @@ export function Navbar() {
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center gap-8">
-                        <Link href="/" className="text-gray-700 hover:text-[#05ADEE] transition-colors">Home</Link>
-                        <Link href="/about" className="text-gray-700 hover:text-[#05ADEE] transition-colors">About</Link>
-                        <Link href="/services" className="text-gray-700 hover:text-[#05ADEE] transition-colors">Services</Link>
+                        <Link href="/" className={`transition-colors ${isActive('/') ? 'text-[#05ADEE] font-semibold' : 'text-gray-700 hover:text-[#05ADEE]'}`}>
+                            Home
+                        </Link>
+                        <Link href="/about" className={`transition-colors ${isActive('/about') ? 'text-[#05ADEE] font-semibold' : 'text-gray-700 hover:text-[#05ADEE]'}`}>
+                            About
+                        </Link>
+                        <Link href="/services" className={`transition-colors ${isActive('/services') ? 'text-[#05ADEE] font-semibold' : 'text-gray-700 hover:text-[#05ADEE]'}`}>
+                            Services
+                        </Link>
 
-                        {/* Improved Products Dropdown */}
-                        <div 
-                            className="relative"
+                        {/* === IMPROVED PRODUCTS DROPDOWN === */}
+                        <div
+                            className="relative group"
                             onMouseEnter={handleMouseEnter}
                             onMouseLeave={handleMouseLeave}
                         >
-                            <button
-                                className="flex items-center gap-1 text-gray-700 hover:text-[#05ADEE] transition-colors focus:outline-none"
-                                onClick={() => setProductsDropdownOpen(!productsDropdownOpen)} // Click support as backup
-                            >
-                                Products
-                                <ChevronDown 
-                                    className={`w-4 h-4 transition-transform duration-200 ${productsDropdownOpen ? 'rotate-180' : ''}`} 
-                                />
-                            </button>
+                            <div className="flex items-center gap-1">
+                                <Link
+                                    href="/products"
+                                    className={`transition-colors ${isProductsActive ? 'text-[#05ADEE] font-semibold' : 'text-gray-700 hover:text-[#05ADEE]'}`}
+                                >
+                                    Products
+                                </Link>
+                                <button
+                                    className="p-1 hover:bg-gray-100 rounded-md transition-colors"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setProductsDropdownOpen(!productsDropdownOpen);
+                                    }}
+                                >
+                                    <ChevronDown
+                                        className={`w-4 h-4 transition-transform duration-200 ${productsDropdownOpen ? 'rotate-180' : ''}`}
+                                    />
+                                </button>
+                            </div>
 
                             {productsDropdownOpen && (
-                                <div 
+                                <div
                                     className="absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded-xl shadow-xl py-2 z-50"
                                     onMouseEnter={handleMouseEnter}
                                     onMouseLeave={handleMouseLeave}
                                 >
-                                    {products.map((product, index) => (
-                                        <Link 
-                                            key={index} 
+                                    {products.map((product) => (
+                                        <Link
+                                            key={product.slug}
                                             href={`/products/${product.slug}`}
                                             className="block px-5 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#05ADEE] transition-all"
+                                            onClick={() => setProductsDropdownOpen(false)}
                                         >
                                             {product.name}
                                         </Link>
@@ -96,8 +117,12 @@ export function Navbar() {
                             )}
                         </div>
 
-                        <Link href="/portfolio" className="text-gray-700 hover:text-[#05ADEE] transition-colors">Portfolio</Link>
-                        <Link href="/contact" className="text-gray-700 hover:text-[#05ADEE] transition-colors">Contact</Link>
+                        <Link href="/portfolio" className={`transition-colors ${isActive('/portfolio') ? 'text-[#05ADEE] font-semibold' : 'text-gray-700 hover:text-[#05ADEE]'}`}>
+                            Portfolio
+                        </Link>
+                        <Link href="/contact" className={`transition-colors ${isActive('/contact') ? 'text-[#05ADEE] font-semibold' : 'text-gray-700 hover:text-[#05ADEE]'}`}>
+                            Contact
+                        </Link>
                     </div>
 
                     {/* Desktop Buttons */}
@@ -115,10 +140,7 @@ export function Navbar() {
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <Button
-                        className="md:hidden p-2"
-                        onClick={() => setIsOpen(!isOpen)}
-                    >
+                    <Button className="md:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
                         {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                     </Button>
                 </div>
@@ -126,20 +148,27 @@ export function Navbar() {
                 {/* Mobile Menu */}
                 {isOpen && (
                     <div className="md:hidden pb-6 space-y-3">
-                        <Link href="/" className="block py-3 text-gray-700 hover:text-[#05ADEE]">Home</Link>
-                        <Link href="/about" className="block py-3 text-gray-700 hover:text-[#05ADEE]">About</Link>
-                        <Link href="/services" className="block py-3 text-gray-700 hover:text-[#05ADEE]">Services</Link>
-                        <Link href="/products" className="block py-3 text-gray-700 hover:text-[#05ADEE]">Products</Link>
-                        <Link href="/portfolio" className="block py-3 text-gray-700 hover:text-[#05ADEE]">Portfolio</Link>
-                        <Link href="/contact" className="block py-3 text-gray-700 hover:text-[#05ADEE]">Contact</Link>
+                        {['/', '/about', '/services', '/products', '/portfolio', '/contact'].map((href) => {
+                            const label = href === '/' ? 'Home' : href.replace('/', '').charAt(0).toUpperCase() + href.slice(1);
+                            return (
+                                <Link
+                                    key={href}
+                                    href={href}
+                                    className={`block py-3 ${isActive(href) ? 'text-[#05ADEE] font-semibold' : 'text-gray-700 hover:text-[#05ADEE]'}`}
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    {label}
+                                </Link>
+                            );
+                        })}
 
                         <div className="flex flex-col gap-3 pt-4">
-                            <Link href="/contact">
+                            <Link href="/contact" onClick={() => setIsOpen(false)}>
                                 <button className="w-full px-6 py-3 text-[#05ADEE] border-2 border-[#05ADEE] rounded-lg">
                                     Request Demo
                                 </button>
                             </Link>
-                            <Link href="/contact">
+                            <Link href="/contact" onClick={() => setIsOpen(false)}>
                                 <Button className="w-full py-3 bg-[#05ADEE] text-white rounded-lg">
                                     Contact Us
                                 </Button>
