@@ -11,7 +11,7 @@ import ServicesHero from "../components/ServicesHero";
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1], delay },
+  transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] as const, delay },
   viewport: { once: true },
 });
 
@@ -103,10 +103,10 @@ const Services = () => {
 
       <ServicesHero />
 
-      <section className="py-24 bg-white">
+      <section className="md:py-24 py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <motion.div className="text-center mb-16" {...fadeUp()}>
+          <motion.div className="text-center md:mb-16 mb-8" {...fadeUp()}>
             <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "#05ADEE" }}>
               What We Offer
             </p>
@@ -197,15 +197,15 @@ const Services = () => {
       </section>
 
       <section
-        className="py-24 relative overflow-hidden"
+        className="md:py-24 py-12 relative overflow-hidden"
         style={{ background: "linear-gradient(135deg, #0A0947 0%, #0d1168 60%, #0a3070 100%)" }}
       >
         {/* Radial centre glow */}
         <div className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(5,173,238,0.07) 0%, transparent 70%)" }} />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div className="text-center mb-16" {...fadeUp()}>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+          <motion.div className="text-center md:mb-16 mb-8" {...fadeUp()}>
             <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-3" style={{ color: "#05ADEE" }}>
               Our Process
             </p>
@@ -225,7 +225,7 @@ const Services = () => {
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.12, duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ delay: index * 0.12, duration: 0.65, ease: [0.16, 1, 0.3, 1] as const }}
                 viewport={{ once: true }}
                 className="relative text-center group"
               >

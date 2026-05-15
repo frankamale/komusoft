@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const ServicesHero = () => {
   return (
     <section
-      className="relative overflow-hidden py-36"
+      className="relative overflow-hidden md:py-36 py-12"
       style={{ background: "linear-gradient(135deg, #0A0947 0%, #0d0f5e 45%, #0a2a6e 75%, #0c4a8a 100%)" }}
     >
       {/* Background blobs */}
