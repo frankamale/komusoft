@@ -116,10 +116,10 @@ const ProductShowcaseSection = () => {
                   ))}
                 </div>
 
-                <Link href="/contact"
+                <Link href={`/products/${product.name.toLowerCase().replace(/\s+/g, '-')}`}
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-xl"
                   style={{ background: "linear-gradient(135deg, #05ADEE, #0496d5)", boxShadow: "0 6px 24px rgba(5,173,238,0.28)" }}>
-                  Request Demo
+                  Learn More
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
