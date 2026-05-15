@@ -1,457 +1,494 @@
 "use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { Cloud, Check, ArrowRight, Download, FileText, BarChart, Users, Zap, Shield, Database, Monitor, Globe } from 'lucide-react';
+import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import {
+  Cloud, Check, ArrowRight, Download, FileText, BarChart,
+  Users, Zap, Shield, Database, Monitor, Globe, ChevronRight, X,
+} from "lucide-react";
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 32 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const, delay },
+  viewport: { once: true },
+});
 
 const BusinessAssistant = () => {
   const features = [
-    {
-      icon: Cloud,
-      title: "Cloud Infrastructure",
-      description: "Scalable cloud platform accessible from anywhere with automatic backups and updates."
-    },
-    {
-      icon: BarChart,
-      title: "Advanced Analytics",
-      description: "Real-time dashboards and reporting with customizable KPIs and business intelligence."
-    },
-    {
-      icon: Users,
-      title: "Team Collaboration",
-      description: "Multi-user access with role-based permissions and real-time collaboration tools."
-    },
-    {
-      icon: Zap,
-      title: "Workflow Automation",
-      description: "Automate repetitive tasks and business processes with customizable workflows."
-    },
-    {
-      icon: Shield,
-      title: "Enterprise Security",
-      description: "Bank-grade encryption, SSO integration, and comprehensive audit trails."
-    },
-    {
-      icon: Database,
-      title: "API Integrations",
-      description: "Connect with third-party services via REST APIs and webhooks."
-    }
+    { icon: Cloud, title: "Cloud Infrastructure", description: "Scalable cloud platform accessible from anywhere with automatic backups, updates, and 99.9% uptime SLA." },
+    { icon: BarChart, title: "Advanced Analytics", description: "Real-time dashboards and reporting with customisable KPIs and built-in business intelligence." },
+    { icon: Users, title: "Team Collaboration", description: "Multi-user access with role-based permissions, shared workspaces, and real-time collaboration." },
+    { icon: Zap, title: "Workflow Automation", description: "Automate repetitive tasks and business processes with a drag-and-drop workflow builder." },
+    { icon: Shield, title: "Enterprise Security", description: "Bank-grade encryption, SSO integration, two-factor authentication, and comprehensive audit trails." },
+    { icon: Database, title: "API Integrations", description: "Connect with third-party services via REST APIs, webhooks, and a growing library of connectors." },
   ];
 
   const modules = [
     { name: "CRM", features: ["Lead management", "Customer database", "Sales pipeline", "Communication tracking"] },
-    { name: "Analytics", features: ["Real-time dashboards", "Custom reports", "KPIs & metrics", "Data visualization"] },
+    { name: "Analytics", features: ["Real-time dashboards", "Custom reports", "KPIs & metrics", "Data visualisation"] },
     { name: "Collaboration", features: ["Team workspaces", "Document sharing", "Task management", "Notifications"] },
     { name: "Automation", features: ["Workflow builder", "Email automation", "Task scheduling", "Triggers & actions"] },
     { name: "Security", features: ["User permissions", "Audit logs", "Data encryption", "Backup & recovery"] },
-    { name: "Integrations", features: ["API access", "Webhook support", "Third-party apps", "Custom connectors"] }
+    { name: "Integrations", features: ["REST API access", "Webhook support", "Third-party apps", "Custom connectors"] },
   ];
 
-  const workflow = [
-    { step: "01", title: "Sign Up", desc: "Create your account and select a plan" },
-    { step: "02", title: "Setup", desc: "Configure your business settings and users" },
-    { step: "03", title: "Migrate", desc: "Import your data and customize workflows" },
-    { step: "04", title: "Go Live", desc: "Start using the platform immediately" }
+  const plans = [
+    {
+      name: "Starter",
+      price: "UGX 75,000",
+      billing: "per month",
+      annual: "UGX 750,000 / year",
+      highlight: false,
+      cta: "Start Free Trial",
+      features: [
+        { label: "Users", value: "Up to 5" },
+        { label: "Storage", value: "5 GB" },
+        { label: "Analytics", value: "Basic" },
+        { label: "API Access", value: false },
+        { label: "Custom Workflows", value: false },
+        { label: "SSO / 2FA", value: false },
+        { label: "Support", value: "Email" },
+        { label: "Uptime SLA", value: "99.9%" },
+        { label: "Free Trial", value: "14 days" },
+      ],
+    },
+    {
+      name: "Professional",
+      price: "UGX 150,000",
+      billing: "per month",
+      annual: "UGX 1,500,000 / year",
+      highlight: true,
+      cta: "Start Free Trial",
+      features: [
+        { label: "Users", value: "Up to 25" },
+        { label: "Storage", value: "50 GB" },
+        { label: "Analytics", value: "Advanced" },
+        { label: "API Access", value: true },
+        { label: "Custom Workflows", value: true },
+        { label: "SSO / 2FA", value: true },
+        { label: "Support", value: "Priority" },
+        { label: "Uptime SLA", value: "99.9%" },
+        { label: "Free Trial", value: "14 days" },
+      ],
+    },
+    {
+      name: "Enterprise",
+      price: "Custom",
+      billing: "Contact for quote",
+      annual: "",
+      highlight: false,
+      cta: "Contact Sales",
+      features: [
+        { label: "Users", value: "Unlimited" },
+        { label: "Storage", value: "Unlimited" },
+        { label: "Analytics", value: "Advanced" },
+        { label: "API Access", value: true },
+        { label: "Custom Workflows", value: true },
+        { label: "SSO / 2FA", value: true },
+        { label: "Support", value: "Dedicated" },
+        { label: "Uptime SLA", value: "99.9%" },
+        { label: "Free Trial", value: "On request" },
+      ],
+    },
+  ];
+
+  const browserRows = [
+    { browser: "Chrome", version: "90+", status: true },
+    { browser: "Firefox", version: "88+", status: true },
+    { browser: "Safari", version: "14+", status: true },
+    { browser: "Edge", version: "90+", status: true },
+  ];
+
+  const sysRows = [
+    { label: "Internet Connection", value: "2 Mbps minimum, 10 Mbps recommended" },
+    { label: "Browser", value: "Any modern browser (see table)" },
+    { label: "Mobile", value: "Fully responsive — iOS & Android supported" },
+    { label: "Security", value: "SSL/TLS encryption, 2FA available" },
+    { label: "Data Residency", value: "Cloud-hosted (region configurable)" },
+    { label: "Offline Mode", value: "Partial offline with sync on reconnect" },
   ];
 
   return (
-    <div className="min-h-screen pt-20">
-      {/* Hero */}
-      <section className="relative py-32 overflow-hidden bg-linear-to-br from-purple-50 via-white to-pink-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 rounded-full mb-6">
-                <Cloud className="w-4 h-4 text-purple-600" />
-                <span className="text-sm font-semibold text-purple-600">SaaS</span>
+    <div className="min-h-screen bg-white pt-20" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+
+      {/* ─── HERO ──────────────────────────────────────────────── */}
+      <section
+        className="relative overflow-hidden py-20 sm:py-28"
+        style={{ background: "linear-gradient(135deg,#0A0947 0%,#0d0f5e 45%,#0a2a6e 75%,#0c4a8a 100%)" }}
+      >
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none opacity-20"
+          style={{ background: "radial-gradient(circle,#05ADEE 0%,transparent 65%)", transform: "translate(35%,-35%)" }} />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none opacity-10"
+          style={{ background: "radial-gradient(circle,#05ADEE 0%,transparent 70%)", transform: "translate(-40%,40%)" }} />
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
+          style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "52px 52px" }} />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] as const }}>
+              <div className="flex items-center gap-2 mb-6">
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest"
+                  style={{ background: "rgba(5,173,238,0.15)", border: "1px solid rgba(5,173,238,0.4)", color: "#05ADEE" }}>
+                  <Cloud className="w-3.5 h-3.5" /> SaaS · Cloud
+                </span>
               </div>
 
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-                Business Assistant
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+                Business<br />
+                <span style={{ background: "linear-gradient(90deg,#05ADEE,#38d2f5)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                  Assistant
+                </span>
               </h1>
-              <p className="text-2xl text-purple-600 font-semibold mb-6">
+              <p className="text-lg sm:text-xl font-semibold mb-5" style={{ color: "#05ADEE" }}>
                 Cloud Business Operations Platform
               </p>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-base sm:text-lg leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.62)" }}>
                 A comprehensive cloud platform for modern businesses. Access your operations from anywhere,
-                collaborate with your team, and gain insights with powerful analytics and automation tools.
+                collaborate in real time, and gain powerful analytics without any infrastructure overhead.
               </p>
 
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-purple-600 text-white rounded-xl hover:bg-purple-700 hover:shadow-xl transition-all"
-                >
-                  Start Free Trial
-                  <ArrowRight className="w-5 h-5" />
+              <div className="flex flex-wrap gap-3">
+                <Link href="/contact"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl"
+                  style={{ background: "linear-gradient(135deg,#05ADEE,#0496d5)", boxShadow: "0 6px 24px rgba(5,173,238,0.3)" }}>
+                  Start Free Trial <ArrowRight className="w-4 h-4" />
                 </Link>
-                <button className="inline-flex items-center gap-2 px-8 py-4 bg-white border-2 border-gray-200 text-gray-900 rounded-xl hover:bg-gray-50 transition-all">
-                  <Download className="w-5 h-5" />
-                  Download Brochure
+                <button className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white text-sm transition-all hover:bg-white/15"
+                  style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)" }}>
+                  <Download className="w-4 h-4" /> Brochure
                 </button>
-                <Link
-                  href="/products/docs/business-assistant"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white border-2 border-gray-200 text-gray-900 rounded-xl hover:bg-gray-50 transition-all"
-                >
-                  <FileText className="w-5 h-5" />
-                  Documentation
+                <Link href="/products/docs/business-assistant"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white text-sm transition-all hover:bg-white/15"
+                  style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)" }}>
+                  <FileText className="w-4 h-4" /> Docs
                 </Link>
               </div>
-            </div>
 
-            <div className="relative">
-              <Image
-                src="/assets/business-assistant-dashboard.png"
-                alt="Business Assistant Dashboard"
-                className="rounded-3xl shadow-2xl"
-                height={600}
-                width={800}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Grid */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Core Features
-            </h2>
-            <p className="text-xl text-gray-600">
-              Everything you need to manage your business in the cloud
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="group p-8 bg-white rounded-3xl border border-gray-200 hover:border-purple-600 hover:shadow-2xl transition-all duration-300"
-              >
-                <div className="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors">
-                  <feature.icon className="w-7 h-7 text-purple-600 group-hover:text-white transition-colors" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              How It Works
-            </h2>
-            <p className="text-xl text-gray-600">
-              Get up and running in four simple steps
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            {workflow.map((item, index) => (
-              <div key={index} className="relative">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <span className="text-2xl font-bold text-white">{item.step}</span>
+              <div className="mt-8 flex flex-wrap gap-4">
+                {[["14-day Free Trial", "No credit card"], ["99.9% Uptime", "SLA backed"], ["Mobile Ready", "iOS & Android"]].map(([t, s], i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full" style={{ background: "#05ADEE" }} />
+                    <span className="text-xs text-white/60"><span className="text-white/85 font-medium">{t}</span> · {s}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-gray-600">{item.desc}</p>
-                </div>
-                {index < workflow.length - 1 && (
-                  <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-gray-200 -ml-4"></div>
-                )}
+                ))}
               </div>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.25, duration: 0.9, ease: [0.16, 1, 0.3, 1] as const }}
+              className="relative hidden lg:block">
+              <div className="rounded-2xl overflow-hidden shadow-2xl" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
+                <Image src="/assets/business-assistant-dashboard.png" alt="Business Assistant Dashboard"
+                  className="w-full object-cover" width={600} height={400} />
+              </div>
+              <div className="absolute -bottom-4 -right-4 rounded-2xl px-5 py-4 shadow-xl"
+                style={{ background: "white", border: "1px solid rgba(5,173,238,0.15)" }}>
+                <p className="text-xs text-gray-400 mb-0.5">Access from</p>
+                <p className="text-sm font-bold" style={{ color: "#0A0947" }}>Any device, anywhere</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-0 left-0 right-0 pointer-events-none overflow-hidden">
+          <svg viewBox="0 0 1440 60" fill="none"><path d="M0 60L1440 60L1440 22C1200 60 900 4 720 22C540 40 240 4 0 22L0 60Z" fill="white" /></svg>
+        </div>
+      </section>
+
+      {/* ─── FEATURES ──────────────────────────────────────────── */}
+      <section className="py-16 sm:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div className="mb-12" {...fadeUp()}>
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-2" style={{ color: "#05ADEE" }}>Core Features</p>
+            <h2 className="text-3xl sm:text-4xl font-bold" style={{ color: "#0A0947" }}>Everything in the Cloud</h2>
+          </motion.div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7">
+            {features.map((f, i) => (
+              <motion.div key={i} {...fadeUp(i * 0.06)} whileHover={{ y: -5 }}
+                className="group rounded-2xl p-6 sm:p-7 cursor-default transition-all duration-300"
+                style={{ border: "1px solid #e8edf2" }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(5,173,238,0.35)"; e.currentTarget.style.boxShadow = "0 12px 40px rgba(5,173,238,0.1)"; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = "#e8edf2"; e.currentTarget.style.boxShadow = "none"; }}>
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110"
+                  style={{ background: "rgba(5,173,238,0.1)" }}>
+                  <f.icon className="w-5 h-5" style={{ color: "#05ADEE" }} />
+                </div>
+                <h3 className="font-bold text-base mb-2" style={{ color: "#0A0947" }}>{f.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{f.description}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Modules */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Available Modules
-            </h2>
-            <p className="text-xl text-gray-600">
-              Comprehensive functionality for every aspect of your business
-            </p>
+      {/* ─── ONBOARDING STEPS ──────────────────────────────────── */}
+      <section className="py-16 sm:py-24 relative overflow-hidden"
+        style={{ background: "linear-gradient(135deg,#0A0947 0%,#0d1168 60%,#0a3070 100%)" }}>
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%,rgba(5,173,238,0.07) 0%,transparent 70%)" }} />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div className="text-center mb-12" {...fadeUp()}>
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-2" style={{ color: "#05ADEE" }}>Onboarding</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white">Live in 4 Simple Steps</h2>
+          </motion.div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+            <div className="absolute top-[2.75rem] left-[12%] right-[12%] h-px hidden lg:block"
+              style={{ background: "linear-gradient(90deg,transparent,rgba(5,173,238,0.5),rgba(5,173,238,0.5),transparent)" }} />
+            {[
+              { step: "01", title: "Sign Up", desc: "Create your account and choose a plan" },
+              { step: "02", title: "Setup", desc: "Configure business settings and invite users" },
+              { step: "03", title: "Migrate", desc: "Import existing data with guided migration tools" },
+              { step: "04", title: "Go Live", desc: "Start operating on the cloud immediately" },
+            ].map((item, i) => (
+              <motion.div key={i} {...fadeUp(i * 0.1)} className="text-center group">
+                <div className="rounded-full flex items-center justify-center mx-auto mb-5 relative z-10 transition-all duration-300 group-hover:scale-110"
+                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(5,173,238,0.35)", width: 80, height: 80 }}>
+                  <span className="text-xl font-bold" style={{ color: "#05ADEE" }}>{item.step}</span>
+                </div>
+                <h3 className="font-bold text-white mb-1.5">{item.title}</h3>
+                <p className="text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {modules.map((module, index) => (
-              <div
-                key={index}
-                className="p-6 bg-white rounded-2xl border border-gray-200 hover:shadow-xl transition-all"
-              >
-                <h3 className="text-lg font-bold text-gray-900 mb-4">{module.name}</h3>
+      {/* ─── MODULES ───────────────────────────────────────────── */}
+      <section className="py-16 sm:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div className="mb-12" {...fadeUp()}>
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-2" style={{ color: "#05ADEE" }}>Modules</p>
+            <h2 className="text-3xl sm:text-4xl font-bold" style={{ color: "#0A0947" }}>Built-in Business Modules</h2>
+            <p className="text-gray-500 mt-3">All modules included — activate what you need.</p>
+          </motion.div>
+          <motion.div {...fadeUp(0.1)} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {modules.map((mod, i) => (
+              <div key={i} className="rounded-2xl p-6 transition-all duration-200 hover:shadow-lg"
+                style={{ background: "#f8fafc", border: "1px solid rgba(5,173,238,0.08)" }}>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-2 h-2 rounded-full shrink-0" style={{ background: "#05ADEE" }} />
+                  <h3 className="font-bold" style={{ color: "#0A0947" }}>{mod.name}</h3>
+                </div>
                 <ul className="space-y-2">
-                  {module.features.map((feature, fIndex) => (
-                    <li key={fIndex} className="flex items-center gap-2 text-sm text-gray-600">
-                      <Check className="w-4 h-4 text-purple-600 shrink-0" />
-                      {feature}
+                  {mod.features.map((feat, fi) => (
+                    <li key={fi} className="flex items-start gap-2 text-sm text-gray-500">
+                      <ChevronRight className="w-3.5 h-3.5 mt-0.5 shrink-0" style={{ color: "#05ADEE" }} /> {feat}
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ─── PRICING TABLE ─────────────────────────────────────── */}
+      <section className="py-16 sm:py-24" style={{ background: "linear-gradient(135deg,#f0f9ff 0%,#e8f4fd 50%,#f0faff 100%)" }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div className="text-center mb-12" {...fadeUp()}>
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-2" style={{ color: "#05ADEE" }}>Pricing</p>
+            <h2 className="text-3xl sm:text-4xl font-bold" style={{ color: "#0A0947" }}>Transparent SaaS Pricing</h2>
+            <p className="text-gray-500 mt-3">Billed monthly or annually — cancel any time.</p>
+          </motion.div>
+
+          {/* Mobile cards */}
+          <div className="flex flex-col gap-6 lg:hidden">
+            {plans.map((plan, pi) => (
+              <motion.div key={pi} {...fadeUp(pi * 0.08)} className="rounded-2xl p-6 relative"
+                style={{
+                  background: plan.highlight ? "linear-gradient(135deg,#0A0947,#0d1575)" : "white",
+                  border: plan.highlight ? "none" : "1px solid rgba(5,173,238,0.15)",
+                  boxShadow: plan.highlight ? "0 20px 60px rgba(5,173,238,0.2)" : undefined,
+                }}>
+                {plan.highlight && (
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold"
+                    style={{ background: "#05ADEE", color: "white" }}>Most Popular</div>
+                )}
+                <h3 className="text-xl font-bold mb-1" style={{ color: plan.highlight ? "white" : "#0A0947" }}>{plan.name}</h3>
+                <div className="text-3xl font-bold mb-0.5" style={{ color: "#05ADEE" }}>{plan.price}</div>
+                <p className="text-xs mb-0.5" style={{ color: plan.highlight ? "rgba(255,255,255,0.5)" : "#9ca3af" }}>{plan.billing}</p>
+                {plan.annual && <p className="text-xs mb-5" style={{ color: plan.highlight ? "rgba(255,255,255,0.4)" : "#9ca3af" }}>{plan.annual}</p>}
+                <ul className="space-y-2.5 mb-6">
+                  {plan.features.map((f, fi) => (
+                    <li key={fi} className="flex items-center justify-between text-sm gap-3">
+                      <span style={{ color: plan.highlight ? "rgba(255,255,255,0.6)" : "#6b7280" }}>{f.label}</span>
+                      {typeof f.value === "boolean"
+                        ? f.value ? <Check className="w-4 h-4 shrink-0" style={{ color: "#05ADEE" }} /> : <X className="w-4 h-4 shrink-0 text-gray-300" />
+                        : <span className="font-semibold text-right" style={{ color: plan.highlight ? "white" : "#0A0947" }}>{f.value}</span>}
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/contact" className="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-sm transition-all"
+                  style={plan.highlight
+                    ? { background: "linear-gradient(135deg,#05ADEE,#0496d5)", color: "white", boxShadow: "0 6px 20px rgba(5,173,238,0.35)" }
+                    : { background: "rgba(5,173,238,0.08)", color: "#0A0947" }}>
+                  {plan.cta} <ArrowRight className="w-4 h-4" />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Desktop table */}
+          <motion.div {...fadeUp(0.1)} className="hidden lg:block rounded-3xl overflow-hidden shadow-xl"
+            style={{ border: "1px solid rgba(5,173,238,0.12)" }}>
+            <table className="w-full">
+              <thead>
+                <tr style={{ background: "#0A0947" }}>
+                  <th className="text-left px-7 py-5 text-sm font-semibold" style={{ color: "rgba(255,255,255,0.5)", width: "28%" }}>Feature</th>
+                  {plans.map((plan, pi) => (
+                    <th key={pi} className="px-6 py-5 text-center relative" style={{ width: "24%" }}>
+                      {plan.highlight && <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: "#05ADEE" }} />}
+                      <div className="text-white font-bold text-base">{plan.name}</div>
+                      <div className="text-2xl font-bold mt-1" style={{ color: "#05ADEE" }}>{plan.price}</div>
+                      <div className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.4)" }}>{plan.billing}</div>
+                      {plan.annual && <div className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>{plan.annual}</div>}
+                      {plan.highlight && (
+                        <div className="mt-2 inline-block px-3 py-0.5 rounded-full text-xs font-bold"
+                          style={{ background: "rgba(5,173,238,0.2)", color: "#05ADEE" }}>Most Popular</div>
+                      )}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {plans[0].features.map((feat, fi) => (
+                  <tr key={fi} style={{ background: fi % 2 === 0 ? "white" : "#f8fafc" }}>
+                    <td className="px-7 py-4 text-sm font-medium text-gray-600">{feat.label}</td>
+                    {plans.map((plan, pi) => {
+                      const cell = plan.features[fi];
+                      return (
+                        <td key={pi} className="px-6 py-4 text-center text-sm"
+                          style={{ borderLeft: pi === 1 ? "1px solid rgba(5,173,238,0.12)" : undefined, background: pi === 1 ? "rgba(5,173,238,0.02)" : undefined }}>
+                          {typeof cell.value === "boolean"
+                            ? cell.value ? <Check className="w-5 h-5 mx-auto" style={{ color: "#05ADEE" }} /> : <X className="w-5 h-5 mx-auto text-gray-200" />
+                            : <span className="font-semibold" style={{ color: "#0A0947" }}>{cell.value}</span>}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+                <tr style={{ background: "#f8fafc" }}>
+                  <td className="px-7 py-5" />
+                  {plans.map((plan, pi) => (
+                    <td key={pi} className="px-6 py-5 text-center"
+                      style={{ borderLeft: pi === 1 ? "1px solid rgba(5,173,238,0.12)" : undefined, background: pi === 1 ? "rgba(5,173,238,0.02)" : undefined }}>
+                      <Link href="/contact" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all hover:-translate-y-0.5"
+                        style={plan.highlight
+                          ? { background: "linear-gradient(135deg,#05ADEE,#0496d5)", color: "white", boxShadow: "0 4px 16px rgba(5,173,238,0.3)" }
+                          : { background: "rgba(5,173,238,0.08)", color: "#0A0947" }}>
+                        {plan.cta} <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          </motion.div>
+
+          <motion.div {...fadeUp(0.15)} className="mt-8 rounded-2xl p-5 sm:p-6"
+            style={{ background: "white", border: "1px solid rgba(5,173,238,0.12)" }}>
+            <p className="text-sm font-bold mb-3" style={{ color: "#0A0947" }}>Included in every plan:</p>
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              {["14-day free trial", "SSL security", "99.9% uptime SLA", "Mobile responsive", "Automatic updates"].map((item, i) => (
+                <span key={i} className="flex items-center gap-2 text-sm text-gray-500">
+                  <Check className="w-4 h-4" style={{ color: "#05ADEE" }} /> {item}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ─── SYSTEM REQUIREMENTS ───────────────────────────────── */}
+      <section className="py-16 sm:py-24 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div className="mb-10" {...fadeUp()}>
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-2" style={{ color: "#05ADEE" }}>Technical</p>
+            <h2 className="text-3xl sm:text-4xl font-bold" style={{ color: "#0A0947" }}>System Requirements</h2>
+            <p className="text-gray-500 mt-2">Cloud-based — no local installation required.</p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-6">
+            {/* Browser support table */}
+            <motion.div {...fadeUp(0.08)} className="overflow-hidden rounded-2xl"
+              style={{ border: "1px solid rgba(5,173,238,0.12)" }}>
+              <div className="px-6 py-4" style={{ background: "#0A0947" }}>
+                <p className="text-white font-semibold flex items-center gap-2">
+                  <Monitor className="w-4 h-4" style={{ color: "#05ADEE" }} /> Browser Support
+                </p>
+              </div>
+              <table className="w-full">
+                <thead>
+                  <tr style={{ background: "#f8fafc" }}>
+                    <th className="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Browser</th>
+                    <th className="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Min. Version</th>
+                    <th className="px-5 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {browserRows.map((row, i) => (
+                    <tr key={i} style={{ background: i % 2 === 0 ? "white" : "#f8fafc" }}>
+                      <td className="px-5 py-3 text-sm font-medium" style={{ color: "#0A0947" }}>{row.browser}</td>
+                      <td className="px-5 py-3 text-sm text-gray-500">{row.version}</td>
+                      <td className="px-5 py-3 text-center"><Check className="w-4 h-4 mx-auto" style={{ color: "#05ADEE" }} /></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </motion.div>
+
+            {/* Requirements list */}
+            <motion.div {...fadeUp(0.12)} className="overflow-hidden rounded-2xl"
+              style={{ border: "1px solid rgba(5,173,238,0.12)" }}>
+              <div className="px-6 py-4" style={{ background: "#0A0947" }}>
+                <p className="text-white font-semibold flex items-center gap-2">
+                  <Globe className="w-4 h-4" style={{ color: "#05ADEE" }} /> Access Requirements
+                </p>
+              </div>
+              <table className="w-full">
+                <tbody>
+                  {sysRows.map((row, i) => (
+                    <tr key={i} style={{ background: i % 2 === 0 ? "white" : "#f8fafc" }}>
+                      <td className="px-5 py-3.5 text-sm font-medium text-gray-500 w-2/5">{row.label}</td>
+                      <td className="px-5 py-3.5 text-sm font-semibold" style={{ color: "#0A0947" }}>{row.value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Pricing */}
-      <section className="py-20 bg-white">
+      {/* ─── CTA ───────────────────────────────────────────────── */}
+      <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Pricing Plans
-            </h2>
-            <p className="text-xl text-gray-600">
-              Flexible SaaS pricing that grows with your business
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white rounded-3xl border-2 border-gray-200 p-8 hover:border-[#05ADEE] hover:shadow-xl transition-all">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Starter</h3>
-                <p className="text-gray-600 mb-4">Perfect for small businesses</p>
-                <div className="text-4xl font-bold text-[#05ADEE] mb-2">UGX 75,000</div>
-                <div className="text-gray-600 text-sm">per month</div>
-                <div className="text-gray-600 text-sm mt-2">UGX 750,000 annually</div>
-              </div>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Up to 5 users</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Basic analytics</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">5GB storage</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Email support</span>
-                </li>
-              </ul>
-              <Link
-                href="/contact"
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-gray-100 text-gray-900 rounded-xl hover:bg-gray-200 transition-all font-semibold"
-              >
-                Start Free Trial
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </div>
-
-            <div className="bg-white rounded-3xl border-2 border-[#05ADEE] shadow-xl p-8 relative">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#05ADEE] text-white px-4 py-2 rounded-full text-sm font-semibold">
-                Most Popular
-              </div>
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Professional</h3>
-                <p className="text-gray-600 mb-4">For growing teams</p>
-                <div className="text-4xl font-bold text-[#05ADEE] mb-2">UGX 150,000</div>
-                <div className="text-gray-600 text-sm">per month</div>
-                <div className="text-gray-600 text-sm mt-2">UGX 1,500,000 annually</div>
-              </div>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Up to 25 users</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Advanced analytics</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">50GB storage</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">API access</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Priority support</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Custom workflows</span>
-                </li>
-              </ul>
-              <Link
-                href="/contact"
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#05ADEE] text-white rounded-xl hover:bg-[#0496d5] transition-all font-semibold"
-              >
-                Start Free Trial
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </div>
-
-            <div className="bg-white rounded-3xl border-2 border-gray-200 p-8 hover:border-[#05ADEE] hover:shadow-xl transition-all">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
-                <p className="text-gray-600 mb-4">For large organizations</p>
-                <div className="text-4xl font-bold text-[#05ADEE] mb-2">Custom Pricing</div>
-                <div className="text-gray-600 text-sm">Contact for quote</div>
-              </div>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Unlimited users</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Unlimited storage</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Custom integrations</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Dedicated support</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">White-label option</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">SLA guarantee</span>
-                </li>
-              </ul>
-              <Link
-                href="/contact"
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-gray-100 text-gray-900 rounded-xl hover:bg-gray-200 transition-all font-semibold"
-              >
-                Contact Sales
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </div>
-          </div>
-
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-4">All plans include:</p>
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600">
-              <span className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-green-500" />
-                14-day free trial
-              </span>
-              <span className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-green-500" />
-                SSL security
-              </span>
-              <span className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-green-500" />
-                99.9% uptime SLA
-              </span>
-              <span className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-green-500" />
-                Mobile responsive
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* System Requirements */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              System Requirements
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 bg-white rounded-2xl border border-gray-200">
-              <Monitor className="w-8 h-8 text-purple-600 mb-4" />
-              <h3 className="font-bold text-gray-900 mb-3">Browser Support</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li>Chrome 90+</li>
-                <li>Firefox 88+</li>
-                <li>Safari 14+</li>
-                <li>Edge 90+</li>
-              </ul>
-            </div>
-
-            <div className="p-6 bg-white rounded-2xl border border-gray-200">
-              <Database className="w-8 h-8 text-purple-600 mb-4" />
-              <h3 className="font-bold text-gray-900 mb-3">Internet Connection</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li>2Mbps minimum</li>
-                <li>10Mbps recommended</li>
-                <li>Mobile data compatible</li>
-              </ul>
-            </div>
-
-            <div className="p-6 bg-white rounded-2xl border border-gray-200">
-              <Shield className="w-8 h-8 text-purple-600 mb-4" />
-              <h3 className="font-bold text-gray-900 mb-3">Security</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li>SSL/TLS encryption</li>
-                <li>Two-factor authentication</li>
-                <li>Data backup</li>
-              </ul>
-            </div>
-
-            <div className="p-6 bg-white rounded-2xl border border-gray-200">
-              <Globe className="w-8 h-8 text-purple-600 mb-4" />
-              <h3 className="font-bold text-gray-900 mb-3">Mobile Access</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li>Responsive design</li>
-                <li>Mobile apps</li>
-                <li>Offline sync</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-[#0A0947] p-12 md:p-16">
-            <div className="absolute inset-0 opacity-20">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600 rounded-full blur-3xl"></div>
-            </div>
-
-            <div className="relative z-10 max-w-3xl mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Ready to Transform Your Business?
+          <motion.div {...fadeUp()} className="relative overflow-hidden rounded-[2rem] p-10 sm:p-16 text-center"
+            style={{ background: "linear-gradient(135deg,#0A0947 0%,#0d1168 55%,#0a3070 100%)" }}>
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none opacity-20"
+              style={{ background: "radial-gradient(circle,#05ADEE 0%,transparent 65%)", transform: "translate(30%,-40%)" }} />
+            <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
+              style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
+            <div className="relative z-10 max-w-2xl mx-auto">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+                Ready to Move Your Business to the <span style={{ background: "linear-gradient(90deg,#05ADEE,#38d2f5)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Cloud?</span>
               </h2>
-              <p className="text-xl text-gray-300 mb-8">
-                Start your free trial and experience the power of cloud business management
+              <p className="text-base sm:text-lg mb-8" style={{ color: "rgba(255,255,255,0.55)" }}>
+                Start a free 14-day trial — no credit card required, no infrastructure needed.
               </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-purple-600 text-white rounded-xl hover:bg-purple-700 hover:shadow-2xl hover:shadow-purple-600/50 transition-all"
-              >
-                Start Free Trial
-                <ArrowRight className="w-5 h-5" />
+              <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-semibold text-white transition-all hover:-translate-y-1 hover:shadow-2xl"
+                style={{ background: "linear-gradient(135deg,#05ADEE,#0496d5)", boxShadow: "0 8px 28px rgba(5,173,238,0.3)" }}>
+                Start Free Trial <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>
   );
-}
+};
 
-export default BusinessAssistant
+export default BusinessAssistant;

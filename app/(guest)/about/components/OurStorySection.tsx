@@ -60,8 +60,8 @@ const OurStorySection = () => {
             {/* Stats */}
             <div className="mt-8 grid grid-cols-3 gap-3 sm:gap-5">
               {[
-                { value: "10+", label: "Years Experience" },
-                { value: "50+", label: "Projects Delivered" },
+                { value: "15+", label: "Years Experience" },
+                { value: "99+", label: "Projects Delivered" },
                 { value: "100%", label: "Client Focus" },
               ].map((item, i) => (
                 <div

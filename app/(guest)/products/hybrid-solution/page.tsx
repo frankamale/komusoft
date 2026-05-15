@@ -1,460 +1,506 @@
 "use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { Cloud, Check, ArrowRight, Download, FileText, Wifi, WifiOff, Shield, HardDrive, Monitor, Globe, Zap, BarChart } from 'lucide-react';
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import {
+  Cloud, Check, ArrowRight, Download, FileText,
+  Wifi, WifiOff, Shield, HardDrive, Monitor,
+  Globe, Zap, BarChart, ChevronRight, X, RefreshCw,
+} from "lucide-react";
 
-import React from 'react'
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 32 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const, delay },
+  viewport: { once: true },
+});
 
 const HybridManager = () => {
   const features = [
-    {
-      icon: WifiOff,
-      title: "Offline-First Architecture",
-      description: "Full functionality without internet, with automatic cloud sync when connection is restored."
-    },
-    {
-      icon: Cloud,
-      title: "Cloud Backup & Sync",
-      description: "Real-time data synchronization with secure cloud backup and disaster recovery."
-    },
-    {
-      icon: Globe,
-      title: "Remote Access",
-      description: "Access your business data from anywhere with secure cloud connectivity."
-    },
-    {
-      icon: Zap,
-      title: "Hybrid Performance",
-      description: "Lightning-fast local operations combined with cloud-scale processing power."
-    },
-    {
-      icon: BarChart,
-      title: "Unified Analytics",
-      description: "Combine local and cloud data for comprehensive business intelligence."
-    },
-    {
-      icon: Shield,
-      title: "Dual Security",
-      description: "On-premise data protection plus enterprise-grade cloud security."
-    }
+    { icon: WifiOff, title: "Offline-First Architecture", description: "Full functionality without internet, with automatic cloud sync when connection is restored — zero data loss." },
+    { icon: Cloud, title: "Cloud Backup & Sync", description: "Real-time data synchronisation with secure cloud backup and disaster recovery built in." },
+    { icon: Globe, title: "Remote Access", description: "Access your business data from any device, anywhere, via a secure cloud portal." },
+    { icon: Zap, title: "Hybrid Performance", description: "Lightning-fast local operations for POS, combined with cloud-scale processing for analytics." },
+    { icon: BarChart, title: "Unified Analytics", description: "Combine local and cloud data into a single analytics layer for comprehensive business intelligence." },
+    { icon: Shield, title: "Dual Security", description: "On-premise data protection plus enterprise-grade cloud security — EFRIS compliant throughout." },
   ];
 
   const modules = [
     { name: "POS & Inventory", features: ["Offline transactions", "Real-time sync", "Multi-location support", "Cloud reporting"] },
-    { name: "Cloud Services", features: ["Remote access", "Automated backups", "Mobile apps", "Web dashboards"] },
+    { name: "Cloud Services", features: ["Remote access portal", "Automated backups", "Mobile apps", "Web dashboards"] },
     { name: "Integration Hub", features: ["API connectivity", "Third-party apps", "Webhook support", "Data export"] },
     { name: "Business Intelligence", features: ["Real-time analytics", "Custom reports", "KPI dashboards", "Trend analysis"] },
     { name: "Security & Compliance", features: ["Role-based access", "Audit trails", "EFRIS compliance", "Data encryption"] },
-    { name: "Team Management", features: ["User permissions", "Team collaboration", "Task automation", "Communication tools"] }
+    { name: "Team Management", features: ["User permissions", "Team collaboration", "Task automation", "Notification centre"] },
   ];
 
-  const workflow = [
-    { step: "01", title: "Choose Deployment", desc: "Select on-premise server or cloud-hosted option" },
-    { step: "02", title: "Setup & Configure", desc: "Install locally and connect to cloud services" },
-    { step: "03", title: "Data Migration", desc: "Import existing data with cloud backup" },
-    { step: "04", title: "Go Hybrid", desc: "Start operating with full offline/cloud capabilities" }
+  const plans = [
+    {
+      name: "Standard",
+      price: "UGX 350,000",
+      billing: "per month",
+      annual: "UGX 3,500,000 / year",
+      setup: "+ UGX 1,000,000 setup",
+      highlight: false,
+      cta: "Start Free Trial",
+      features: [
+        { label: "POS Terminals", value: "Up to 10" },
+        { label: "Locations", value: "Up to 3" },
+        { label: "Cloud Dashboard", value: "Basic" },
+        { label: "Cloud Sync", value: "Basic" },
+        { label: "Remote Access", value: true },
+        { label: "Custom Integrations", value: false },
+        { label: "White-Label", value: false },
+        { label: "Support", value: "Standard" },
+        { label: "EFRIS Compliance", value: true },
+      ],
+    },
+    {
+      name: "Professional",
+      price: "UGX 500,000",
+      billing: "per month",
+      annual: "UGX 5,000,000 / year",
+      setup: "+ UGX 1,000,000 setup",
+      highlight: true,
+      cta: "Start Free Trial",
+      features: [
+        { label: "POS Terminals", value: "Up to 50" },
+        { label: "Locations", value: "Up to 10" },
+        { label: "Cloud Dashboard", value: "Advanced" },
+        { label: "Cloud Sync", value: "Real-time" },
+        { label: "Remote Access", value: true },
+        { label: "Custom Integrations", value: true },
+        { label: "White-Label", value: false },
+        { label: "Support", value: "Priority" },
+        { label: "EFRIS Compliance", value: true },
+      ],
+    },
+    {
+      name: "Enterprise",
+      price: "Custom",
+      billing: "Contact for quote",
+      annual: "",
+      setup: "Custom infrastructure",
+      highlight: false,
+      cta: "Contact Sales",
+      features: [
+        { label: "POS Terminals", value: "Unlimited" },
+        { label: "Locations", value: "Unlimited" },
+        { label: "Cloud Dashboard", value: "Advanced" },
+        { label: "Cloud Sync", value: "Real-time" },
+        { label: "Remote Access", value: true },
+        { label: "Custom Integrations", value: true },
+        { label: "White-Label", value: true },
+        { label: "Support", value: "Dedicated 24/7" },
+        { label: "EFRIS Compliance", value: true },
+      ],
+    },
+  ];
+
+  const deploymentRows = [
+    { aspect: "Local POS Speed", onPrem: "Instant (LAN)", cloud: "~100ms" },
+    { aspect: "Works without Internet", onPrem: "✓ Full functionality", cloud: "✗ Limited" },
+    { aspect: "Remote Access", onPrem: "VPN required", cloud: "✓ Native" },
+    { aspect: "Maintenance", onPrem: "Your team", cloud: "Managed by Komusoft" },
+    { aspect: "Data Location", onPrem: "Your premises", cloud: "Komusoft cloud" },
+    { aspect: "Scalability", onPrem: "Hardware upgrade", cloud: "Instant scaling" },
+    { aspect: "EFRIS Compliance", onPrem: "✓", cloud: "✓" },
+    { aspect: "Best For", onPrem: "High-volume retail", cloud: "Multi-branch access" },
+  ];
+
+  const specRows = [
+    { label: "On-Premise CPU", value: "Intel Core i5 or equivalent" },
+    { label: "On-Premise RAM", value: "8 GB minimum, 16 GB recommended" },
+    { label: "On-Premise Storage", value: "100 GB+ (SSD recommended)" },
+    { label: "Operating System", value: "Windows 10/11, Windows Server 2016+, Ubuntu 20.04+" },
+    { label: "Network (Local)", value: "LAN 100 Mbps+" },
+    { label: "Internet for Cloud", value: "2 Mbps minimum, 10 Mbps recommended" },
+    { label: "Client Devices", value: "Windows, Linux, Web browsers, iOS & Android" },
+    { label: "Cloud Hosting", value: "Managed infrastructure — 99.9% uptime SLA" },
   ];
 
   return (
-    <div className="min-h-screen pt-20">
-      {/* Hero */}
-      <section className="relative py-32 overflow-hidden bg-linear-to-br from-green-50 via-white to-teal-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 rounded-full mb-6">
-                <Globe className="w-4 h-4 text-green-600" />
-                <span className="text-sm font-semibold text-green-600">Hybrid</span>
+    <div className="min-h-screen bg-white pt-20" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+
+      {/* ─── HERO ──────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden py-20 sm:py-28"
+        style={{ background: "linear-gradient(135deg,#0A0947 0%,#0d0f5e 45%,#0a2a6e 75%,#0c4a8a 100%)" }}>
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none opacity-20"
+          style={{ background: "radial-gradient(circle,#05ADEE 0%,transparent 65%)", transform: "translate(35%,-35%)" }} />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none opacity-10"
+          style={{ background: "radial-gradient(circle,#05ADEE 0%,transparent 70%)", transform: "translate(-40%,40%)" }} />
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
+          style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "52px 52px" }} />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] as const }}>
+              <div className="flex items-center gap-2 mb-6">
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest"
+                  style={{ background: "rgba(5,173,238,0.15)", border: "1px solid rgba(5,173,238,0.4)", color: "#05ADEE" }}>
+                  <RefreshCw className="w-3.5 h-3.5" /> Hybrid · On-Premise + Cloud
+                </span>
               </div>
 
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-                Hybrid Manager
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+                Hybrid<br />
+                <span style={{ background: "linear-gradient(90deg,#05ADEE,#38d2f5)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                  Manager
+                </span>
               </h1>
-              <p className="text-2xl text-green-600 font-semibold mb-6">
+              <p className="text-lg sm:text-xl font-semibold mb-5" style={{ color: "#05ADEE" }}>
                 Best of Both Worlds: On-Premise & Cloud
               </p>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-base sm:text-lg leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.62)" }}>
                 Experience the reliability of on-premise operations with the flexibility of cloud services.
-                Work offline when needed, sync automatically, and access data remotely when required.
+                Work offline when needed, sync automatically, and access data remotely — all in one platform.
               </p>
 
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-green-600 text-white rounded-xl hover:bg-green-700 hover:shadow-xl transition-all"
-                >
-                  Request Demo
-                  <ArrowRight className="w-5 h-5" />
+              <div className="flex flex-wrap gap-3">
+                <Link href="/contact"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl"
+                  style={{ background: "linear-gradient(135deg,#05ADEE,#0496d5)", boxShadow: "0 6px 24px rgba(5,173,238,0.3)" }}>
+                  Request Demo <ArrowRight className="w-4 h-4" />
                 </Link>
-                <button className="inline-flex items-center gap-2 px-8 py-4 bg-white border-2 border-gray-200 text-gray-900 rounded-xl hover:bg-gray-50 transition-all">
-                  <Download className="w-5 h-5" />
-                  Download Brochure
+                <button className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white text-sm transition-all hover:bg-white/15"
+                  style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)" }}>
+                  <Download className="w-4 h-4" /> Brochure
                 </button>
-                <Link
-                  href="/products/docs/hybrid-solution"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white border-2 border-gray-200 text-gray-900 rounded-xl hover:bg-gray-50 transition-all"
-                >
-                  <FileText className="w-5 h-5" />
-                  Documentation
+                <Link href="/products/docs/hybrid-solution"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white text-sm transition-all hover:bg-white/15"
+                  style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)" }}>
+                  <FileText className="w-4 h-4" /> Docs
                 </Link>
               </div>
-            </div>
 
-            <div className="relative">
-              <Image
-                src="/assets/hybrid-manager-dashboard.png"
-                alt="Hybrid Manager Dashboard"
-                className="rounded-3xl shadow-2xl"
-                width={540}
-                height={360}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Grid */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Hybrid Features
-            </h2>
-            <p className="text-xl text-gray-600">
-              Seamless integration of local and cloud capabilities
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="group p-8 bg-white rounded-3xl border border-gray-200 hover:border-green-600 hover:shadow-2xl transition-all duration-300"
-              >
-                <div className="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors">
-                  <feature.icon className="w-7 h-7 text-green-600 group-hover:text-white transition-colors" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              How It Works
-            </h2>
-            <p className="text-xl text-gray-600">
-              Deploy locally, connect globally in four steps
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            {workflow.map((item, index) => (
-              <div key={index} className="relative">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <span className="text-2xl font-bold text-white">{item.step}</span>
+              <div className="mt-8 flex flex-wrap gap-4">
+                {[["Offline + Cloud", "Seamless sync"], ["EFRIS Compliant", "URA approved"], ["Enterprise Ready", "Unlimited scale"]].map(([t, s], i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full" style={{ background: "#05ADEE" }} />
+                    <span className="text-xs text-white/60"><span className="text-white/85 font-medium">{t}</span> · {s}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-gray-600">{item.desc}</p>
-                </div>
-                {index < workflow.length - 1 && (
-                  <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-gray-200 -ml-4"></div>
-                )}
+                ))}
               </div>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.25, duration: 0.9, ease: [0.16, 1, 0.3, 1] as const }}
+              className="relative hidden lg:block">
+              <div className="rounded-2xl overflow-hidden shadow-2xl" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
+                <Image src="/assets/hybrid-manager-dashboard.png" alt="Hybrid Manager Dashboard"
+                  className="w-full object-cover" width={600} height={400} />
+              </div>
+              <div className="absolute -bottom-4 -right-4 rounded-2xl px-5 py-4 shadow-xl"
+                style={{ background: "white", border: "1px solid rgba(5,173,238,0.15)" }}>
+                <p className="text-xs text-gray-400 mb-0.5">Syncs automatically</p>
+                <p className="text-sm font-bold" style={{ color: "#0A0947" }}>Offline → Cloud</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-0 left-0 right-0 pointer-events-none overflow-hidden">
+          <svg viewBox="0 0 1440 60" fill="none"><path d="M0 60L1440 60L1440 22C1200 60 900 4 720 22C540 40 240 4 0 22L0 60Z" fill="white" /></svg>
+        </div>
+      </section>
+
+      {/* ─── FEATURES ──────────────────────────────────────────── */}
+      <section className="py-16 sm:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div className="mb-12" {...fadeUp()}>
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-2" style={{ color: "#05ADEE" }}>Hybrid Features</p>
+            <h2 className="text-3xl sm:text-4xl font-bold" style={{ color: "#0A0947" }}>Offline Resilience. Cloud Power.</h2>
+          </motion.div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7">
+            {features.map((f, i) => (
+              <motion.div key={i} {...fadeUp(i * 0.06)} whileHover={{ y: -5 }}
+                className="group rounded-2xl p-6 sm:p-7 cursor-default transition-all duration-300"
+                style={{ border: "1px solid #e8edf2" }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(5,173,238,0.35)"; e.currentTarget.style.boxShadow = "0 12px 40px rgba(5,173,238,0.1)"; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = "#e8edf2"; e.currentTarget.style.boxShadow = "none"; }}>
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110"
+                  style={{ background: "rgba(5,173,238,0.1)" }}>
+                  <f.icon className="w-5 h-5" style={{ color: "#05ADEE" }} />
+                </div>
+                <h3 className="font-bold text-base mb-2" style={{ color: "#0A0947" }}>{f.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{f.description}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Modules */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Hybrid Modules
-            </h2>
-            <p className="text-xl text-gray-600">
-              Complete business management across local and cloud environments
-            </p>
-          </div>
+      {/* ─── ON-PREM vs CLOUD COMPARISON ───────────────────────── */}
+      <section className="py-16 sm:py-24" style={{ background: "linear-gradient(135deg,#f0f9ff 0%,#e8f4fd 50%,#f0faff 100%)" }}>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div className="mb-10" {...fadeUp()}>
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-2" style={{ color: "#05ADEE" }}>Deployment</p>
+            <h2 className="text-3xl sm:text-4xl font-bold" style={{ color: "#0A0947" }}>On-Premise vs Cloud — Side by Side</h2>
+            <p className="text-gray-500 mt-2">Hybrid Manager gives you both. This table shows where each mode excels.</p>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {modules.map((module, index) => (
-              <div
-                key={index}
-                className="p-6 bg-white rounded-2xl border border-gray-200 hover:shadow-xl transition-all"
-              >
-                <h3 className="text-lg font-bold text-gray-900 mb-4">{module.name}</h3>
+          <motion.div {...fadeUp(0.1)} className="overflow-x-auto rounded-2xl shadow-sm"
+            style={{ border: "1px solid rgba(5,173,238,0.12)" }}>
+            <table className="w-full min-w-[520px]">
+              <thead>
+                <tr style={{ background: "#0A0947" }}>
+                  <th className="text-left px-6 py-4 text-sm font-semibold" style={{ color: "rgba(255,255,255,0.5)" }}>Aspect</th>
+                  <th className="px-6 py-4 text-sm font-semibold text-white text-center">
+                    <span className="flex items-center justify-center gap-2"><HardDrive className="w-4 h-4" style={{ color: "#05ADEE" }} /> On-Premise</span>
+                  </th>
+                  <th className="px-6 py-4 text-sm font-semibold text-white text-center"
+                    style={{ borderLeft: "1px solid rgba(5,173,238,0.2)", background: "rgba(5,173,238,0.06)" }}>
+                    <span className="flex items-center justify-center gap-2"><Cloud className="w-4 h-4" style={{ color: "#05ADEE" }} /> Cloud</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {deploymentRows.map((row, i) => (
+                  <tr key={i} style={{ background: i % 2 === 0 ? "white" : "#f8fafc" }}>
+                    <td className="px-6 py-3.5 text-sm font-medium text-gray-500">{row.aspect}</td>
+                    <td className="px-6 py-3.5 text-sm font-semibold text-center" style={{ color: "#0A0947" }}>{row.onPrem}</td>
+                    <td className="px-6 py-3.5 text-sm font-semibold text-center"
+                      style={{ color: "#0A0947", borderLeft: "1px solid rgba(5,173,238,0.1)", background: i % 2 === 0 ? "rgba(5,173,238,0.02)" : "rgba(5,173,238,0.04)" }}>
+                      {row.cloud}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ─── HOW IT WORKS ──────────────────────────────────────── */}
+      <section className="py-16 sm:py-24 relative overflow-hidden"
+        style={{ background: "linear-gradient(135deg,#0A0947 0%,#0d1168 60%,#0a3070 100%)" }}>
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%,rgba(5,173,238,0.07) 0%,transparent 70%)" }} />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div className="text-center mb-12" {...fadeUp()}>
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-2" style={{ color: "#05ADEE" }}>Deployment</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white">Deploy Locally, Connect Globally</h2>
+          </motion.div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+            <div className="absolute top-[2.75rem] left-[12%] right-[12%] h-px hidden lg:block"
+              style={{ background: "linear-gradient(90deg,transparent,rgba(5,173,238,0.5),rgba(5,173,238,0.5),transparent)" }} />
+            {[
+              { step: "01", title: "Choose Deployment", desc: "On-premise server or cloud-hosted — or both" },
+              { step: "02", title: "Install & Configure", desc: "Set up locally and connect cloud services" },
+              { step: "03", title: "Data Migration", desc: "Import existing data with cloud backup" },
+              { step: "04", title: "Go Hybrid", desc: "Full offline/cloud capabilities from day one" },
+            ].map((item, i) => (
+              <motion.div key={i} {...fadeUp(i * 0.1)} className="text-center group">
+                <div className="rounded-full flex items-center justify-center mx-auto mb-5 relative z-10 transition-all duration-300 group-hover:scale-110"
+                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(5,173,238,0.35)", width: 80, height: 80 }}>
+                  <span className="text-xl font-bold" style={{ color: "#05ADEE" }}>{item.step}</span>
+                </div>
+                <h3 className="font-bold text-white mb-1.5">{item.title}</h3>
+                <p className="text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── MODULES ───────────────────────────────────────────── */}
+      <section className="py-16 sm:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div className="mb-12" {...fadeUp()}>
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-2" style={{ color: "#05ADEE" }}>Modules</p>
+            <h2 className="text-3xl sm:text-4xl font-bold" style={{ color: "#0A0947" }}>Complete Hybrid Modules</h2>
+            <p className="text-gray-500 mt-3">All modules work offline and online — seamlessly.</p>
+          </motion.div>
+          <motion.div {...fadeUp(0.1)} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {modules.map((mod, i) => (
+              <div key={i} className="rounded-2xl p-6 transition-all duration-200 hover:shadow-lg"
+                style={{ background: "#f8fafc", border: "1px solid rgba(5,173,238,0.08)" }}>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-2 h-2 rounded-full shrink-0" style={{ background: "#05ADEE" }} />
+                  <h3 className="font-bold" style={{ color: "#0A0947" }}>{mod.name}</h3>
+                </div>
                 <ul className="space-y-2">
-                  {module.features.map((feature, fIndex) => (
-                    <li key={fIndex} className="flex items-center gap-2 text-sm text-gray-600">
-                      <Check className="w-4 h-4 text-green-600 shrink-0" />
-                      {feature}
+                  {mod.features.map((feat, fi) => (
+                    <li key={fi} className="flex items-start gap-2 text-sm text-gray-500">
+                      <ChevronRight className="w-3.5 h-3.5 mt-0.5 shrink-0" style={{ color: "#05ADEE" }} /> {feat}
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Pricing */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Pricing Plans
-            </h2>
-            <p className="text-xl text-gray-600">
-              Enterprise-grade hybrid solutions with flexible deployment
-            </p>
+      {/* ─── PRICING TABLE ─────────────────────────────────────── */}
+      <section className="py-16 sm:py-24" style={{ background: "linear-gradient(135deg,#f0f9ff 0%,#e8f4fd 50%,#f0faff 100%)" }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div className="text-center mb-12" {...fadeUp()}>
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-2" style={{ color: "#05ADEE" }}>Pricing</p>
+            <h2 className="text-3xl sm:text-4xl font-bold" style={{ color: "#0A0947" }}>Enterprise Hybrid Pricing</h2>
+            <p className="text-gray-500 mt-3">Monthly subscription + one-time setup fee.</p>
+          </motion.div>
+
+          {/* Mobile cards */}
+          <div className="flex flex-col gap-6 lg:hidden">
+            {plans.map((plan, pi) => (
+              <motion.div key={pi} {...fadeUp(pi * 0.08)} className="rounded-2xl p-6 relative"
+                style={{
+                  background: plan.highlight ? "linear-gradient(135deg,#0A0947,#0d1575)" : "white",
+                  border: plan.highlight ? "none" : "1px solid rgba(5,173,238,0.15)",
+                  boxShadow: plan.highlight ? "0 20px 60px rgba(5,173,238,0.2)" : undefined,
+                }}>
+                {plan.highlight && <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold" style={{ background: "#05ADEE", color: "white" }}>Most Popular</div>}
+                <h3 className="text-xl font-bold mb-1" style={{ color: plan.highlight ? "white" : "#0A0947" }}>{plan.name}</h3>
+                <div className="text-3xl font-bold mb-0.5" style={{ color: "#05ADEE" }}>{plan.price}</div>
+                <p className="text-xs mb-0.5" style={{ color: plan.highlight ? "rgba(255,255,255,0.5)" : "#9ca3af" }}>{plan.billing}</p>
+                {plan.annual && <p className="text-xs" style={{ color: plan.highlight ? "rgba(255,255,255,0.4)" : "#9ca3af" }}>{plan.annual}</p>}
+                <p className="text-xs mb-5" style={{ color: plan.highlight ? "rgba(255,255,255,0.35)" : "#9ca3af" }}>{plan.setup}</p>
+                <ul className="space-y-2.5 mb-6">
+                  {plan.features.map((f, fi) => (
+                    <li key={fi} className="flex items-center justify-between text-sm gap-3">
+                      <span style={{ color: plan.highlight ? "rgba(255,255,255,0.6)" : "#6b7280" }}>{f.label}</span>
+                      {typeof f.value === "boolean"
+                        ? f.value ? <Check className="w-4 h-4 shrink-0" style={{ color: "#05ADEE" }} /> : <X className="w-4 h-4 shrink-0 text-gray-300" />
+                        : <span className="font-semibold text-right" style={{ color: plan.highlight ? "white" : "#0A0947" }}>{f.value}</span>}
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/contact" className="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-sm transition-all"
+                  style={plan.highlight
+                    ? { background: "linear-gradient(135deg,#05ADEE,#0496d5)", color: "white", boxShadow: "0 6px 20px rgba(5,173,238,0.35)" }
+                    : { background: "rgba(5,173,238,0.08)", color: "#0A0947" }}>
+                  {plan.cta} <ArrowRight className="w-4 h-4" />
+                </Link>
+              </motion.div>
+            ))}
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white rounded-3xl border-2 border-gray-200 p-8 hover:border-[#05ADEE] hover:shadow-xl transition-all">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Standard</h3>
-                <p className="text-gray-600 mb-4">For medium businesses</p>
-                <div className="text-4xl font-bold text-[#05ADEE] mb-2">UGX 350,000</div>
-                <div className="text-gray-600 text-sm">per month</div>
-                <div className="text-gray-600 text-sm mt-2">UGX 3,500,000 annually</div>
-                <div className="text-gray-600 text-sm mt-2">+ UGX 1,000,000 setup</div>
-              </div>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Up to 10 POS terminals</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Cloud dashboard</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Basic synchronization</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Standard support</span>
-                </li>
-              </ul>
-              <Link
-                href="/contact"
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-gray-100 text-gray-900 rounded-xl hover:bg-gray-200 transition-all font-semibold"
-              >
-                Start Free Trial
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </div>
+          {/* Desktop table */}
+          <motion.div {...fadeUp(0.1)} className="hidden lg:block rounded-3xl overflow-hidden shadow-xl"
+            style={{ border: "1px solid rgba(5,173,238,0.12)" }}>
+            <table className="w-full">
+              <thead>
+                <tr style={{ background: "#0A0947" }}>
+                  <th className="text-left px-7 py-5 text-sm font-semibold" style={{ color: "rgba(255,255,255,0.5)", width: "28%" }}>Feature</th>
+                  {plans.map((plan, pi) => (
+                    <th key={pi} className="px-6 py-5 text-center relative" style={{ width: "24%" }}>
+                      {plan.highlight && <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: "#05ADEE" }} />}
+                      <div className="text-white font-bold text-base">{plan.name}</div>
+                      <div className="text-2xl font-bold mt-1" style={{ color: "#05ADEE" }}>{plan.price}</div>
+                      <div className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.4)" }}>{plan.billing}</div>
+                      {plan.annual && <div className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>{plan.annual}</div>}
+                      <div className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>{plan.setup}</div>
+                      {plan.highlight && <div className="mt-2 inline-block px-3 py-0.5 rounded-full text-xs font-bold" style={{ background: "rgba(5,173,238,0.2)", color: "#05ADEE" }}>Most Popular</div>}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {plans[0].features.map((feat, fi) => (
+                  <tr key={fi} style={{ background: fi % 2 === 0 ? "white" : "#f8fafc" }}>
+                    <td className="px-7 py-4 text-sm font-medium text-gray-600">{feat.label}</td>
+                    {plans.map((plan, pi) => {
+                      const cell = plan.features[fi];
+                      return (
+                        <td key={pi} className="px-6 py-4 text-center text-sm"
+                          style={{ borderLeft: pi === 1 ? "1px solid rgba(5,173,238,0.12)" : undefined, background: pi === 1 ? "rgba(5,173,238,0.02)" : undefined }}>
+                          {typeof cell.value === "boolean"
+                            ? cell.value ? <Check className="w-5 h-5 mx-auto" style={{ color: "#05ADEE" }} /> : <X className="w-5 h-5 mx-auto text-gray-200" />
+                            : <span className="font-semibold" style={{ color: "#0A0947" }}>{cell.value}</span>}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+                <tr style={{ background: "#f8fafc" }}>
+                  <td className="px-7 py-5" />
+                  {plans.map((plan, pi) => (
+                    <td key={pi} className="px-6 py-5 text-center"
+                      style={{ borderLeft: pi === 1 ? "1px solid rgba(5,173,238,0.12)" : undefined, background: pi === 1 ? "rgba(5,173,238,0.02)" : undefined }}>
+                      <Link href="/contact" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all hover:-translate-y-0.5"
+                        style={plan.highlight
+                          ? { background: "linear-gradient(135deg,#05ADEE,#0496d5)", color: "white", boxShadow: "0 4px 16px rgba(5,173,238,0.3)" }
+                          : { background: "rgba(5,173,238,0.08)", color: "#0A0947" }}>
+                        {plan.cta} <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          </motion.div>
 
-            <div className="bg-white rounded-3xl border-2 border-[#05ADEE] shadow-xl p-8 relative">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#05ADEE] text-white px-4 py-2 rounded-full text-sm font-semibold">
-                Most Popular
-              </div>
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Professional</h3>
-                <p className="text-gray-600 mb-4">For enterprise operations</p>
-                <div className="text-4xl font-bold text-[#05ADEE] mb-2">UGX 500,000</div>
-                <div className="text-gray-600 text-sm">per month</div>
-                <div className="text-gray-600 text-sm mt-2">UGX 5,000,000 annually</div>
-                <div className="text-gray-600 text-sm mt-2">+ UGX 1,000,000 setup</div>
-              </div>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Up to 50 POS terminals</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Advanced cloud dashboard</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Real-time synchronization</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Multi-location support</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Priority support</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Custom integrations</span>
-                </li>
-              </ul>
-              <Link
-                href="/contact"
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#05ADEE] text-white rounded-xl hover:bg-[#0496d5] transition-all font-semibold"
-              >
-                Start Free Trial
-                <ArrowRight className="w-5 h-5" />
-              </Link>
+          <motion.div {...fadeUp(0.15)} className="mt-8 rounded-2xl p-5 sm:p-6" style={{ background: "white", border: "1px solid rgba(5,173,238,0.12)" }}>
+            <p className="text-sm font-bold mb-3" style={{ color: "#0A0947" }}>Included in every plan:</p>
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              {["14-day free trial", "Automated backups", "Data encryption", "SLA guarantee", "EFRIS compliance"].map((item, i) => (
+                <span key={i} className="flex items-center gap-2 text-sm text-gray-500">
+                  <Check className="w-4 h-4" style={{ color: "#05ADEE" }} /> {item}
+                </span>
+              ))}
             </div>
-
-            <div className="bg-white rounded-3xl border-2 border-gray-200 p-8 hover:border-[#05ADEE] hover:shadow-xl transition-all">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
-                <p className="text-gray-600 mb-4">For large-scale deployments</p>
-                <div className="text-4xl font-bold text-[#05ADEE] mb-2">Custom Pricing</div>
-                <div className="text-gray-600 text-sm">Contact for enterprise quote</div>
-              </div>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Unlimited POS terminals</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Custom cloud infrastructure</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Advanced synchronization</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Dedicated infrastructure</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">24/7 dedicated support</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">White-label options</span>
-                </li>
-              </ul>
-              <Link
-                href="/contact"
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-gray-100 text-gray-900 rounded-xl hover:bg-gray-200 transition-all font-semibold"
-              >
-                Contact Enterprise Sales
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </div>
-          </div>
-
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-4">All plans include:</p>
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600">
-              <span className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-green-500" />
-                14-day free trial
-              </span>
-              <span className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-green-500" />
-                Automated backups
-              </span>
-              <span className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-green-500" />
-                Data encryption
-              </span>
-              <span className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-green-500" />
-                SLA guarantee
-              </span>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* System Requirements */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Deployment Options
-            </h2>
-          </div>
+      {/* ─── SYSTEM REQUIREMENTS ───────────────────────────────── */}
+      <section className="py-16 sm:py-24 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div className="mb-10" {...fadeUp()}>
+            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-2" style={{ color: "#05ADEE" }}>Technical</p>
+            <h2 className="text-3xl sm:text-4xl font-bold" style={{ color: "#0A0947" }}>Deployment Requirements</h2>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 bg-white rounded-2xl border border-gray-200">
-              <HardDrive className="w-8 h-8 text-green-600 mb-4" />
-              <h3 className="font-bold text-gray-900 mb-3">On-Premise Server</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li>Intel Core i5 or equivalent</li>
-                <li>8GB RAM minimum</li>
-                <li>100GB+ storage</li>
-              </ul>
-            </div>
-
-            <div className="p-6 bg-white rounded-2xl border border-gray-200">
-              <Cloud className="w-8 h-8 text-green-600 mb-4" />
-              <h3 className="font-bold text-gray-900 mb-3">Cloud Hosting</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li>Managed infrastructure</li>
-                <li>Automatic scaling</li>
-                <li>99.9% uptime SLA</li>
-              </ul>
-            </div>
-
-            <div className="p-6 bg-white rounded-2xl border border-gray-200">
-              <Monitor className="w-8 h-8 text-green-600 mb-4" />
-              <h3 className="font-bold text-gray-900 mb-3">Client Devices</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li>Windows/Linux clients</li>
-                <li>Web browsers</li>
-                <li>Mobile devices</li>
-              </ul>
-            </div>
-
-            <div className="p-6 bg-white rounded-2xl border border-gray-200">
-              <Wifi className="w-8 h-8 text-green-600 mb-4" />
-              <h3 className="font-bold text-gray-900 mb-3">Connectivity</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li>LAN for local operations</li>
-                <li>Internet for cloud sync</li>
-                <li>Offline mode support</li>
-              </ul>
-            </div>
-          </div>
+          <motion.div {...fadeUp(0.1)} className="overflow-x-auto rounded-2xl shadow-sm" style={{ border: "1px solid rgba(5,173,238,0.12)" }}>
+            <table className="w-full min-w-[440px]">
+              <thead>
+                <tr style={{ background: "#0A0947" }}>
+                  <th className="text-left px-6 py-4 text-sm font-semibold" style={{ color: "rgba(255,255,255,0.5)", width: "35%" }}>Specification</th>
+                  <th className="text-left px-6 py-4 text-sm font-semibold text-white">Requirement</th>
+                </tr>
+              </thead>
+              <tbody>
+                {specRows.map((row, i) => (
+                  <tr key={i} style={{ background: i % 2 === 0 ? "white" : "#f8fafc" }}>
+                    <td className="px-6 py-3.5 text-sm font-medium text-gray-500">{row.label}</td>
+                    <td className="px-6 py-3.5 text-sm font-semibold" style={{ color: "#0A0947" }}>{row.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </motion.div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-white">
+      {/* ─── CTA ───────────────────────────────────────────────── */}
+      <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-[#0A0947] p-12 md:p-16">
-            <div className="absolute inset-0 opacity-20">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-green-600 rounded-full blur-3xl"></div>
-            </div>
-
-            <div className="relative z-10 max-w-3xl mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Ready for Hybrid Business Management?
+          <motion.div {...fadeUp()} className="relative overflow-hidden rounded-[2rem] p-10 sm:p-16 text-center"
+            style={{ background: "linear-gradient(135deg,#0A0947 0%,#0d1168 55%,#0a3070 100%)" }}>
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none opacity-20"
+              style={{ background: "radial-gradient(circle,#05ADEE 0%,transparent 65%)", transform: "translate(30%,-40%)" }} />
+            <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
+              style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
+            <div className="relative z-10 max-w-2xl mx-auto">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+                Ready for <span style={{ background: "linear-gradient(90deg,#05ADEE,#38d2f5)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Hybrid Business Management?</span>
               </h2>
-              <p className="text-xl text-gray-300 mb-8">
-                Get the best of both worlds with our hybrid solution
+              <p className="text-base sm:text-lg mb-8" style={{ color: "rgba(255,255,255,0.55)" }}>
+                Get the resilience of on-premise with the power of cloud — in one unified platform.
               </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-green-600 text-white rounded-xl hover:bg-green-700 hover:shadow-2xl hover:shadow-green-600/50 transition-all"
-              >
-                Request Demo
-                <ArrowRight className="w-5 h-5" />
+              <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-semibold text-white transition-all hover:-translate-y-1 hover:shadow-2xl"
+                style={{ background: "linear-gradient(135deg,#05ADEE,#0496d5)", boxShadow: "0 8px 28px rgba(5,173,238,0.3)" }}>
+                Request a Demo <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>
   );
-}
+};
 
-export default HybridManager
+export default HybridManager;

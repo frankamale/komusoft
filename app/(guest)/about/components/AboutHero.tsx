@@ -95,9 +95,9 @@ const AboutHero = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
           >
             {[
-              { value: "12+", label: "Years" },
-              { value: "50+", label: "Projects" },
-              { value: "8+", label: "Industries" },
+              { value: "15+", label: "Years" },
+              { value: "99+", label: "Projects" },
+              { value: "10+", label: "Industries" },
               { value: "3+", label: "Countries" },
             ].map((s, i) => (
               <div
