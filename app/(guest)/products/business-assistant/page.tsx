@@ -113,93 +113,116 @@ const BusinessAssistant = () => {
   return (
     <div className="min-h-screen bg-white pt-20" style={{ fontFamily: "'DM Sans', sans-serif" }}>
 
-      {/* ─── HERO ──────────────────────────────────────────────── */}
-      <section
-        className="relative overflow-hidden py-20 sm:py-28"
-        style={{ background: "linear-gradient(135deg,#0A0947 0%,#0d0f5e 45%,#0a2a6e 75%,#0c4a8a 100%)" }}
-      >
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none opacity-20"
-          style={{ background: "radial-gradient(circle,#05ADEE 0%,transparent 65%)", transform: "translate(35%,-35%)" }} />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none opacity-10"
-          style={{ background: "radial-gradient(circle,#05ADEE 0%,transparent 70%)", transform: "translate(-40%,40%)" }} />
-        <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
-          style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "52px 52px" }} />
+      {/* ─── PRODUCT OVERVIEW ─────────────────────────────────── */}
+      <section className="py-16 sm:py-20 bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] as const }}>
-              <div className="flex items-center gap-2 mb-6">
-                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest"
-                  style={{ background: "rgba(5,173,238,0.15)", border: "1px solid rgba(5,173,238,0.4)", color: "#05ADEE" }}>
-                  <Cloud className="w-3.5 h-3.5" /> SaaS · Cloud
-                </span>
+          <motion.div
+            {...fadeUp()}
+            className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10"
+          >
+            {/* Left */}
+            <div className="max-w-3xl">
+              <div
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-5"
+                style={{
+                  background: "rgba(5,173,238,0.08)",
+                  border: "1px solid rgba(5,173,238,0.15)",
+                  color: "#05ADEE",
+                }}
+              >
+                <Cloud className="w-3.5 h-3.5" />
+                SaaS Platform
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
-                Business<br />
-                <span style={{ background: "linear-gradient(90deg,#05ADEE,#38d2f5)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                  Assistant
-                </span>
+              <h1
+                className="text-4xl sm:text-5xl font-bold leading-tight mb-5"
+                style={{ color: "#0A0947" }}
+              >
+                Business Assistant
               </h1>
-              <p className="text-lg sm:text-xl font-semibold mb-5" style={{ color: "#05ADEE" }}>
-                Cloud Business Operations Platform
+
+              <p className="text-lg text-gray-500 leading-relaxed max-w-2xl">
+                A cloud-based business operations platform that combines analytics,
+                collaboration, CRM, workflow automation, and integrations into one
+                modern system accessible from anywhere.
               </p>
-              <p className="text-base sm:text-lg leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.62)" }}>
-                A comprehensive cloud platform for modern businesses. Access your operations from anywhere,
-                collaborate in real time, and gain powerful analytics without any infrastructure overhead.
-              </p>
+            </div>
 
-              <div className="flex flex-wrap gap-3">
-                <Link href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl"
-                  style={{ background: "linear-gradient(135deg,#05ADEE,#0496d5)", boxShadow: "0 6px 24px rgba(5,173,238,0.3)" }}>
-                  Start Free Trial <ArrowRight className="w-4 h-4" />
-                </Link>
-                <button className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white text-sm transition-all hover:bg-white/15"
-                  style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)" }}>
-                  <Download className="w-4 h-4" /> Brochure
-                </button>
-                <Link href="/products/docs/business-assistant"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white text-sm transition-all hover:bg-white/15"
-                  style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)" }}>
-                  <FileText className="w-4 h-4" /> Docs
-                </Link>
-              </div>
+            {/* Right */}
+            <div className="grid grid-cols-2 gap-4 min-w-[300px]">
+              {[
+                ["Cloud Based", "Accessible anywhere"],
+                ["99.9% SLA", "Reliable infrastructure"],
+                ["Automation", "Reduce manual work"],
+                ["API Ready", "Integrate with systems"],
+              ].map(([title, desc], i) => (
+                <div
+                  key={i}
+                  className="rounded-2xl p-5"
+                  style={{
+                    background: "#f8fafc",
+                    border: "1px solid rgba(5,173,238,0.1)",
+                  }}
+                >
+                  <p
+                    className="font-semibold text-sm mb-1"
+                    style={{ color: "#0A0947" }}
+                  >
+                    {title}
+                  </p>
 
-              <div className="mt-8 flex flex-wrap gap-4">
-                {[["14-day Free Trial", "No credit card"], ["99.9% Uptime", "SLA backed"], ["Mobile Ready", "iOS & Android"]].map(([t, s], i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full" style={{ background: "#05ADEE" }} />
-                    <span className="text-xs text-white/60"><span className="text-white/85 font-medium">{t}</span> · {s}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+                  <p className="text-xs text-gray-500">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.25, duration: 0.9, ease: [0.16, 1, 0.3, 1] as const }}
-              className="relative hidden lg:block">
-              <div className="rounded-2xl overflow-hidden shadow-2xl" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
-                <Image src="/assets/business-assistant-dashboard.png" alt="Business Assistant Dashboard"
-                  className="w-full object-cover" width={600} height={400} />
-              </div>
-              <div className="absolute -bottom-4 -right-4 rounded-2xl px-5 py-4 shadow-xl"
-                style={{ background: "white", border: "1px solid rgba(5,173,238,0.15)" }}>
-                <p className="text-xs text-gray-400 mb-0.5">Access from</p>
-                <p className="text-sm font-bold" style={{ color: "#0A0947" }}>Any device, anywhere</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
+          {/* CTA */}
+          <motion.div
+            {...fadeUp(0.1)}
+            className="mt-10 flex flex-wrap gap-4"
+          >
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white transition-all hover:-translate-y-0.5"
+              style={{
+                background: "linear-gradient(135deg,#05ADEE,#0496d5)",
+                boxShadow: "0 6px 24px rgba(5,173,238,0.2)",
+              }}
+            >
+              Start Free Trial <ArrowRight className="w-4 h-4" />
+            </Link>
 
-        <div className="absolute bottom-0 left-0 right-0 pointer-events-none overflow-hidden">
-          <svg viewBox="0 0 1440 60" fill="none"><path d="M0 60L1440 60L1440 22C1200 60 900 4 720 22C540 40 240 4 0 22L0 60Z" fill="white" /></svg>
+            <button
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm"
+              style={{
+                background: "#f8fafc",
+                border: "1px solid rgba(5,173,238,0.1)",
+                color: "#0A0947",
+              }}
+            >
+              <Download className="w-4 h-4" />
+              Download Brochure
+            </button>
+
+            <Link
+              href="/products/docs/business-assistant"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm"
+              style={{
+                background: "#f8fafc",
+                border: "1px solid rgba(5,173,238,0.1)",
+                color: "#0A0947",
+              }}
+            >
+              <FileText className="w-4 h-4" />
+              Documentation
+            </Link>
+          </motion.div>
         </div>
       </section>
 
-      {/* ─── FEATURES ──────────────────────────────────────────── */}
-      <section className="py-16 sm:py-24 bg-white">
+      <section className="py-16 sm:py-24 bg-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="mb-12" {...fadeUp()}>
             <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-2" style={{ color: "#05ADEE" }}>Core Features</p>
@@ -224,39 +247,6 @@ const BusinessAssistant = () => {
         </div>
       </section>
 
-      {/* ─── ONBOARDING STEPS ──────────────────────────────────── */}
-      <section className="py-16 sm:py-24 relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg,#0A0947 0%,#0d1168 60%,#0a3070 100%)" }}>
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%,rgba(5,173,238,0.07) 0%,transparent 70%)" }} />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div className="text-center mb-12" {...fadeUp()}>
-            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-2" style={{ color: "#05ADEE" }}>Onboarding</p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">Live in 4 Simple Steps</h2>
-          </motion.div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-            <div className="absolute top-[2.75rem] left-[12%] right-[12%] h-px hidden lg:block"
-              style={{ background: "linear-gradient(90deg,transparent,rgba(5,173,238,0.5),rgba(5,173,238,0.5),transparent)" }} />
-            {[
-              { step: "01", title: "Sign Up", desc: "Create your account and choose a plan" },
-              { step: "02", title: "Setup", desc: "Configure business settings and invite users" },
-              { step: "03", title: "Migrate", desc: "Import existing data with guided migration tools" },
-              { step: "04", title: "Go Live", desc: "Start operating on the cloud immediately" },
-            ].map((item, i) => (
-              <motion.div key={i} {...fadeUp(i * 0.1)} className="text-center group">
-                <div className="rounded-full flex items-center justify-center mx-auto mb-5 relative z-10 transition-all duration-300 group-hover:scale-110"
-                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(5,173,238,0.35)", width: 80, height: 80 }}>
-                  <span className="text-xl font-bold" style={{ color: "#05ADEE" }}>{item.step}</span>
-                </div>
-                <h3 className="font-bold text-white mb-1.5">{item.title}</h3>
-                <p className="text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── MODULES ───────────────────────────────────────────── */}
       <section className="py-16 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="mb-12" {...fadeUp()}>

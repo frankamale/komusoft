@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Cloud, Check, ArrowRight, Download, FileText,
-  Wifi, WifiOff, Shield, HardDrive, Monitor,
+  WifiOff, Shield, HardDrive,
   Globe, Zap, BarChart, ChevronRight, X, RefreshCw,
 } from "lucide-react";
 
@@ -113,96 +112,121 @@ const HybridManager = () => {
     { label: "On-Premise CPU", value: "Intel Core i5 or equivalent" },
     { label: "On-Premise RAM", value: "8 GB minimum, 16 GB recommended" },
     { label: "On-Premise Storage", value: "100 GB+ (SSD recommended)" },
-    { label: "Operating System", value: "Windows 10/11, Windows Server 2016+, Ubuntu 20.04+" },
+    { label: "Operating System", value: "Windows 10/11, Windows Server 2016+" },
     { label: "Network (Local)", value: "LAN 100 Mbps+" },
     { label: "Internet for Cloud", value: "2 Mbps minimum, 10 Mbps recommended" },
-    { label: "Client Devices", value: "Windows, Linux, Web browsers, iOS & Android" },
+    { label: "Client Devices", value: "Windows,  Web browsers, iOS & Android" },
     { label: "Cloud Hosting", value: "Managed infrastructure — 99.9% uptime SLA" },
   ];
 
   return (
     <div className="min-h-screen bg-white pt-20" style={{ fontFamily: "'DM Sans', sans-serif" }}>
 
-      {/* ─── HERO ──────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden py-20 sm:py-28"
-        style={{ background: "linear-gradient(135deg,#0A0947 0%,#0d0f5e 45%,#0a2a6e 75%,#0c4a8a 100%)" }}>
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none opacity-20"
-          style={{ background: "radial-gradient(circle,#05ADEE 0%,transparent 65%)", transform: "translate(35%,-35%)" }} />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none opacity-10"
-          style={{ background: "radial-gradient(circle,#05ADEE 0%,transparent 70%)", transform: "translate(-40%,40%)" }} />
-        <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
-          style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "52px 52px" }} />
+      {/* ─── PRODUCT OVERVIEW ─────────────────────────────────── */}
+      <section className="py-16 sm:py-20 bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] as const }}>
-              <div className="flex items-center gap-2 mb-6">
-                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest"
-                  style={{ background: "rgba(5,173,238,0.15)", border: "1px solid rgba(5,173,238,0.4)", color: "#05ADEE" }}>
-                  <RefreshCw className="w-3.5 h-3.5" /> Hybrid · On-Premise + Cloud
-                </span>
+          <motion.div
+            {...fadeUp()}
+            className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10"
+          >
+            {/* Left */}
+            <div className="max-w-3xl">
+              <div
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-5"
+                style={{
+                  background: "rgba(5,173,238,0.08)",
+                  border: "1px solid rgba(5,173,238,0.15)",
+                  color: "#05ADEE",
+                }}
+              >
+                <RefreshCw className="w-3.5 h-3.5" />
+                Hybrid · On-Premise + Cloud
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
-                Hybrid<br />
-                <span style={{ background: "linear-gradient(90deg,#05ADEE,#38d2f5)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                  Manager
-                </span>
+              <h1
+                className="text-4xl sm:text-5xl font-bold leading-tight mb-5"
+                style={{ color: "#0A0947" }}
+              >
+                Hybrid Manager
               </h1>
-              <p className="text-lg sm:text-xl font-semibold mb-5" style={{ color: "#05ADEE" }}>
-                Best of Both Worlds: On-Premise & Cloud
-              </p>
-              <p className="text-base sm:text-lg leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.62)" }}>
+
+              <p className="text-lg text-gray-500 leading-relaxed max-w-2xl">
                 Experience the reliability of on-premise operations with the flexibility of cloud services.
                 Work offline when needed, sync automatically, and access data remotely — all in one platform.
               </p>
+            </div>
 
-              <div className="flex flex-wrap gap-3">
-                <Link href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white text-sm transition-all hover:-translate-y-0.5 hover:shadow-xl"
-                  style={{ background: "linear-gradient(135deg,#05ADEE,#0496d5)", boxShadow: "0 6px 24px rgba(5,173,238,0.3)" }}>
-                  Request Demo <ArrowRight className="w-4 h-4" />
-                </Link>
-                <button className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white text-sm transition-all hover:bg-white/15"
-                  style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)" }}>
-                  <Download className="w-4 h-4" /> Brochure
-                </button>
-                <Link href="/products/docs/hybrid-solution"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white text-sm transition-all hover:bg-white/15"
-                  style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)" }}>
-                  <FileText className="w-4 h-4" /> Docs
-                </Link>
-              </div>
+            {/* Right */}
+            <div className="grid grid-cols-2 gap-4 min-w-[300px]">
+              {[
+                ["Offline + Cloud", "Seamless sync"],
+                ["EFRIS Compliant", "URA approved"],
+                ["Enterprise Ready", "Unlimited scale"],
+                ["Dual Performance", "Local & cloud speed"],
+              ].map(([title, desc], i) => (
+                <div
+                  key={i}
+                  className="rounded-2xl p-5"
+                  style={{
+                    background: "#f8fafc",
+                    border: "1px solid rgba(5,173,238,0.1)",
+                  }}
+                >
+                  <p
+                    className="font-semibold text-sm mb-1"
+                    style={{ color: "#0A0947" }}
+                  >
+                    {title}
+                  </p>
 
-              <div className="mt-8 flex flex-wrap gap-4">
-                {[["Offline + Cloud", "Seamless sync"], ["EFRIS Compliant", "URA approved"], ["Enterprise Ready", "Unlimited scale"]].map(([t, s], i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full" style={{ background: "#05ADEE" }} />
-                    <span className="text-xs text-white/60"><span className="text-white/85 font-medium">{t}</span> · {s}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+                  <p className="text-xs text-gray-500">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.25, duration: 0.9, ease: [0.16, 1, 0.3, 1] as const }}
-              className="relative hidden lg:block">
-              <div className="rounded-2xl overflow-hidden shadow-2xl" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
-                <Image src="/assets/hybrid-manager-dashboard.png" alt="Hybrid Manager Dashboard"
-                  className="w-full object-cover" width={600} height={400} />
-              </div>
-              <div className="absolute -bottom-4 -right-4 rounded-2xl px-5 py-4 shadow-xl"
-                style={{ background: "white", border: "1px solid rgba(5,173,238,0.15)" }}>
-                <p className="text-xs text-gray-400 mb-0.5">Syncs automatically</p>
-                <p className="text-sm font-bold" style={{ color: "#0A0947" }}>Offline → Cloud</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
+          {/* CTA */}
+          <motion.div
+            {...fadeUp(0.1)}
+            className="mt-10 flex flex-wrap gap-4"
+          >
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white transition-all hover:-translate-y-0.5"
+              style={{
+                background: "linear-gradient(135deg,#05ADEE,#0496d5)",
+                boxShadow: "0 6px 24px rgba(5,173,238,0.2)",
+              }}
+            >
+              Request Demo <ArrowRight className="w-4 h-4" />
+            </Link>
 
-        <div className="absolute bottom-0 left-0 right-0 pointer-events-none overflow-hidden">
-          <svg viewBox="0 0 1440 60" fill="none"><path d="M0 60L1440 60L1440 22C1200 60 900 4 720 22C540 40 240 4 0 22L0 60Z" fill="white" /></svg>
+            <button
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm"
+              style={{
+                background: "#f8fafc",
+                border: "1px solid rgba(5,173,238,0.1)",
+                color: "#0A0947",
+              }}
+            >
+              <Download className="w-4 h-4" />
+              Download Brochure
+            </button>
+
+            <Link
+              href="/products/docs/hybrid-solution"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm"
+              style={{
+                background: "#f8fafc",
+                border: "1px solid rgba(5,173,238,0.1)",
+                color: "#0A0947",
+              }}
+            >
+              <FileText className="w-4 h-4" />
+              Documentation
+            </Link>
+          </motion.div>
         </div>
       </section>
 
@@ -226,79 +250,6 @@ const HybridManager = () => {
                 </div>
                 <h3 className="font-bold text-base mb-2" style={{ color: "#0A0947" }}>{f.title}</h3>
                 <p className="text-sm text-gray-500 leading-relaxed">{f.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── ON-PREM vs CLOUD COMPARISON ───────────────────────── */}
-      <section className="py-16 sm:py-24" style={{ background: "linear-gradient(135deg,#f0f9ff 0%,#e8f4fd 50%,#f0faff 100%)" }}>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div className="mb-10" {...fadeUp()}>
-            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-2" style={{ color: "#05ADEE" }}>Deployment</p>
-            <h2 className="text-3xl sm:text-4xl font-bold" style={{ color: "#0A0947" }}>On-Premise vs Cloud — Side by Side</h2>
-            <p className="text-gray-500 mt-2">Hybrid Manager gives you both. This table shows where each mode excels.</p>
-          </motion.div>
-
-          <motion.div {...fadeUp(0.1)} className="overflow-x-auto rounded-2xl shadow-sm"
-            style={{ border: "1px solid rgba(5,173,238,0.12)" }}>
-            <table className="w-full min-w-[520px]">
-              <thead>
-                <tr style={{ background: "#0A0947" }}>
-                  <th className="text-left px-6 py-4 text-sm font-semibold" style={{ color: "rgba(255,255,255,0.5)" }}>Aspect</th>
-                  <th className="px-6 py-4 text-sm font-semibold text-white text-center">
-                    <span className="flex items-center justify-center gap-2"><HardDrive className="w-4 h-4" style={{ color: "#05ADEE" }} /> On-Premise</span>
-                  </th>
-                  <th className="px-6 py-4 text-sm font-semibold text-white text-center"
-                    style={{ borderLeft: "1px solid rgba(5,173,238,0.2)", background: "rgba(5,173,238,0.06)" }}>
-                    <span className="flex items-center justify-center gap-2"><Cloud className="w-4 h-4" style={{ color: "#05ADEE" }} /> Cloud</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {deploymentRows.map((row, i) => (
-                  <tr key={i} style={{ background: i % 2 === 0 ? "white" : "#f8fafc" }}>
-                    <td className="px-6 py-3.5 text-sm font-medium text-gray-500">{row.aspect}</td>
-                    <td className="px-6 py-3.5 text-sm font-semibold text-center" style={{ color: "#0A0947" }}>{row.onPrem}</td>
-                    <td className="px-6 py-3.5 text-sm font-semibold text-center"
-                      style={{ color: "#0A0947", borderLeft: "1px solid rgba(5,173,238,0.1)", background: i % 2 === 0 ? "rgba(5,173,238,0.02)" : "rgba(5,173,238,0.04)" }}>
-                      {row.cloud}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ─── HOW IT WORKS ──────────────────────────────────────── */}
-      <section className="py-16 sm:py-24 relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg,#0A0947 0%,#0d1168 60%,#0a3070 100%)" }}>
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%,rgba(5,173,238,0.07) 0%,transparent 70%)" }} />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div className="text-center mb-12" {...fadeUp()}>
-            <p className="text-xs uppercase tracking-[0.25em] font-semibold mb-2" style={{ color: "#05ADEE" }}>Deployment</p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">Deploy Locally, Connect Globally</h2>
-          </motion.div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-            <div className="absolute top-[2.75rem] left-[12%] right-[12%] h-px hidden lg:block"
-              style={{ background: "linear-gradient(90deg,transparent,rgba(5,173,238,0.5),rgba(5,173,238,0.5),transparent)" }} />
-            {[
-              { step: "01", title: "Choose Deployment", desc: "On-premise server or cloud-hosted — or both" },
-              { step: "02", title: "Install & Configure", desc: "Set up locally and connect cloud services" },
-              { step: "03", title: "Data Migration", desc: "Import existing data with cloud backup" },
-              { step: "04", title: "Go Hybrid", desc: "Full offline/cloud capabilities from day one" },
-            ].map((item, i) => (
-              <motion.div key={i} {...fadeUp(i * 0.1)} className="text-center group">
-                <div className="rounded-full flex items-center justify-center mx-auto mb-5 relative z-10 transition-all duration-300 group-hover:scale-110"
-                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(5,173,238,0.35)", width: 80, height: 80 }}>
-                  <span className="text-xl font-bold" style={{ color: "#05ADEE" }}>{item.step}</span>
-                </div>
-                <h3 className="font-bold text-white mb-1.5">{item.title}</h3>
-                <p className="text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -333,6 +284,8 @@ const HybridManager = () => {
           </motion.div>
         </div>
       </section>
+
+
 
       {/* ─── PRICING TABLE ─────────────────────────────────────── */}
       <section className="py-16 sm:py-24" style={{ background: "linear-gradient(135deg,#f0f9ff 0%,#e8f4fd 50%,#f0faff 100%)" }}>

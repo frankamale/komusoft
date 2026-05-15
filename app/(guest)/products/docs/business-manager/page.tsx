@@ -13,7 +13,7 @@ export function BusinessManagerDocs() {
         {
           title: "Installation Guide",
           path: "/products/docs/business-manager/installation",
-          description: "Step-by-step installation for Windows/Linux servers",
+          description: "Step-by-step installation for Windows servers",
           icon: Download,
           time: "15 min read"
         },
