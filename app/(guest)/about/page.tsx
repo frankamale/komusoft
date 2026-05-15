@@ -7,10 +7,13 @@ import {
   Lightbulb,
   CheckCircle2,
   ArrowRight,
+  Globe2,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import CallToAction from "../components/CallToAction";
 import Image from "next/image";
+import { GrTechnology, GrUser } from "react-icons/gr";
+import { FaIndustry } from "react-icons/fa";
 
 const About = () => {
   const values = [
@@ -42,9 +45,7 @@ const About = () => {
 
 
   return (
-    <div className="min-h-screen pt-20 bg-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-
-      {/* ─── HERO ────────────────────────────────────────────────────── */}
+    <div className="min-h-screen pt-20 " style={{ fontFamily: "'DM Sans', sans-serif" }}>
       <section
         className="relative overflow-hidden py-32"
         style={{ background: "linear-gradient(135deg, #0A0947 0%, #0d0f5e 40%, #0a2a6e 70%, #0c4a8a 100%)" }}
@@ -66,16 +67,6 @@ const About = () => {
             backgroundImage:
               "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
             backgroundSize: "60px 60px",
-          }}
-        />
-
-        {/* Glowing horizontal line */}
-        <div
-          className="absolute left-0 right-0 pointer-events-none"
-          style={{
-            top: "50%",
-            height: "1px",
-            background: "linear-gradient(90deg, transparent 0%, #05ADEE40 30%, #05ADEE80 50%, #05ADEE40 70%, transparent 100%)",
           }}
         />
 
@@ -175,22 +166,15 @@ const About = () => {
           </motion.div>
         </div>
 
-        {/* Bottom wave */}
-        <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none pointer-events-none">
-          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 60L1440 60L1440 20C1200 60 900 0 720 20C540 40 240 0 0 20L0 60Z" fill="white" />
-          </svg>
-        </div>
+
       </section>
 
-      {/* ─── OUR STORY ───────────────────────────────────────────────── */}
       <section className="py-24 bg-white">
         <motion.div
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          className="py-20 bg-linear-to-br from-blue-50 to-indigo-50 px-40"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -289,14 +273,13 @@ const About = () => {
         </motion.div>
       </section>
 
-      {/* ─── VALUES ──────────────────────────────────────────────────── */}
       <section
         className="py-24 relative overflow-hidden"
         style={{ background: "linear-gradient(135deg, #0A0947 0%, #0d1168 60%, #0a3070 100%)" }}
       >
         {/* Radial glow */}
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 rounded-full pointer-events-none"
           style={{ background: "radial-gradient(circle, rgba(5,173,238,0.08) 0%, transparent 70%)" }}
         />
 
@@ -368,9 +351,8 @@ const About = () => {
               <div className="space-y-4">
                 {[
                   "Full-stack web & mobile development",
-                  "Cloud infrastructure & DevOps",
                   "Enterprise system integration",
-                  "Cybersecurity & compliance",
+                  // "Cybersecurity & compliance",
                   "Quality assurance & testing",
                   "24/7 technical support",
                 ].map((item, index) => (
@@ -390,33 +372,54 @@ const About = () => {
 
             <div className="grid grid-cols-2 gap-6">
               {[
-                { label: "Technologies", value: "20+", icon: "⚙️" },
-                { label: "Team Members", value: "15+", icon: "👥" },
-                { label: "Industries", value: "8+", icon: "🏢" },
-                { label: "Countries", value: "3+", icon: "🌍" },
+                { label: "Technologies", value: "20+", icon: <GrTechnology /> },
+                { label: "Team Members", value: "15+", icon: <GrUser /> },
+                { label: "Industries", value: "8+", icon: <FaIndustry /> },
+                { label: "Countries", value: "3+", icon: <Globe2 /> },
               ].map((stat, index) => (
                 <motion.div
                   key={index}
                   whileHover={{ y: -6, scale: 1.03 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="rounded-3xl p-8 text-center shadow-sm hover:shadow-xl transition-shadow duration-300 cursor-default"
+                  className="rounded-3xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-300 cursor-default"
                   style={{
-                    background: index % 2 === 0
-                      ? "linear-gradient(135deg, #0A0947, #0d1168)"
-                      : "white",
+                    background:
+                      index % 2 === 0
+                        ? "linear-gradient(135deg, #0A0947, #0d1168)"
+                        : "white",
                     border: "1px solid rgba(5,173,238,0.15)",
                   }}
                 >
-                  <div className="text-3xl mb-3">{stat.icon}</div>
+                  {/* Icon */}
+                  <div className="flex justify-center mb-5">
+                    <div
+                      className={`w-16 h-16 rounded-2xl flex items-center justify-center text-3xl 
+            ${index % 2 === 0
+                          ? " text-[#05ADEE]"
+                          : " text-[#0A0947]"
+                        }`}
+                    >
+                      {stat.icon}
+                    </div>
+                  </div>
+
+                  {/* Value */}
                   <div
                     className="text-5xl font-bold mb-2"
                     style={{ color: index % 2 === 0 ? "#05ADEE" : "#0A0947" }}
                   >
                     {stat.value}
                   </div>
+
+                  {/* Label */}
                   <div
-                    className="text-sm"
-                    style={{ color: index % 2 === 0 ? "rgba(255,255,255,0.6)" : "#6b7280" }}
+                    className="text-sm font-medium"
+                    style={{
+                      color:
+                        index % 2 === 0
+                          ? "rgba(255,255,255,0.7)"
+                          : "#6b7280",
+                    }}
                   >
                     {stat.label}
                   </div>

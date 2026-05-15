@@ -1,6 +1,7 @@
 import { Building2, ShoppingBag, HeartPulse, Truck, FlaskConical, Database, ArrowRight } from 'lucide-react';
 
 import Link from 'next/link';
+import PartnersCarousel from '../components/PartnersCarousel';
 const Portfolio = () => {
 
   const projects = [
@@ -202,6 +203,8 @@ const Portfolio = () => {
           </div>
         </div>
       </section>
+
+      <PartnersCarousel />
 
       {/* CTA */}
       <section className="py-20 bg-white">
