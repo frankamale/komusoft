@@ -23,10 +23,12 @@ export function Navbar() {
         <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'backdrop-blur-md bg-white/80 border-b border-gray-200' : 'bg-white border-b border-gray-200'}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-20">
+                   <Link href="/">
                     <div className="flex items-center gap-2">
-                        <Image src="/logo.png" alt="Komusoft Solutions" width={40} height={40} />
-                        <span className="font-bold text-xl text-[#0A0947]">Komusoft Solutions</span>
+                        <Image src="/logo.png" alt="Komusoft Solutions" width={50} height={50} />
+                        <span className="font-bold md:text-xl lg:text-2xl text-lg text-[#0A0947]">Komusoft Solutions LTD</span>
                     </div>
+                   </Link>
 
                     <div className="hidden md:flex items-center gap-8">
                         <Link href="/" className="text-gray-700 hover:text-[#05ADEE] transition-colors">Home</Link>
@@ -38,12 +40,16 @@ export function Navbar() {
                     </div>
 
                     <div className="hidden md:flex items-center gap-4">
-                        <button className="px-6 py-2.5 text-[#05ADEE] border-2 border-[#05ADEE] rounded-lg hover:bg-[#05ADEE] hover:text-white transition-all">
-                            Request Demo
-                        </button>
-                        <Button className="px-6 py-5 bg-[#05ADEE]  text-white rounded-lg hover:shadow-lg hover:shadow-[#05ADEE]/50 transition-all">
-                            Contact Us
-                        </Button>
+                        <Link href="/contact">
+                            <button className="px-6 py-2.5 text-[#05ADEE] border-2 border-[#05ADEE] rounded-lg hover:bg-[#05ADEE] hover:text-white transition-all">
+                                Request Demo
+                            </button>
+                        </Link>
+                        <Link href="/contact">
+                            <Button className="px-6 py-5 bg-[#05ADEE]  text-white rounded-lg hover:shadow-lg hover:shadow-[#05ADEE]/50 transition-all">
+                                Contact Us
+                            </Button>
+                        </Link>
                     </div>
 
                     <Button
@@ -63,12 +69,16 @@ export function Navbar() {
                         <Link href="/portfolio" className="block py-2 text-gray-700 hover:text-[#05ADEE]">Portfolio</Link>
                         <Link href="/contact" className="block py-2 text-gray-700 hover:text-[#05ADEE]">Contact</Link>
                         <div className="flex flex-col gap-2 pt-2">
-                            <button className="w-full px-6 text-[#05ADEE] border-2 border-[#05ADEE] rounded-lg">
-                                Request Demo
-                            </button>
-                            <Button className="w-full px-6 py-2.5 bg-linear-to-r from-[#05ADEE] to-[#0A0947] text-white rounded-lg">
-                                Contact Us
-                            </Button>
+                            <Link href="/contact">
+                                <button className="w-full px-6 text-[#05ADEE] border-2 border-[#05ADEE] rounded-lg">
+                                    Request Demo
+                                </button>
+                            </Link>
+                            <Link href="/contact">
+                                <Button className="w-full px-6 py-2.5 bg-linear-to-r from-[#05ADEE] to-[#0A0947] text-white rounded-lg">
+                                    Contact Us
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 )}

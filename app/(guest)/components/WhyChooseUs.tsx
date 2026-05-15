@@ -3,9 +3,9 @@ import { Users, Lightbulb, Shield } from 'lucide-react'
 
 export function WhyChooseUs() {
     return (
-        <section className="py-20 bg-white">
+        <section className="py-12 md:py-20  bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
+                <div className="text-center md:mb-16 mb-10">
                     <p className="text-sm uppercase tracking-wider text-[#05ADEE] font-semibold mb-3">
                         Why Choose Us
                     </p>
@@ -17,7 +17,7 @@ export function WhyChooseUs() {
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-3 md:gap-8 gap-6">
                     {[
                         {
                             icon: Users,
