@@ -149,9 +149,9 @@ export function Navbar() {
                 {isOpen && (
                     <div className="md:hidden pb-6 space-y-3">
                         {['/', '/about', '/services', '/products', '/portfolio', '/contact'].map((href) => {
-                            const label = href === '/' ? 'Home' : href.replace('/', '').charAt(0).toUpperCase() + href.slice(1);
+                            const label = href === '/' ? 'Home' : href.replace('/', '').charAt(0).toUpperCase() + href.slice(2);
                             return (
-                                <Link
+                                <Laveink
                                     key={href}
                                     href={href}
                                     className={`block py-3 ${isActive(href) ? 'text-[#05ADEE] font-semibold' : 'text-gray-700 hover:text-[#05ADEE]'}`}
