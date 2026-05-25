@@ -36,62 +36,86 @@ const BusinessManager = () => {
 
   const plans = [
     {
-      name: "Single Location",
-      price: "UGX 1,500,000",
-      billing: "One-time licence",
-      maintenance: "+ UGX 300,000 / year",
-      highlight: false,
-      cta: "Get Started",
-      features: [
-        { label: "POS Terminals", value: "1" },
-        { label: "Locations", value: "1" },
-        { label: "Inventory Management", value: "Basic" },
-        { label: "Receipt Printing", value: true },
-        { label: "LAN Sync", value: false },
-        { label: "Custom Reporting", value: false },
-        { label: "EFRIS Compliance", value: true },
-        { label: "Support", value: "Email" },
-        { label: "Training", value: "Online guides" },
-      ],
-    },
-    {
-      name: "Multi-Location",
+      name: "Starter Pack",
       price: "UGX 2,500,000",
       billing: "One-time licence",
-      maintenance: "+ UGX 500,000 / year",
+      maintenance: "+ UGX 250,000 / year",
       highlight: true,
       cta: "Get Started",
       features: [
-        { label: "POS Terminals", value: "Up to 5" },
-        { label: "Locations", value: "Up to 3" },
-        { label: "Inventory Management", value: "Advanced" },
-        { label: "Receipt Printing", value: true },
-        { label: "LAN Sync", value: true },
-        { label: "Custom Reporting", value: true },
-        { label: "EFRIS Compliance", value: true },
-        { label: "Support", value: "Priority" },
-        { label: "Training", value: "On-site session" },
+        { label: "Dedicated POS", value: true },
+        { label: "All-Inclusive Inventory", value: true },
+        { label: "Goods Return Support", value: true },
+        { label: "Real-Time Change Management", value: true },
+        { label: "Automated Shelf Price Tags", value: true },
+        { label: "Real-Time Comprehensive Reporting", value: true },
+        { label: "Unlimited Users", value: true },
+        { label: "Free Support", value: true },
+        { label: "Regular Updates", value: true },
       ],
     },
     {
-      name: "Enterprise",
-      price: "Custom Pricing",
-      billing: "Contact for quote",
-      maintenance: "",
+      name: "Power Pack",
+      price: "UGX 1,500,000", // Kept as requested
+      billing: "One-time licence",
+      maintenance: "+ UGX 250,000 / year",
       highlight: false,
-      cta: "Contact Sales",
+      cta: "Get Started",
       features: [
-        { label: "POS Terminals", value: "Unlimited" },
-        { label: "Locations", value: "Unlimited" },
-        { label: "Inventory Management", value: "Advanced" },
-        { label: "Receipt Printing", value: true },
-        { label: "LAN Sync", value: true },
-        { label: "Custom Reporting", value: true },
-        { label: "EFRIS Compliance", value: true },
-        { label: "Support", value: "Dedicated 24/7" },
-        { label: "Training", value: "Full on-site" },
+        { label: "All Starter Pack features", value: true },
+        { label: "Standard Accounting", value: true },
+        { label: "Purchase Order & Consignment", value: true },
+        { label: "Bank Transactions Tracking", value: true },
+        { label: "Credit Customer Management", value: true },
+        { label: "Loyalty Card Printing", value: true },
+        { label: "Vendor/Customer Statements", value: true },
+        { label: "Barcode Printing", value: true },
       ],
     },
+    {
+      name: "Ultimate Pack",
+      price: "UGX 3,500,000",
+      billing: "One-time licence",
+      maintenance: "+ UGX 350,000 / year",
+      highlight: false,
+      cta: "Get Started",
+      features: [
+        { label: "All Power Pack features", value: true },
+        { label: "System Assisted Bank Reconciliation", value: true },
+        { label: "Accounting Journal Entries", value: true },
+        { label: "Advanced Financial Reports", value: true },
+        { label: "Staff Payroll & Attendance", value: true },
+        { label: "Staff ID Card Printing", value: true },
+        { label: "Multiple Store/Shop Management", value: true },
+        { label: "Weighing Scale Automation", value: true },
+      ],
+    },
+  ];
+
+  const comparisonRows = [
+    { label: "Dedicated POS", s: true, p: true, u: true },
+    { label: "All-Inclusive Inventory", s: true, p: true, u: true },
+    { label: "Goods Return Support", s: true, p: true, u: true },
+    { label: "Real-Time Change Management", s: true, p: true, u: true },
+    { label: "Automated Shelf Price Tags", s: true, p: true, u: true },
+    { label: "Real-Time Comprehensive Reporting", s: true, p: true, u: true },
+    { label: "Unlimited Users", s: true, p: true, u: true },
+    { label: "Free Support", s: true, p: true, u: true },
+    { label: "Regular Updates", s: true, p: true, u: true },
+    { label: "Standard Accounting", s: false, p: true, u: true },
+    { label: "Purchase Order & Consignment", s: false, p: true, u: true },
+    { label: "Bank Transactions Tracking", s: false, p: true, u: true },
+    { label: "Credit Customer Management", s: false, p: true, u: true },
+    { label: "Loyalty Card Printing", s: false, p: true, u: true },
+    { label: "Vendor/Customer Statements", s: false, p: true, u: true },
+    { label: "Barcode Printing", s: false, p: true, u: true },
+    { label: "System Assisted Bank Reconciliation", s: false, p: false, u: true },
+    { label: "Accounting Journal Entries", s: false, p: false, u: true },
+    { label: "Advanced Financial Reports", s: false, p: false, u: true },
+    { label: "Staff Payroll & Attendance", s: false, p: false, u: true },
+    { label: "Staff ID Card Printing", s: false, p: false, u: true },
+    { label: "Multiple Store/Shop Management", s: false, p: false, u: true },
+    { label: "Weighing Scale Automation", s: false, p: false, u: true },
   ];
 
   const specRows = [
@@ -351,22 +375,19 @@ const BusinessManager = () => {
                 </tr>
               </thead>
               <tbody>
-                {plans[0].features.map((feat, fi) => (
+                {comparisonRows.map((row, fi) => (
                   <tr key={fi} style={{ background: fi % 2 === 0 ? "white" : "#f8fafc" }}>
-                    <td className="px-7 py-4 text-sm font-medium text-gray-600">{feat.label}</td>
-                    {plans.map((plan, pi) => {
-                      const cell = plan.features[fi];
-                      return (
-                        <td key={pi} className="px-6 py-4 text-center text-sm"
-                          style={{ borderLeft: pi === 1 ? "1px solid rgba(5,173,238,0.12)" : undefined, background: pi === 1 ? "rgba(5,173,238,0.02)" : undefined }}>
-                          {typeof cell.value === "boolean"
-                            ? cell.value
-                              ? <Check className="w-5 h-5 mx-auto" style={{ color: "#05ADEE" }} />
-                              : <X className="w-5 h-5 mx-auto text-gray-200" />
-                            : <span className="font-semibold" style={{ color: "#0A0947" }}>{cell.value}</span>}
-                        </td>
-                      );
-                    })}
+                    <td className="px-7 py-4 text-sm font-medium text-gray-600">{row.label}</td>
+                    {[row.s, row.p, row.u].map((val, pi) => (
+                      <td key={pi} className="px-6 py-4 text-center text-sm"
+                        style={{ borderLeft: pi === 1 ? "1px solid rgba(5,173,238,0.12)" : undefined, background: pi === 1 ? "rgba(5,173,238,0.02)" : undefined }}>
+                        {typeof val === "boolean"
+                          ? val
+                            ? <Check className="w-5 h-5 mx-auto" style={{ color: "#05ADEE" }} />
+                            : <X className="w-5 h-5 mx-auto text-gray-200" />
+                          : <span className="font-semibold" style={{ color: "#0A0947" }}>{val}</span>}
+                      </td>
+                    ))}
                   </tr>
                 ))}
                 <tr style={{ background: "#f8fafc" }}>
