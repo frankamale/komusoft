@@ -151,7 +151,7 @@ export function Navbar() {
                         {['/', '/about', '/services', '/products', '/portfolio', '/contact'].map((href) => {
                             const label = href === '/' ? 'Home' : href.replace('/', '').charAt(0).toUpperCase() + href.slice(2);
                             return (
-                                <Laveink
+                                <Link
                                     key={href}
                                     href={href}
                                     className={`block py-3 ${isActive(href) ? 'text-[#05ADEE] font-semibold' : 'text-gray-700 hover:text-[#05ADEE]'}`}
