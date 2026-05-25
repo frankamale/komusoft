@@ -21,7 +21,7 @@ export function BusinessAssistantSetup() {
       title: "Choose Plan",
       icon: CreditCard,
       content: [
-        "Select from Starter, Professional, or Enterprise plans",
+        "Select from Solo Flight, Deluxe, Classic, Corporate, Investor, Hospitality or Platinum plans",
         "Enter billing information and payment method",
         "Review subscription terms and pricing",
         "Complete payment to activate your account"

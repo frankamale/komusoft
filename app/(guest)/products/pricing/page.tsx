@@ -29,24 +29,22 @@ export function Pricing() {
       popular: false
     },
     {
-      name: "Business Assistant",
-      tagline: "Cloud Business Platform",
-      description: "SaaS solution for modern business operations",
+      name: "Business Assistant Cloud",
+      tagline: "Tiered Cloud Platform",
+      description: "SaaS with CRM, Invoicing, Inventory, Accounting & more. Mobile offline POS app included.",
       icon: Cloud,
       pricing: {
-        monthly: 150000, // UGX 150K/month
-        annual: 1500000, // UGX 1.5M/year (2 months free)
+        monthly: 50000, // starting price
         currency: "UGX"
       },
       features: [
-        "Cloud-based infrastructure",
-        "Advanced analytics & reporting",
-        "Team collaboration tools",
-        "API integrations",
-        "Mobile responsive design",
-        "Automated workflows",
-        "Custom dashboards",
-        "Audit trail & compliance"
+        "Cloud + full offline mobile POS app",
+        "CRM + Invoicing + Inventory + Accounting",
+        "EFRIS integration options",
+        "Multi-user & multi-till support",
+        "Production / Hospitality / Corporate modules",
+        "Automatic updates & 99.9% SLA",
+        "Mobile responsive + native mobile app"
       ],
       limitations: [],
       popular: true
@@ -226,7 +224,7 @@ export function Pricing() {
                   <tr className="border-b border-gray-200">
                     <th className="text-left p-6 font-bold text-gray-900">Features</th>
                     <th className="text-center p-6 font-bold text-gray-900">Business Manager</th>
-                    <th className="text-center p-6 font-bold text-gray-900">Business Assistant</th>
+                      <th className="text-center p-6 font-bold text-gray-900">Business Assistant Cloud</th>
                     <th className="text-center p-6 font-bold text-gray-900">Hybrid Solution</th>
                   </tr>
                 </thead>
@@ -257,7 +255,7 @@ export function Pricing() {
                         )}
                       </td>
                       <td className="p-6 text-center">
-                        {["Cloud-based operations", "Advanced analytics & reporting", "Team collaboration tools", "API integrations", "Automated workflows", "Mobile responsive design"].includes(feature) ? (
+                        {["Cloud-based operations", "Advanced analytics & reporting", "Team collaboration tools", "API integrations", "Automated workflows", "Mobile responsive design", "Offline POS capabilities"].includes(feature) ? (
                           <Check className="w-5 h-5 text-green-500 mx-auto" />
                         ) : (
                           <X className="w-5 h-5 text-gray-300 mx-auto" />

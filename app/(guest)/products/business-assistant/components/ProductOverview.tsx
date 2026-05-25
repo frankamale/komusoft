@@ -38,18 +38,17 @@ export function ProductOverview() {
             </h1>
 
             <p className="text-lg text-gray-500 leading-relaxed max-w-2xl">
-              A cloud-based business operations platform that combines analytics,
-              collaboration, CRM, workflow automation, and integrations into one
-              modern system accessible from anywhere.
+              Cloud-based business operations platform with CRM, Invoicing, Inventory, Accounting and more.
+              Includes a mobile phone application that works offline and runs on mobile POS terminals.
             </p>
           </div>
 
           {/* Right */}
           <div className="grid grid-cols-2 gap-4 min-w-75">
             {[
-              ["Cloud Based", "Accessible anywhere"],
+              ["Cloud + Mobile", "Offline POS on mobile terminals"],
               ["99.9% SLA", "Reliable infrastructure"],
-              ["Automation", "Reduce manual work"],
+              ["Full Business Suite", "CRM, Inventory, Accounting & more"],
               ["API Ready", "Integrate with systems"],
             ].map(([title, desc], i) => (
               <div
