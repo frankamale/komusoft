@@ -272,6 +272,29 @@ export function BusinessManagerTroubleshooting() {
           </div>
         </div>
 
+        {/* Core Action Buttons (from the official manual) */}
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-8">
+          <h2 className="text-lg font-bold text-gray-900 mb-4">Core Action Buttons You Will See Everywhere</h2>
+          <div className="grid md:grid-cols-4 gap-3 text-sm">
+            {[
+              ["NEW", "Add new records"],
+              ["EDIT", "Modify existing entries"],
+              ["DELETE", "Remove records (with confirmation)"],
+              ["REFRESH", "Synchronise / reload data"],
+              ["PRINT", "Print current view or selection"],
+              ["LISTING", "Summary view of selected item"],
+              ["CREDIT", "Shortcut to Goods Returned"],
+              ["SECURE", "Security / lock functions"]
+            ].map(([btn, desc], i) => (
+              <div key={i} className="bg-white rounded p-3 border">
+                <span className="font-mono font-semibold text-[#05ADEE]">{btn}</span>
+                <span className="text-gray-600"> — {desc}</span>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-gray-500 mt-3">Knowing these buttons will solve many “where do I click?” questions while following the troubleshooting steps below.</p>
+        </div>
+
         {/* Troubleshooting Categories */}
         <div className="space-y-8 mb-12">
           {issues.map((category, categoryIndex) => (

@@ -1,18 +1,19 @@
 "use client";
 
 import Link from 'next/link';
+import type { LucideIcon } from 'lucide-react';
 
 interface Doc {
   title: string;
   path: string;
   description: string;
-  icon: any;
+  icon: LucideIcon;
   time: string;
 }
 
 interface Section {
   title: string;
-  icon: any;
+  icon: LucideIcon;
   description: string;
   docs: Doc[];
 }

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  ShoppingCart, Check, ArrowRight, Download, FileText,
+  ShoppingCart, Check, ArrowRight, FileText,
   Wifi, WifiOff, Database, Printer, Users, Shield,
   HardDrive, Monitor, ChevronRight, X,
 } from "lucide-react";
@@ -119,12 +119,13 @@ const BusinessManager = () => {
   ];
 
   const specRows = [
-    { label: "Minimum CPU", client: "Intel Core i3", server: "Intel Core i5" },
-    { label: "Minimum RAM", client: "4 GB", server: "8 GB" },
-    { label: "Storage", client: "50 GB", server: "100 GB+" },
-    { label: "OS Support", client: "Windows 10/11", server: "Windows Server 2016+" },
-    { label: "Network", client: "LAN (100 Mbps+)", server: "Static IP recommended" },
-    { label: "Internet", client: "Optional", server: "Optional" },
+    { label: "Minimum CPU", client: "Intel Core i5 (3.0 GHz+)", server: "Intel Core i5 / Ryzen 5 (2.5 GHz+ multi-core)" },
+    { label: "Minimum RAM", client: "8 GB", server: "16 GB (recommended)" },
+    { label: "Storage", client: "500 GB SSD", server: "512 GB+ SSD (larger HDD for archives)" },
+    { label: "OS Support", client: "Windows 10/11 (64-bit)", server: "Windows 10/11 or Server 2016+" },
+    { label: "Display", client: "1366×768", server: "24″+ IPS (multiple monitors ideal)" },
+    { label: "Network", client: "LAN (100 Mbps+)", server: "Wired Gigabit LAN recommended" },
+    { label: "Internet", client: "Optional", server: "Optional (LAN sync is primary)" },
   ];
 
   return (
@@ -210,18 +211,6 @@ const BusinessManager = () => {
             >
               Request Demo <ArrowRight className="w-4 h-4" />
             </Link>
-
-            <button
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm"
-              style={{
-                background: "#f8fafc",
-                border: "1px solid rgba(5,173,238,0.1)",
-                color: "#0A0947",
-              }}
-            >
-              <Download className="w-4 h-4" />
-              Download Brochure
-            </button>
 
             <Link
               href="/products/docs/business-manager"

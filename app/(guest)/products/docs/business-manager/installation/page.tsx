@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, Check, Download, Settings, Database, Users, Wifi, Shield, AlertTriangle, Book, Code, HelpCircle, FileText } from 'lucide-react';
+import { ArrowLeft, Check, Download, Settings, Database, AlertTriangle, Wifi, Shield } from 'lucide-react';
 import Link from 'next/link';
 
 export function BusinessManagerInstallation() {
@@ -168,47 +168,30 @@ export function BusinessManagerInstallation() {
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-white border border-gray-200 rounded-xl p-6">
-              <h3 className="font-bold text-gray-900 mb-4">Hardware Requirements</h3>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-green-500" />
-                  <span>Intel Core i3 or equivalent (i5 recommended)</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-green-500" />
-                  <span>8GB RAM minimum (16GB recommended)</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-green-500" />
-                  <span>100GB available storage</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-green-500" />
-                  <span>Stable power supply</span>
-                </li>
+              <h3 className="font-bold text-gray-900 mb-4">Minimum System Requirements</h3>
+              <ul className="space-y-2 text-gray-700 text-sm">
+                <li><strong>Processor:</strong> Intel Core i5 (or equivalent) 3.0 GHz or higher</li>
+                <li><strong>Memory:</strong> 8 GB RAM</li>
+                <li><strong>Operating System:</strong> Windows 10 (64-bit) or Windows Server 2016+</li>
+                <li><strong>Storage:</strong> 500 GB SSD (fast read/write recommended)</li>
+                <li><strong>Graphics:</strong> Integrated or entry-level dedicated card</li>
+                <li><strong>Display:</strong> Minimum 1366×768 resolution</li>
+                <li><strong>Network:</strong> Stable LAN for multi-terminal setups</li>
               </ul>
+              <p className="text-xs text-gray-500 mt-3">Higher specs strongly recommended when running multiple modules or large datasets simultaneously.</p>
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6">
-              <h3 className="font-bold text-gray-900 mb-4">Software Requirements</h3>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-green-500" />
-                  <span>Windows 10/11 or Windows Server 2016+</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-green-500" />
-                  <span>Microsoft .NET Framework 4.8+</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-green-500" />
-                  <span>SQL Server Express 2019+ or SQL Server</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-green-500" />
-                  <span>Administrator privileges</span>
-                </li>
+              <h3 className="font-bold text-gray-900 mb-4">Recommended System Requirements</h3>
+              <ul className="space-y-2 text-gray-700 text-sm">
+                <li><strong>Processor:</strong> Intel Core i5 / AMD Ryzen 5 (or equiv.) 2.5 GHz multi-core</li>
+                <li><strong>Memory:</strong> 16 GB RAM or higher</li>
+                <li><strong>Operating System:</strong> Latest Windows 10/11 (64-bit)</li>
+                <li><strong>Storage:</strong> 512 GB+ SSD (or larger HDD for archives)</li>
+                <li><strong>Display:</strong> 24″+ IPS/PLS high-resolution monitor (multiple monitors ideal)</li>
+                <li><strong>Network:</strong> Wired Gigabit LAN for server + clients</li>
               </ul>
+              <p className="text-xs text-gray-500 mt-3">These specs deliver the smoothest experience for supermarkets and multi-branch operations.</p>
             </div>
           </div>
         </section>
