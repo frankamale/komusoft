@@ -126,17 +126,12 @@ const ProductShowcaseSection = () => {
 
               <div className={`relative ${index % 2 === 1 ? "lg:order-1" : ""}`}>
                 {/* Decorative frame */}
-                <div className="absolute -inset-4 rounded-[2.5rem] pointer-events-none"
-                  style={{ background: "linear-gradient(135deg, rgba(5,173,238,0.08), rgba(10,9,71,0.05))" }} />
-                <div className="relative rounded-[2rem] overflow-hidden shadow-2xl"
-                 >
-                  <div className="w-full h-80 flex items-center justify-center"
-                    style={{ background: `linear-gradient(135deg, #0A0947, #0d1575)` }}>
+                
                     <Image src={product.image} alt={product.name} className="object-contain" height={400} width={480} />
-                  </div>
+                 
                 </div>
               
-              </div>
+              
             </motion.div>
           ))}
         </div>
