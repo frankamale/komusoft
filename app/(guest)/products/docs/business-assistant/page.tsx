@@ -2,6 +2,7 @@
 
 import { ArrowLeft, Book, Settings, Users, Database, Cloud, Shield, HelpCircle, Download, Code, CreditCard, BarChart3, FileText } from 'lucide-react';
 import Link from 'next/link';
+import { DocSearch } from './components/DocSearch';
 
 const base = "/products/docs/business-assistant";
 
@@ -170,6 +171,10 @@ export function BusinessAssistantDocs() {
               <h1 className="text-3xl font-bold text-gray-900">Business Assistant Documentation</h1>
               <p className="text-gray-600">Complete guide for the cloud + offline business platform</p>
             </div>
+          </div>
+
+          <div className="mb-6">
+            <DocSearch />
           </div>
 
           <div className="bg-[#05ADEE]/5 border border-[#05ADEE]/20 rounded-xl p-6">

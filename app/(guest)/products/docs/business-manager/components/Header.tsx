@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { ArrowLeft, Database } from 'lucide-react';
+import { DocSearch } from './DocSearch';
 
 export function Header() {
   return (
@@ -18,6 +19,10 @@ export function Header() {
             <h1 className="text-3xl font-bold text-gray-900">Business Manager Documentation</h1>
             <p className="text-gray-600">Complete guide for offline-ready POS and inventory management</p>
           </div>
+        </div>
+
+        <div className="mb-6">
+          <DocSearch />
         </div>
 
         {/* Product Overview */}

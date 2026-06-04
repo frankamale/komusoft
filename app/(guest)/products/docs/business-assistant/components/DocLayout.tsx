@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { docNav, docBase, type DocNavItem } from "./docNav";
+import { DocSearch } from "./DocSearch";
 
 interface DocLayoutProps {
   title: string;
@@ -41,6 +42,9 @@ export function DocLayout({ title, subtitle, current, children, prev, next }: Do
               <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
               <p className="text-gray-600">{subtitle}</p>
             </div>
+          </div>
+          <div className="mt-6">
+            <DocSearch />
           </div>
         </div>
       </div>
