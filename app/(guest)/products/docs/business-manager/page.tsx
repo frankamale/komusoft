@@ -291,11 +291,11 @@ export function BusinessManagerDocs() {
             <div>
               <h3 className="font-semibold text-gray-900 mb-3">Key Benefits</h3>
               <ul className="space-y-2 text-sm text-gray-700">
-                <li className="flex gap-2"><span className="text-[#05ADEE]">•</span> <strong>Point of Sale (POS)</strong> — Fast dedicated interface with full peripheral support (printers, scanners, scales, cash drawers). Minimises errors with live balance, price &amp; quantity display.</li>
-                <li className="flex gap-2"><span className="text-[#05ADEE]">•</span> <strong>Inventory Management</strong> — Goods receipt, stock adjustments, expiries, stock taking, goods returns, transfers and outgoing stock all fully tracked.</li>
-                <li className="flex gap-2"><span className="text-[#05ADEE]">•</span> <strong>Integrated Accounting</strong> — Complete A/P, A/R, credit/debit notes, journal entries, bank reconciliation, loans/advances and financial statements.</li>
-                <li className="flex gap-2"><span className="text-[#05ADEE]">•</span> <strong>Comprehensive Reporting</strong> — 100+ quantitative, qualitative, financial and administrative reports covering every aspect of the business.</li>
-                <li className="flex gap-2"><span className="text-[#05ADEE]">•</span> <strong>Customer &amp; Vendor Management</strong> — Full records, gift vouchers, quotations, purchase orders, invoices and loyalty features.</li>
+                <li className="flex gap-2"><span className="text-brand">•</span> <strong>Point of Sale (POS)</strong> — Fast dedicated interface with full peripheral support (printers, scanners, scales, cash drawers). Minimises errors with live balance, price &amp; quantity display.</li>
+                <li className="flex gap-2"><span className="text-brand">•</span> <strong>Inventory Management</strong> — Goods receipt, stock adjustments, expiries, stock taking, goods returns, transfers and outgoing stock all fully tracked.</li>
+                <li className="flex gap-2"><span className="text-brand">•</span> <strong>Integrated Accounting</strong> — Complete A/P, A/R, credit/debit notes, journal entries, bank reconciliation, loans/advances and financial statements.</li>
+                <li className="flex gap-2"><span className="text-brand">•</span> <strong>Comprehensive Reporting</strong> — 100+ quantitative, qualitative, financial and administrative reports covering every aspect of the business.</li>
+                <li className="flex gap-2"><span className="text-brand">•</span> <strong>Customer &amp; Vendor Management</strong> — Full records, gift vouchers, quotations, purchase orders, invoices and loyalty features.</li>
               </ul>
             </div>
             <div>

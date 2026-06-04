@@ -20,7 +20,7 @@ const BusinessManager = () => {
     { icon: WifiOff, title: "Offline POS", description: "Complete POS functionality without internet. Built for African retail environments where connectivity is unreliable." },
     { icon: Database, title: "Inventory Tracking", description: "Track stock levels, movements, and valuations across multiple locations in real-time." },
     { icon: Wifi, title: "LAN Synchronisation", description: "Local network sync ensures data consistency across all terminals without needing internet." },
-    { icon: Users, title: "Multi-Location", description: "Manage multiple branches with centralised reporting and control from a single interface." },
+    { icon: Users, title: "Multi-Location", description: "Manage multiple workstations with centralised reporting and control from a single server." },
     { icon: Printer, title: "Receipts & Invoicing", description: "Print professional receipts, invoices, and reports with customisable templates." },
     { icon: Shield, title: "EFRIS Compliance", description: "Fully compliant with Uganda Revenue Authority's EFRIS electronic fiscal receipting requirements." },
   ];
