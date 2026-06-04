@@ -156,7 +156,7 @@ export function BusinessManagerDocs() {
         },
         {
           title: "User Roles & Privileges",
-          path: "/products/docs/business-manager/user-management",
+          path: "/products/docs/business-manager/configuration",
           description: "Create roles and assign granular access rights",
           icon: Shield,
           time: "15 min read"
@@ -205,7 +205,7 @@ export function BusinessManagerDocs() {
       docs: [
         {
           title: "POS Interface Guide",
-          path: "/products/docs/business-manager/pos",
+          path: "/products/docs/business-manager/pos-operation",
           description: "Header buttons, search, client, hold, tender workflow",
           icon: Code,
           time: "15 min read"
@@ -252,16 +252,16 @@ export function BusinessManagerDocs() {
     },
 
     {
-      title: "Video Tutorials",
-      description: "Step-by-step video guides",
-      path: "/products/docs/videos",
+      title: "Quick Start Guide",
+      description: "From login to your first sale in 30 minutes",
+      path: "/products/docs/business-manager/quickstart",
       icon: Book
     },
     {
-      title: "Community Forum",
-      description: "Ask questions and share knowledge",
-      path: "/community",
-      icon: Users
+      title: "Troubleshooting",
+      description: "Fixes for network, database and printer issues",
+      path: "/products/docs/business-manager/troubleshooting",
+      icon: HelpCircle
     },
     {
       title: "Contact Support",

@@ -77,7 +77,7 @@ export function DocLayout({ title, subtitle, current, children, prev, next }: Do
           </aside>
 
           <div className="min-w-0">
-            <div className="max-w-3xl">
+            <div>
               {children}
 
               {(prev || next) && (
