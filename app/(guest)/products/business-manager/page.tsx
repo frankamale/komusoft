@@ -37,7 +37,7 @@ const BusinessManager = () => {
   const plans = [
     {
       name: "Starter Pack",
-      price: "UGX 2,500,000",
+      price: "UGX 1,500,000",
       billing: "One-time licence",
       maintenance: "+ UGX 250,000 / year",
       highlight: true,
@@ -56,7 +56,7 @@ const BusinessManager = () => {
     },
     {
       name: "Power Pack",
-      price: "UGX 1,500,000", // Kept as requested
+      price: "UGX 2,500,000", 
       billing: "One-time licence",
       maintenance: "+ UGX 250,000 / year",
       highlight: false,
