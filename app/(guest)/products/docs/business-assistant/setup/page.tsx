@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, Check, AlertTriangle, Cloud, Mail, Lock, CreditCard, Users, Settings, Shield, Zap } from 'lucide-react';
+import { ArrowLeft, Check, AlertTriangle, Cloud, Mail, CreditCard, Users, Settings, Shield, Zap } from 'lucide-react';
 import Link from 'next/link';
 
 export function BusinessAssistantSetup() {
@@ -190,7 +190,7 @@ export function BusinessAssistantSetup() {
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6">
-              <h3 className="font-bold text-gray-900 mb-4">What You'll Need</h3>
+              <h3 className="font-bold text-gray-900 mb-4">What You&apos;ll Need</h3>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-green-500" />
@@ -281,7 +281,7 @@ export function BusinessAssistantSetup() {
                 Check your spam folder and ensure the email address is correct.
               </p>
               <div className="bg-red-900 rounded p-3 text-red-100 text-sm font-mono">
-                Contact support if you still don't receive the email
+                Contact support if you still don&apos;t receive the email
               </div>
             </div>
 
@@ -298,7 +298,7 @@ export function BusinessAssistantSetup() {
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
               <h3 className="font-bold text-blue-900 mb-2">Browser Compatibility Issues</h3>
               <p className="text-blue-800 text-sm mb-3">
-                Ensure you're using a modern browser with JavaScript enabled.
+                Ensure you&apos;re using a modern browser with JavaScript enabled.
               </p>
               <div className="bg-blue-900 rounded p-3 text-blue-100 text-sm">
                 Recommended: Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
@@ -311,7 +311,7 @@ export function BusinessAssistantSetup() {
         <section id="next-steps" className="bg-gray-50 rounded-xl p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Next Steps</h2>
           <p className="text-gray-700 mb-6">
-            Your Business Assistant account is now ready! Here's what to do next:
+            Your Business Assistant account is now ready! Here&apos;s what to do next:
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             <Link

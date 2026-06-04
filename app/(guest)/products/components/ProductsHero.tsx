@@ -29,10 +29,7 @@ const ProductsHero = () => {
   ];
 
   return (
-    <section
-      className="relative min-h-screen flex flex-col overflow-hidden"
-      style={{ background: "linear-gradient(135deg, #0A0947 0%, #0d0f5e 40%, #0a2a6e 72%, #0c4a8a 100%)" }}
-    >
+    <section className="hero-surface min-h-screen flex flex-col">
       {/* Blobs */}
       <div className="absolute top-0 right-0 w-200 h-200 rounded-full pointer-events-none opacity-20"
         style={{ background: "radial-gradient(circle, #05ADEE 0%, transparent 65%)", transform: "translate(35%, -35%)" }} />
@@ -121,15 +118,11 @@ const ProductsHero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55, duration: 0.7 }}
             >
-              <Link href="/contact"
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl font-semibold text-white transition-all hover:-translate-y-1 hover:shadow-2xl"
-                style={{ background: "linear-gradient(135deg, #05ADEE, #0496d5)", boxShadow: "0 8px 32px rgba(5,173,238,0.35)" }}>
+              <Link href="/contact" className="btn-primary">
                 Request a Demo
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/services"
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl font-semibold text-white transition-all hover:bg-white/15"
-                style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)" }}>
+              <Link href="/services" className="btn-secondary">
                 Explore Services
               </Link>
             </motion.div>

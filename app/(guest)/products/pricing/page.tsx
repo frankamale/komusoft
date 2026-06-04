@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, X, Star, Zap, Shield, Users, Database, Wifi, Cloud, ArrowRight } from 'lucide-react';
+import { Check, X, Star, Zap, Shield, Database, Cloud, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 export function Pricing() {

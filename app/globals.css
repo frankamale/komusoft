@@ -10,6 +10,13 @@
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
+
+  /* Brand tokens — single source of truth for the Komusoft palette */
+  --color-brand: #05ADEE;
+  --color-brand-dark: #0496d5;
+  --color-brand-light: #38d2f5;
+  --color-ink: #0A0947;
+  --color-ink-700: #0e1552;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -126,5 +133,66 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+@layer components {
+  /* Shared full-bleed hero background — identical gradient on every page hero */
+  .hero-surface {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+      135deg,
+      #0a0947 0%,
+      #0d0f5e 40%,
+      #0a2a6e 72%,
+      #0c4a8a 100%
+    );
+  }
+
+  /* Section eyebrow / kicker label above an h2 */
+  .eyebrow {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--color-brand);
+  }
+
+  /* Consistent primary / secondary call-to-action buttons */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 1.75rem;
+    border-radius: var(--radius-xl);
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, var(--color-brand), var(--color-brand-dark));
+    box-shadow: 0 8px 32px rgba(5, 173, 238, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(5, 173, 238, 0.45);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 1.75rem;
+    border-radius: var(--radius-xl);
+    font-weight: 600;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: background 0.25s ease;
+  }
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
   }
 }

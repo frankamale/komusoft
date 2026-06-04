@@ -19,10 +19,7 @@ const CallToAction: React.FC = () => {
             <p className="text-xl text-gray-300 mb-8">
               Join leading organizations who trust Komusoft to deliver innovative technology solutions
             </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#05ADEE] text-white rounded-xl hover:bg-[#0496d5] hover:shadow-2xl hover:shadow-[#05ADEE]/50 transition-all"
-            >
+            <Link href="/contact" className="btn-primary">
               Schedule a Consultation
               <ArrowRight className="w-5 h-5" />
             </Link>

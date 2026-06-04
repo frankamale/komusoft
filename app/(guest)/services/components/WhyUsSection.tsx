@@ -20,9 +20,9 @@ const WhyUsSection = () => {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { value: "12+", label: "Years of Expertise", sub: "Deep domain knowledge" },
-            { value: "50+", label: "Projects Delivered", sub: "On time, on budget" },
-            { value: "8+", label: "Industries Served", sub: "Health, Gov, Finance & more" },
+            { value: "15+", label: "Years of Expertise", sub: "Deep domain knowledge" },
+            { value: "99+", label: "Projects Delivered", sub: "On time, on budget" },
+            { value: "10+", label: "Industries Served", sub: "Health, Gov, Finance & more" },
             { value: "24/7", label: "Support Coverage", sub: "Always here when you need us" },
           ].map((item, i) => (
             <motion.div

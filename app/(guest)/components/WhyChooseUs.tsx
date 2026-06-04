@@ -6,10 +6,10 @@ export function WhyChooseUs() {
         <section className="py-12 md:py-20  bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center md:mb-16 mb-10">
-                    <p className="text-sm uppercase tracking-wider text-[#05ADEE] font-semibold mb-3">
+                    <p className="eyebrow mb-3">
                         Why Choose Us
                     </p>
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
                         What Sets Us Apart
                     </h2>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -39,8 +39,8 @@ export function WhyChooseUs() {
                             key={index}
                             className="group p-8 bg-gray-50 rounded-3xl border border-gray-200 hover:border-transparent hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
                         >
-                            <div className="w-14 h-14 bg-[#05ADEE]/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#05ADEE] transition-colors">
-                                <feature.icon className="w-7 h-7 text-[#05ADEE] group-hover:text-white transition-colors" />
+                            <div className="w-14 h-14 bg-brand/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand transition-colors">
+                                <feature.icon className="w-7 h-7 text-brand group-hover:text-white transition-colors" />
                             </div>
                             <h3 className="text-2xl font-bold text-gray-900 mb-3">
                                 {feature.title}

@@ -4,10 +4,7 @@ import { motion } from "framer-motion";
 
 const ServicesHero = () => {
   return (
-    <section
-      className="relative overflow-hidden md:py-36 py-12"
-      style={{ background: "linear-gradient(135deg, #0A0947 0%, #0d0f5e 45%, #0a2a6e 75%, #0c4a8a 100%)" }}
-    >
+    <section className="hero-surface min-h-screen flex items-center pt-20">
       {/* Background blobs */}
       <div className="absolute top-0 right-0 w-125 h-125 rounded-full pointer-events-none opacity-20"
         style={{ background: "radial-gradient(circle, #05ADEE 0%, transparent 65%)", transform: "translate(35%, -35%)" }} />
@@ -27,7 +24,7 @@ const ServicesHero = () => {
           style={{ background: "linear-gradient(135deg, transparent 40%, #05ADEE 100%)" }} />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <motion.div
           className="max-w-4xl mx-auto text-center"
           initial={{ opacity: 0, y: 50 }}
@@ -81,7 +78,7 @@ const ServicesHero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.55, duration: 0.7 }}
           >
-            {["9 Core Services", "12+ Years", "50+ Delivered", "3+ Countries"].map((chip, i) => (
+            {["9 Core Services", "15+ Years", "99+ Delivered", "3+ Countries"].map((chip, i) => (
               <span key={i}
                 className="px-5 py-2 rounded-full text-sm font-medium"
                 style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.75)" }}

@@ -289,7 +289,7 @@ export function BusinessAssistantDocs() {
           <HelpCircle className="w-12 h-12 text-white mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-white mb-4">Need Help?</h2>
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            Can't find what you're looking for? Our support team is here to help you get the most out of Business Assistant.
+            Can&apos;t find what you&apos;re looking for? Our support team is here to help you get the most out of Business Assistant.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link

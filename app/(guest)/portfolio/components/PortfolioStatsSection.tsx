@@ -16,8 +16,8 @@ const PortfolioStatsSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
-            { icon: TrendingUp, v: "50+", l: "Projects Delivered" },
-            { icon: Globe, v: "8+", l: "Industries Served" },
+            { icon: TrendingUp, v: "99+", l: "Projects Delivered" },
+            { icon: Globe, v: "10+", l: "Industries Served" },
             { icon: Award, v: "100%", l: "Client Satisfaction" },
             { icon: Users, v: "3+", l: "Countries Covered" },
           ].map((s, i) => (

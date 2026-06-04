@@ -1,4 +1,3 @@
-import { Mail, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { connection } from "next/server";
 import { Navbar } from "./components/NavBar";

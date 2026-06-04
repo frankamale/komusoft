@@ -75,7 +75,7 @@ const ExpertiseSection = () => {
             {[
               { label: "Technologies", value: "20+", icon: <GrTechnology /> },
               { label: "Team Members", value: "15+", icon: <GrUser /> },
-              { label: "Industries", value: "8+", icon: <FaIndustry /> },
+              { label: "Industries", value: "10+", icon: <FaIndustry /> },
               { label: "Countries", value: "3+", icon: <Globe2 /> },
             ].map((stat, index) => (
               <motion.div

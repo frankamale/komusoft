@@ -5,10 +5,7 @@ import { motion } from 'framer-motion';
 
 const ContactHero = () => {
   return (
-    <section
-      className="relative min-h-screen flex flex-col overflow-hidden"
-      style={{ background: "linear-gradient(135deg, #0A0947 0%, #0d0f5e 40%, #0a2a6e 72%, #0c4a8a 100%)" }}
-    >
+    <section className="hero-surface min-h-screen flex flex-col">
       {/* Blobs */}
       <div className="absolute top-0 right-0 w-200 h-200 rounded-full pointer-events-none opacity-20"
         style={{ background: "radial-gradient(circle, #05ADEE 0%, transparent 65%)", transform: "translate(35%, -35%)" }} />

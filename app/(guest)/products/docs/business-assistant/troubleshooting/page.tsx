@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, AlertTriangle, Cloud, Wifi, Database, Users, Shield, RefreshCw, FileText, HelpCircle, Mail, Lock, Monitor } from 'lucide-react';
+import { ArrowLeft, AlertTriangle, Cloud, Database, Users, Shield, RefreshCw, HelpCircle, Mail, Lock, Monitor } from 'lucide-react';
 import Link from 'next/link';
 
 export function BusinessAssistantTroubleshooting() {

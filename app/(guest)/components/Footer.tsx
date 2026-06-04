@@ -84,10 +84,21 @@ const Footer = () => {
           <div>
             <h3 className="font-bold text-lg mb-4">Our Products</h3>
             <ul className="space-y-3">
-              <li className="text-gray-400">Business Manager</li>
-              <li className="text-gray-400">Business Assistant</li>
-              <li className="text-gray-400">Hybrid System</li>
-              <li className="text-gray-400">Bac Monitor</li>
+              <li>
+                <Link href="/products/business-manager" className="text-gray-400 hover:text-[#05ADEE] transition-colors">
+                  Business Manager
+                </Link>
+              </li>
+              <li>
+                <Link href="/products/business-assistant" className="text-gray-400 hover:text-[#05ADEE] transition-colors">
+                  Business Assistant
+                </Link>
+              </li>
+              <li>
+                <Link href="/products/hybrid-solution" className="text-gray-400 hover:text-[#05ADEE] transition-colors">
+                  Hybrid Solution
+                </Link>
+              </li>
             </ul>
           </div>
 

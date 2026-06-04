@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 32 },
@@ -11,7 +11,7 @@ const fadeUp = (delay = 0) => ({
 });
 
 interface Feature {
-  icon: any;
+  icon: LucideIcon;
   title: string;
   description: string;
 }

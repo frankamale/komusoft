@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export function Hero() {
     return (
-        <section className="relative min-h-screen flex items-center overflow-hidden bg-linear-to-br from-[#0A0947] via-[#0e1552] to-[#0A0947] pt-20">
+        <section className="hero-surface min-h-screen flex items-center pt-20">
             <div className="absolute inset-0 opacity-20">
                 <div className="absolute top-20 left-20 w-72 h-72 bg-[#05ADEE] rounded-full filter blur-3xl"></div>
                 <div className="absolute bottom-20 right-20 w-96 h-96 bg-[#05ADEE] rounded-full filter blur-3xl"></div>
@@ -26,46 +26,46 @@ export function Hero() {
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:py-20">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div className="space-y-8">
-                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight text-center">
+                        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.04] text-left">
                             Transforming Businesses Through {" "}
-                            <span className="bg-linear-to-r from-[#05ADEE] to-[#38bdf8] bg-clip-text text-transparent">
+                            <span className="bg-linear-to-r from-brand to-brand-light bg-clip-text text-transparent">
                                 Intelligent Software Solutions
                             </span>
                         </h1>
 
-                        <p className="md:text-xl text-gray-300 leading-relaxed text-center">
+                        <p className="md:text-xl text-gray-300 leading-relaxed text-left">
                             Komusoft delivers powerful enterprise software, mobile applications, cloud platforms, and IT solutions
                             that help organizations operate smarter, faster, and more efficiently.
                         </p>
 
                         <div className="flex flex-wrap gap-4">
-                            <Link href={"/contact"} className="group md:px-8 px-4 md:py-4 py-2 bg-linear-to-r from-[#05ADEE] to-[#0ea5e9] text-white rounded-lg hover:shadow-2xl hover:shadow-[#05ADEE]/50 transition-all flex items-center gap-2">
+                            <Link href={"/contact"} className="btn-primary group">
                                 Get Started
                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </Link>
-                            <Link href={"/portfolio"} className="md:px-8 px-4 md:py-4 py-2 bg-white/10 backdrop-blur-sm text-white border border-white/20 rounded-lg hover:bg-white/20 transition-all">
+                            <Link href={"/portfolio"} className="btn-secondary">
                                 View Our Work
                             </Link>
                         </div>
 
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8">
                             <div className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:bg-white/10 transition-all">
-                                <div className="text-3xl font-bold text-[#05ADEE]">15+</div>
+                                <div className="text-3xl font-bold text-brand">15+</div>
                                 <div className="text-sm text-gray-300">Years Experience</div>
                             </div>
                             <div className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:bg-white/10 transition-all">
-                                <div className="text-3xl font-bold text-[#05ADEE]">99+</div>
+                                <div className="text-3xl font-bold text-brand">99+</div>
                                 <div className="text-sm text-gray-300">Projects Delivered</div>
                             </div>
                             <div className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:bg-white/10 transition-all">
                                 <div className="flex items-center gap-1">
-                                    <Shield className="w-6 h-6 text-[#05ADEE]" />
+                                    <Shield className="w-6 h-6 text-brand" />
                                 </div>
                                 <div className="text-sm text-gray-300 mt-1">Enterprise Grade Solutions</div>
                             </div>
                             <div className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:bg-white/10 transition-all">
                                 <div className="flex items-center gap-1">
-                                    <TrendingUp className="w-6 h-6 text-[#05ADEE]" />
+                                    <TrendingUp className="w-6 h-6 text-brand" />
                                 </div>
                                 <div className="text-sm text-gray-300 mt-1">Trusted Partner</div>
                             </div>
@@ -80,7 +80,7 @@ export function Hero() {
                                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                                     <span className="text-sm font-semibold text-gray-800">Systems Online</span>
                                 </div>
-                                <div className="mt-1 text-2xl font-bold text-[#05ADEE]">99.9%</div>
+                                <div className="mt-1 text-2xl font-bold text-brand">99.9%</div>
                             </div>
                         </div>
 

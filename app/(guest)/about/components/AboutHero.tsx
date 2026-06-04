@@ -4,10 +4,7 @@ import { motion } from "framer-motion";
 
 const AboutHero = () => {
   return (
-    <section
-      className="relative overflow-hidden md:py-32 py-12"
-      style={{ background: "linear-gradient(135deg, #0A0947 0%, #0d0f5e 40%, #0a2a6e 70%, #0c4a8a 100%)" }}
-    >
+    <section className="hero-surface min-h-screen flex items-center pt-20">
       {/* Decorative blobs */}
       <div
         className="absolute top-0 right-0 w-150 h-150 rounded-full opacity-20 pointer-events-none"
@@ -28,7 +25,7 @@ const AboutHero = () => {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <motion.div
           className="max-w-4xl mx-auto text-center"
           initial={{ opacity: 0, y: 50 }}
@@ -55,7 +52,7 @@ const AboutHero = () => {
           </motion.div>
 
           <motion.h1
-            className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.05] mb-8"
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.04] mb-8"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}

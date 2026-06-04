@@ -1,13 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Building2, ShoppingBag, HeartPulse, Truck } from "lucide-react";
 
 const PortfolioHero = () => {
   return (
-    <section
-      className="relative min-h-screen flex flex-col overflow-hidden"
-      style={{ background: "linear-gradient(135deg, #0A0947 0%, #0d0f5e 40%, #0a2a6e 72%, #0c4a8a 100%)" }}
-    >
+    <section className="hero-surface min-h-screen flex flex-col">
       {/* Blobs */}
       <div className="absolute top-0 right-0 w-200 h-200 rounded-full pointer-events-none opacity-20"
         style={{ background: "radial-gradient(circle, #05ADEE 0%, transparent 65%)", transform: "translate(35%, -35%)" }} />
@@ -92,10 +90,10 @@ const PortfolioHero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55, duration: 0.7 }}>
               {[
-                { v: "50+", l: "Projects" },
-                { v: "8+", l: "Industries" },
+                { v: "99+", l: "Projects" },
+                { v: "10+", l: "Industries" },
                 { v: "100%", l: "Satisfaction" },
-                { v: "12+", l: "Years" },
+                { v: "15+", l: "Years" },
               ].map((s, i) => (
                 <div key={i} className="flex flex-col items-center py-4 rounded-2xl"
                   style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)" }}>
@@ -114,28 +112,28 @@ const PortfolioHero = () => {
             transition={{ delay: 0.35, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}>
             {[
               {
-                icon: "Building2",
+                icon: Building2,
                 client: "United Nations",
                 title: "Various Digital Platforms",
                 industry: "International Development",
                 year: "2015–Present",
               },
               {
-                icon: "ShoppingBag",
+                icon: ShoppingBag,
                 client: "Mega Standard Supermarket",
                 title: "Retail Operations Management",
                 industry: "Retail",
                 year: "2019",
               },
               {
-                icon: "HeartPulse",
+                icon: HeartPulse,
                 client: "Lifecare Diagnostics",
                 title: "Diagnostic Systems (LIMS)",
                 industry: "Healthcare",
                 year: "2018",
               },
               {
-                icon: "Truck",
+                icon: Truck,
                 client: "APONYE Uganda Ltd",
                 title: "Weighbridge Management",
                 industry: "Logistics",
@@ -151,8 +149,7 @@ const PortfolioHero = () => {
                 whileHover={{ scale: 1.03 }}>
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
                   style={{ background: "rgba(5,173,238,0.2)" }}>
-                  {/* Assuming icons are passed or imported */}
-                  <div className="w-5 h-5 bg-[#05ADEE]" />
+                  <p.icon className="w-5 h-5" style={{ color: "#05ADEE" }} />
                 </div>
                 <p className="text-white font-bold text-sm mb-1">{p.client}</p>
                 <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.4)" }}>{p.industry}</p>
