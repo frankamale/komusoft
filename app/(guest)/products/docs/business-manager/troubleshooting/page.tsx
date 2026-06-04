@@ -213,7 +213,7 @@ export function BusinessManagerTroubleshooting() {
           <div>
             <p className="text-red-800 font-semibold">Need immediate help?</p>
             <p className="text-red-700 text-sm">
-              Call our support team on <a href="tel:+256750688747" className="underline">+256 750 688747</a> or email{" "}
+              Call our support team on <a href="tel:+256750688747" className="underline">+256 765 916 207</a> or email{" "}
               <a href="mailto:support@komusoft.com" className="underline">support@komusoft.com</a>.
             </p>
           </div>
@@ -359,7 +359,7 @@ export function BusinessManagerTroubleshooting() {
           <div>
             <h3 className="font-semibold text-gray-900 mb-3">Contact Support</h3>
             <ul className="space-y-2 text-gray-700 text-sm">
-              <li><strong>Phone:</strong> +256 750 688747</li>
+              <li><strong>Phone:</strong> +256 765 916 207</li>
               <li><strong>Email:</strong> support@komusoft.com</li>
               <li><strong>Website:</strong> www.komusoft.com</li>
             </ul>
